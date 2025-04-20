@@ -1,0 +1,14 @@
+# Ignore Visual Studio
+.vs/
+*.user
+*.suo
+
+# Ignore build artifacts
+bin/
+obj/
+
+# Ignore .vsidx and other temp files
+*.vsidx
+*.log
+*.tmp
+
