@@ -323,5 +323,37 @@ namespace DVLD_DAL
 
             return IsFound;
         }
+
+        public static int GetPersonID(string NationalNo)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+           
+            string query = @"SELECT PersonID FROM People
+                             WHERE NationalNo = @NationalNo;";
+            
+            SqlCommand command = new SqlCommand(query, connection);
+            
+            command.Parameters.AddWithValue("@NationalNo", NationalNo);
+            
+            int PersonID = -1;
+            
+            try
+            {
+                connection.Open();
+               
+                object Result = command.ExecuteScalar();
+                
+                if (Result != null && int.TryParse(Result.ToString(), out int ID))
+                    PersonID = ID;
+            }
+            catch (Exception e)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return PersonID;
+        }
     }
 }

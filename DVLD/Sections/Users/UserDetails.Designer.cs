@@ -28,36 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.userInfo1 = new DVLD.User_Controls.Users_Section_Controls.UC_UserInfo();
+            this.LB_Opration = new System.Windows.Forms.Label();
+            this.UserInfo = new DVLD.User_Controls.Users_Section_Controls.UC_UserInfo();
             this.SuspendLayout();
             // 
-            // userInfo1
+            // LB_Opration
             // 
-            this.userInfo1.BackColor = System.Drawing.SystemColors.Window;
-            this.userInfo1.Location = new System.Drawing.Point(63, 3);
-            this.userInfo1.Name = "userInfo1";
-            this.userInfo1.Size = new System.Drawing.Size(651, 386);
-            this.userInfo1.TabIndex = 0;
+            this.LB_Opration.AutoSize = true;
+            this.LB_Opration.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_Opration.Location = new System.Drawing.Point(344, -3);
+            this.LB_Opration.Name = "LB_Opration";
+            this.LB_Opration.Size = new System.Drawing.Size(108, 19);
+            this.LB_Opration.TabIndex = 24;
+            this.LB_Opration.Text = "User Details";
+            // 
+            // UserInfo
+            // 
+            this.UserInfo.BackColor = System.Drawing.SystemColors.Window;
+            this.UserInfo.Location = new System.Drawing.Point(74, 43);
+            this.UserInfo.Name = "UserInfo";
+            this.UserInfo.Size = new System.Drawing.Size(651, 386);
+            this.UserInfo.TabIndex = 0;
             // 
             // UserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(800, 414);
-            this.Controls.Add(this.userInfo1);
+            this.ClientSize = new System.Drawing.Size(800, 431);
+            this.Controls.Add(this.LB_Opration);
+            this.Controls.Add(this.UserInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UserDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Details";
+            this.Load += new System.EventHandler(this.UserDetails_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private User_Controls.Users_Section_Controls.UC_UserInfo userInfo1;
+        private User_Controls.Users_Section_Controls.UC_UserInfo UserInfo;
+        private System.Windows.Forms.Label LB_Opration;
     }
 }

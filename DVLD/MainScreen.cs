@@ -1,4 +1,5 @@
 ﻿using DVLD.Sections.Users;
+using DVLD_BLL.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,13 +33,15 @@ namespace DVLD
 
         private void TSMI_CurrentUser_Click(object sender, EventArgs e)
         {
-            UserDetails currentUser = new UserDetails();
+            clsUsers_BLL User = clsUsers_BLL.Find(1);
+            UserDetails currentUser = new UserDetails(ref User);
             currentUser.ShowDialog();
         }
 
         private void TSMI_ChangePassword_Click(object sender, EventArgs e)
         {
-            ChangeUserPassword changeUserPassword = new ChangeUserPassword(); // we need to send here the current user
+            clsUsers_BLL User = clsUsers_BLL.Find(1); // we need to send here the current user
+            ChangeUserPassword changeUserPassword = new ChangeUserPassword(ref User);
             changeUserPassword.ShowDialog();
         }
     }

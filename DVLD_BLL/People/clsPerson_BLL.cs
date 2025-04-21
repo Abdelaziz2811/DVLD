@@ -151,5 +151,10 @@ namespace DVLD_BLL
         {
             return clsPersons_DAL.IsNationalNoExists(NationalNo);
         }
+
+        public static int GetPersonID(string NationalNo)
+        {
+            return clsPersons_DAL.GetPersonID(NationalNo);
+        }
     }
 }

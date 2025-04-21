@@ -52,7 +52,8 @@ namespace DVLD
 
         private void TSMI_ShowDetails_Click(object sender, EventArgs e)
         {
-            UserDetails currentUser = new UserDetails();
+            clsUsers_BLL User = clsUsers_BLL.Find(Convert.ToInt32(DGV_Users.CurrentRow.Cells[0].Value));
+            UserDetails currentUser = new UserDetails(ref User);
             currentUser.ShowDialog();
             RefreshUsersRecords();
         }
@@ -87,7 +88,8 @@ namespace DVLD
         }
         private void TSMI_ChangePassword_Click(object sender, EventArgs e)
         {
-            ChangeUserPassword changePassword = new ChangeUserPassword(); // we need to send the selected user form DGV
+            clsUsers_BLL User = clsUsers_BLL.Find(Convert.ToInt32(DGV_Users.CurrentRow.Cells[0].Value));
+            ChangeUserPassword changePassword = new ChangeUserPassword(ref User);
             changePassword.ShowDialog();
         }
 

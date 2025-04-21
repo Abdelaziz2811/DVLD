@@ -35,6 +35,7 @@ namespace DVLD.User_Controls
         {
             clsPerson_BLL Person = new clsPerson_BLL();
             AddUpdatePerson add_UpdatePerson = new AddUpdatePerson(ref Person);
+            add_UpdatePerson.GetPersonID += GetNewAddedPersonInfo;
             add_UpdatePerson.ShowDialog();
         }
 
@@ -85,6 +86,13 @@ namespace DVLD.User_Controls
             if (Person.ImagePath != string.Empty)
                 Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
             else Person_Info.PB_PersonImage.Image = null;
+        }
+
+        void GetNewAddedPersonInfo(int PersonID)
+        {
+            InitializeCB_FindBy();
+            TXTB_SearchBox.Text = PersonID.ToString();
+            BTN_FindPerson.PerformClick();
         }
     }
 }

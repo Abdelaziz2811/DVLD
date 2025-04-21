@@ -7,23 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DVLD_BLL.Users;
 
 namespace DVLD.User_Controls.Users_Section_Controls
 {
-    public partial class UC_Change_UserPassword: UserControl
+    public partial class UC_Change_UserPassword : UserControl
     {
-        public UC_Change_UserPassword() // we must recive the boject of the user so we can make chages and set the new password
+        public UC_Change_UserPassword()
         {
             InitializeComponent();
         }
 
-        private bool IsInputsValid()
+        private bool IsInputsValid(clsUsers_BLL User)
         {
             bool IsValid = true;
             EP_PasswordValidation.Clear();
 
 
-            if (TB_CurrentPassword.Text != "1234") // 1234 will be replace with CurrentUser.Password this is just for demo purpose
+            if (TB_CurrentPassword.Text != User.Password)
             {
                 EP_PasswordValidation.SetError(TB_CurrentPassword, "Current Password is incorrect");
                 IsValid = false;
@@ -35,7 +36,7 @@ namespace DVLD.User_Controls.Users_Section_Controls
                 IsValid = false;
             }
 
-            if (TB_NewPassword.Text == TB_CurrentPassword.Text) // TB_CurrentPassword.Text will be replace with User.Password weather it is a current user or the user we selected this form seve both
+            if (TB_NewPassword.Text == User.Password)
             {
                 EP_PasswordValidation.SetError(TB_NewPassword, "You're using this password, Please enter a new one");
                 IsValid = false;
@@ -52,16 +53,20 @@ namespace DVLD.User_Controls.Users_Section_Controls
 
         private void BTN_Save_Click(object sender, EventArgs e)
         {
-            if (!IsInputsValid())
+            clsUsers_BLL User = clsUsers_BLL.Find(Convert.ToInt32(UserInfo.LB_UserID.Text));
+            
+            if (User != null)
             {
-                MessageBox.Show("Please correct the errors in the form.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else
-            {
-                // Save the new password to the database
-                // here we will set the current user password to the new one and save it to the database
-                MessageBox.Show("Password changed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (IsInputsValid(User))
+                {
+                    User.Password = TB_NewPassword.Text;
+                    if (User.Save())
+                        MessageBox.Show("Password changed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Failed to change password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Please correct the errors in the form.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -37,7 +37,9 @@ namespace DVLD.User_Controls.Users_Section_Controls
                 {
                     if (TB_UserName.Text == User.UserName)
                     {
-                        if (Convert.ToInt32(LB_UserID.Text) == User.UserID) return;
+                        if (int.TryParse(LB_UserID.Text, out int ID))
+                            if (ID == User.UserID) return;
+
                         EP_UserLoginInfoValidation.SetError(TB_UserName, "Username already exists");
                         e.Cancel = true;
                     }

@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.change_UserPassword1 = new DVLD.User_Controls.Users_Section_Controls.UC_Change_UserPassword();
+            this.Change_UserPassword = new DVLD.User_Controls.Users_Section_Controls.UC_Change_UserPassword();
             this.SuspendLayout();
             // 
-            // change_UserPassword1
+            // Change_UserPassword
             // 
-            this.change_UserPassword1.BackColor = System.Drawing.SystemColors.Window;
-            this.change_UserPassword1.Location = new System.Drawing.Point(69, 1);
-            this.change_UserPassword1.Name = "change_UserPassword1";
-            this.change_UserPassword1.Size = new System.Drawing.Size(651, 487);
-            this.change_UserPassword1.TabIndex = 0;
+            this.Change_UserPassword.BackColor = System.Drawing.SystemColors.Window;
+            this.Change_UserPassword.Location = new System.Drawing.Point(69, 1);
+            this.Change_UserPassword.Name = "Change_UserPassword";
+            this.Change_UserPassword.Size = new System.Drawing.Size(651, 487);
+            this.Change_UserPassword.TabIndex = 0;
             // 
             // ChangeUserPassword
             // 
@@ -45,19 +45,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(800, 495);
-            this.Controls.Add(this.change_UserPassword1);
+            this.Controls.Add(this.Change_UserPassword);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ChangeUserPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change User Password";
+            this.Load += new System.EventHandler(this.ChangeUserPassword_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private User_Controls.Users_Section_Controls.UC_Change_UserPassword change_UserPassword1;
+        private User_Controls.Users_Section_Controls.UC_Change_UserPassword Change_UserPassword;
     }
 }

@@ -23,6 +23,12 @@ namespace DVLD
             this.Person = Person;
         }
 
+        public delegate void GetPersonIDDelegate(int PersonID);
+        public event GetPersonIDDelegate GetPersonID;
+
+        public delegate void GetPersonInfoDelegate(clsPerson_BLL Person);
+        public event GetPersonInfoDelegate GetPersonInfo;
+
         private void Update_AddPerson_Load(object sender, EventArgs e)
         {
             SetFormMode();
@@ -78,6 +84,12 @@ namespace DVLD
                         MessageBox.Show($"Person '{Person.FirstName} {Person.LastName}' added seccessfuly", "Seccess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         MessageBox.Show($"Person updated seccessfuly", "Seccess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    int PersonID = clsPerson_BLL.GetPersonID(Add_UpdatePerson.TXTB_NationalNo.Text);
+                    if (PersonID != -1)
+                        GetPersonID?.Invoke(PersonID);
+
+                    GetPersonInfo?.Invoke(Person);
                 }
             }
             else

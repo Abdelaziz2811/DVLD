@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Change_UserPassword));
-            this.userInfo1 = new DVLD.User_Controls.Users_Section_Controls.UC_UserInfo();
+            this.UserInfo = new DVLD.User_Controls.Users_Section_Controls.UC_UserInfo();
             this.label4 = new System.Windows.Forms.Label();
             this.TB_CurrentPassword = new System.Windows.Forms.TextBox();
             this.TB_NewPassword = new System.Windows.Forms.TextBox();
@@ -42,13 +42,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.EP_PasswordValidation)).BeginInit();
             this.SuspendLayout();
             // 
-            // userInfo1
+            // UserInfo
             // 
-            this.userInfo1.BackColor = System.Drawing.SystemColors.Window;
-            this.userInfo1.Location = new System.Drawing.Point(0, 0);
-            this.userInfo1.Name = "userInfo1";
-            this.userInfo1.Size = new System.Drawing.Size(651, 386);
-            this.userInfo1.TabIndex = 0;
+            this.UserInfo.BackColor = System.Drawing.SystemColors.Window;
+            this.UserInfo.Location = new System.Drawing.Point(0, 0);
+            this.UserInfo.Name = "UserInfo";
+            this.UserInfo.Size = new System.Drawing.Size(651, 386);
+            this.UserInfo.TabIndex = 0;
             // 
             // label4
             // 
@@ -64,6 +64,7 @@
             // 
             this.TB_CurrentPassword.Location = new System.Drawing.Point(220, 405);
             this.TB_CurrentPassword.Name = "TB_CurrentPassword";
+            this.TB_CurrentPassword.PasswordChar = '●';
             this.TB_CurrentPassword.Size = new System.Drawing.Size(100, 20);
             this.TB_CurrentPassword.TabIndex = 27;
             // 
@@ -71,6 +72,7 @@
             // 
             this.TB_NewPassword.Location = new System.Drawing.Point(509, 406);
             this.TB_NewPassword.Name = "TB_NewPassword";
+            this.TB_NewPassword.PasswordChar = '●';
             this.TB_NewPassword.Size = new System.Drawing.Size(100, 20);
             this.TB_NewPassword.TabIndex = 29;
             // 
@@ -88,6 +90,7 @@
             // 
             this.TB_ConfirmPassword.Location = new System.Drawing.Point(220, 442);
             this.TB_ConfirmPassword.Name = "TB_ConfirmPassword";
+            this.TB_ConfirmPassword.PasswordChar = '●';
             this.TB_ConfirmPassword.Size = new System.Drawing.Size(100, 20);
             this.TB_ConfirmPassword.TabIndex = 31;
             // 
@@ -123,7 +126,7 @@
             this.EP_PasswordValidation.ContainerControl = this;
             this.EP_PasswordValidation.Icon = ((System.Drawing.Icon)(resources.GetObject("EP_PasswordValidation.Icon")));
             // 
-            // Change_UserPassword
+            // UC_Change_UserPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,8 +138,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TB_CurrentPassword);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.userInfo1);
-            this.Name = "Change_UserPassword";
+            this.Controls.Add(this.UserInfo);
+            this.Name = "UC_Change_UserPassword";
             this.Size = new System.Drawing.Size(651, 487);
             ((System.ComponentModel.ISupportInitialize)(this.EP_PasswordValidation)).EndInit();
             this.ResumeLayout(false);
@@ -145,8 +148,6 @@
         }
 
         #endregion
-
-        private UC_UserInfo userInfo1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TB_CurrentPassword;
         private System.Windows.Forms.TextBox TB_NewPassword;
@@ -155,5 +156,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BTN_Save;
         private System.Windows.Forms.ErrorProvider EP_PasswordValidation;
+        public UC_UserInfo UserInfo;
     }
 }

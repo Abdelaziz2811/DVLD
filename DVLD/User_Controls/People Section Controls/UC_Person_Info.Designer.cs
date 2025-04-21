@@ -94,6 +94,7 @@
             this.BTN_EditPersonInfo.Name = "BTN_EditPersonInfo";
             this.BTN_EditPersonInfo.Size = new System.Drawing.Size(117, 28);
             this.BTN_EditPersonInfo.TabIndex = 21;
+            this.BTN_EditPersonInfo.Tag = " ";
             this.BTN_EditPersonInfo.Text = "Edit Person Info";
             this.BTN_EditPersonInfo.UseVisualStyleBackColor = false;
             this.BTN_EditPersonInfo.Click += new System.EventHandler(this.BTN_EditPersonInfo_Click);
