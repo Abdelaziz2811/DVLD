@@ -61,8 +61,12 @@ namespace DVLD
                 Update_AddUser.Person_Selector.Person_Info.LB_Email.Text = Person.Email;
                 Update_AddUser.Person_Selector.Person_Info.LB_Phone.Text = Person.Phone;
                 Update_AddUser.Person_Selector.Person_Info.LB_Country.Text = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
+
+                if (Person.ImagePath != string.Empty)
+                    Update_AddUser.Person_Selector.Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
+
             }
-            
+
             Update_AddUser.LB_UserID.Text = User.UserID.ToString();
             Update_AddUser.TB_UserName.Text = User.UserName.ToString();
             Update_AddUser.TB_Password.Text = User.Password.ToString();
@@ -77,9 +81,17 @@ namespace DVLD
                 if (User.Save())
                 {
                     if (User.Mode == enUMode.Add)
+                    {
+                        Update_AddUser.LB_UserID.Text = User.UserID.ToString();
                         MessageBox.Show($"User '{User.UserName}' added seccessfuly", "Seccess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     else
+                    {
+                        if (clsGlobalSettings.CurrentUser.UserID == User.UserID)
+                            clsGlobalSettings.CurrentUser = User;
+
                         MessageBox.Show($"User updated seccessfuly", "Seccess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             else

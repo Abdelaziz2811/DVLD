@@ -1,4 +1,5 @@
-﻿using DVLD.Sections.Users;
+﻿using DVLD.Sections.Applications;
+using DVLD.Sections.Users;
 using DVLD_BLL.Users;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,25 @@ namespace DVLD
 {
     public partial class MainScreen: Form
     {
-        public MainScreen()
+        public MainScreen(string Username)
         {
             InitializeComponent();
+
+            clsGlobalSettings.CurrentUser = clsUsers_BLL.Find(Username);
+        }
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
+            SetFormSize();
+        }
+
+        void SetFormSize()
+        {
+            Rectangle workArea = Screen.PrimaryScreen.WorkingArea;
+            this.Location = new Point(workArea.Left - 8, workArea.Top);
+            this.Size = new Size(workArea.Width + 19, workArea.Height + 8);
+
+
         }
 
         private void TSM_People_Click(object sender, EventArgs e)
@@ -33,16 +50,26 @@ namespace DVLD
 
         private void TSMI_CurrentUser_Click(object sender, EventArgs e)
         {
-            clsUsers_BLL User = clsUsers_BLL.Find(1);
-            UserDetails currentUser = new UserDetails(ref User);
+            UserDetails currentUser = new UserDetails(ref clsGlobalSettings.CurrentUser);
             currentUser.ShowDialog();
         }
 
         private void TSMI_ChangePassword_Click(object sender, EventArgs e)
         {
-            clsUsers_BLL User = clsUsers_BLL.Find(1); // we need to send here the current user
-            ChangeUserPassword changeUserPassword = new ChangeUserPassword(ref User);
+            ChangeUserPassword changeUserPassword = new ChangeUserPassword(ref clsGlobalSettings.CurrentUser);
             changeUserPassword.ShowDialog();
+        }
+
+        private void TSMI_SignOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Restart();
+        }
+
+        private void TSMI_ManageApplicationType_Click(object sender, EventArgs e)
+        {
+            ManageApplicationTypes manageApplicationTypes = new ManageApplicationTypes();
+            manageApplicationTypes.ShowDialog();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DVLD.User_Controls;
 using DVLD_BLL;
+using DVLD_BLL.Countries;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,14 +16,24 @@ namespace DVLD
 {
     public partial class ManagePeople: Form
     {
+        DataTable DTPeople;
+
         public ManagePeople()
         {
             InitializeComponent();
         }
+
         private void ManagePeople_Load(object sender, EventArgs e)
         {
             GetPeopleRecords();
             GetPeopleRecordsCount();
+            InitializeCB_FilterBy();
+        }
+
+        void InitializeCB_FilterBy()
+        {
+            CB_FilterBy.SelectedItem = "None";
+            TB_FilterationValue.Enabled = false;
         }
 
         void RefreshPeopleInfo()
@@ -33,7 +44,8 @@ namespace DVLD
 
         void GetPeopleRecords()
         {
-            DGV_People.DataSource = clsPerson_BLL.GetPeopleRecords();
+            DTPeople = clsPerson_BLL.GetPeopleRecords();
+            DGV_People.DataSource = DTPeople;
         }
 
         void GetPeopleRecordsCount()
@@ -115,42 +127,106 @@ namespace DVLD
             MessageBox.Show("This feature is not implemented yet.", "Feature Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void CB_FilterBy_SelectedValueChanged(object sender, EventArgs e)
+        private void TB_FilterationValue_Validated(object sender, EventArgs e)
         {
-            switch(CB_FilterBy.SelectedItem.ToString())
+            if (!IsInputValid()) return;
+
+            switch (CB_FilterBy.SelectedItem.ToString())
             {
-                case "None":
+                case "Person ID":
+
+                    FilterBy("PersonID");
+
                     break;
 
-                case "Person ID":
-                    break;
-                
                 case "National No.":
+
+                    FilterBy("NationalNo");
+
                     break;
 
                 case "First Name":
+
+                    FilterBy("FirstName");
+
                     break;
                 case "Second Name":
+
+                    FilterBy("SecondName");
+
                     break;
 
                 case "Third Name":
+
+                    FilterBy("ThirdName");
+
                     break;
 
                 case "Last Name":
+
+                    FilterBy("LastName");
+
                     break;
 
                 case "Nationality":
+
+                    FilterBy("NationalityCountryID");
+
                     break;
 
                 case "Gender":
+
+                    FilterBy("Gender");
+
                     break;
 
                 case "Phone":
+
+                    FilterBy("Phone");
+
                     break;
 
                 case "Email":
+
+                    FilterBy("Email");
+
+                    break;
+                case "Address":
+
+                    FilterBy("Address");
+
+                    break;
+
+                default:
                     break;
             }
+        }
+        
+        private void CB_FilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CB_FilterBy.SelectedItem.ToString() != "None")
+                TB_FilterationValue.Enabled = true;
+        }
+
+        bool IsInputValid()
+        {
+            if (string.IsNullOrWhiteSpace(TB_FilterationValue.Text))
+            {
+                MessageBox.Show("Please enter a value to filter by.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else return true;
+        }
+
+        void FilterBy(string FilterBy)
+        {
+            if (FilterBy == "NationalityCountryID")
+            {
+                int ID = clsCountries_BLL.GetCountryID(TB_FilterationValue.Text);
+                DTPeople.DefaultView.RowFilter = $"{FilterBy} = '{ID.ToString()}'";
+            }
+            else
+                DTPeople.DefaultView.RowFilter = $"{FilterBy} = '{TB_FilterationValue.Text}'";
         }
     }
 }

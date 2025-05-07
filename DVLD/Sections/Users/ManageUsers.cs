@@ -1,5 +1,6 @@
 ﻿using DVLD.Sections.Users;
 using DVLD_BLL;
+using DVLD_BLL.Countries;
 using DVLD_BLL.Users;
 using System;
 using System.Collections.Generic;
@@ -7,14 +8,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace DVLD
 {
     public partial class ManageUsers: Form
     {
+        DataTable DTUsers;
         public ManageUsers()
         {
             InitializeComponent();
@@ -24,7 +28,15 @@ namespace DVLD
         {
             LoadUsersRecords();
             SetUsersRecordCount();
+            InitializeCB_FilterBy();
         }
+
+        void InitializeCB_FilterBy()
+        {
+            CB_FilterBy.SelectedItem = "None";
+            TB_FilterationValue.Enabled = false;
+        }
+
 
         void RefreshUsersRecords()
         {
@@ -34,7 +46,8 @@ namespace DVLD
 
         void LoadUsersRecords()
         {
-            DGV_Users.DataSource = clsUsers_BLL.GetUsersRecords();
+            DTUsers = clsUsers_BLL.GetUsersRecords();
+            DGV_Users.DataSource = DTUsers;
         }
 
         void SetUsersRecordCount()
@@ -82,9 +95,7 @@ namespace DVLD
                 RefreshUsersRecords();
             }
             else
-            {
-                MessageBox.Show("Failed to delete user.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show("Failed to delete user, due to data connection", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void TSMI_ChangePassword_Click(object sender, EventArgs e)
         {
@@ -107,5 +118,77 @@ namespace DVLD
         {
             MessageBox.Show("This feature is not implemented yet.", "Feature Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void TB_FilterationValue_Validated(object sender, EventArgs e)
+        {
+            if (!IsInputValid()) return;
+
+            switch (CB_FilterBy.SelectedItem.ToString())
+            {
+                case "User ID":
+
+                    FilterBy("UserID");
+
+                    break;
+
+                case "National No.":
+
+                    FilterBy("NationalNo");
+
+                    break;
+
+                case "User Name":
+
+                    FilterBy("UserName");
+
+                    break;
+                case "Full Name":
+
+                    FilterBy("FirstName  + ' ' +  SecondName  + ' ' +  ThirdName  + ' ' +  LastName");
+
+                    break;
+
+                case "Is Active":
+
+                    FilterBy("IsActive");
+
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void CB_FilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CB_FilterBy.SelectedItem.ToString() != "None")
+                TB_FilterationValue.Enabled = true;
+        }
+
+        bool IsInputValid()
+        {
+            if (string.IsNullOrWhiteSpace(TB_FilterationValue.Text))
+            {
+                MessageBox.Show("Please enter a value to filter by.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else return true;
+        }
+
+        void FilterBy(string FilterBy)
+        {
+            if (FilterBy == "IsActive")
+            {
+                if (TB_FilterationValue.Text.ToLower() == "true")
+                {
+                    DTUsers.DefaultView.RowFilter = $"{FilterBy} = TRUE";
+                }
+                else if (TB_FilterationValue.Text.ToLower() == "false")
+                    DTUsers.DefaultView.RowFilter = $"{FilterBy} = FALSE";
+            }
+            else
+                DTUsers.DefaultView.RowFilter = $"{FilterBy} = '{TB_FilterationValue.Text}'";
+        }
+
     }
 }

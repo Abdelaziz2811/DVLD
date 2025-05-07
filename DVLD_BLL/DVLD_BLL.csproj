@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsApplicationTypes_BLL.cs" />
     <Compile Include="Countries\clsCountries_BLL.cs" />
     <Compile Include="People\clsPerson_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

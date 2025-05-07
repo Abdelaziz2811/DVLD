@@ -22,7 +22,7 @@ namespace DVLD
             {
                 if (login.ShowDialog() == DialogResult.OK)
                 {
-                    Application.Run(new MainScreen());
+                    Application.Run(new MainScreen(login.TXTB_Username.Text));
                 }
             }
         }

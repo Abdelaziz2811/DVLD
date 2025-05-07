@@ -51,7 +51,7 @@
             this.BTN_Login.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.BTN_Login.Location = new System.Drawing.Point(529, 278);
             this.BTN_Login.Name = "BTN_Login";
-            this.BTN_Login.Size = new System.Drawing.Size(156, 43);
+            this.BTN_Login.Size = new System.Drawing.Size(156, 37);
             this.BTN_Login.TabIndex = 1;
             this.BTN_Login.Text = "login";
             this.BTN_Login.UseVisualStyleBackColor = false;
@@ -59,20 +59,20 @@
             // 
             // TXTB_Username
             // 
-            this.TXTB_Username.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXTB_Username.Location = new System.Drawing.Point(591, 154);
+            this.TXTB_Username.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TXTB_Username.Location = new System.Drawing.Point(591, 153);
             this.TXTB_Username.Name = "TXTB_Username";
-            this.TXTB_Username.Size = new System.Drawing.Size(136, 27);
+            this.TXTB_Username.Size = new System.Drawing.Size(136, 26);
             this.TXTB_Username.TabIndex = 2;
             this.TXTB_Username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TXTB_Password
             // 
-            this.TXTB_Password.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXTB_Password.Location = new System.Drawing.Point(591, 204);
+            this.TXTB_Password.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TXTB_Password.Location = new System.Drawing.Point(591, 203);
             this.TXTB_Password.Name = "TXTB_Password";
             this.TXTB_Password.PasswordChar = '●';
-            this.TXTB_Password.Size = new System.Drawing.Size(136, 27);
+            this.TXTB_Password.Size = new System.Drawing.Size(136, 26);
             this.TXTB_Password.TabIndex = 3;
             this.TXTB_Password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -167,6 +167,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "login";
+            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

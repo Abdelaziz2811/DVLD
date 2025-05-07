@@ -61,7 +61,14 @@ namespace DVLD.User_Controls.Users_Section_Controls
                 {
                     User.Password = TB_NewPassword.Text;
                     if (User.Save())
+                    {
                         MessageBox.Show("Password changed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        if (User.UserID == clsGlobalSettings.CurrentUser.UserID)
+                            clsGlobalSettings.CurrentUser.Password = User.Password;
+                        
+                        this.Parent.FindForm().Close();
+                    }
                     else
                         MessageBox.Show("Failed to change password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

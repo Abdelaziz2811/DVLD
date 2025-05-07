@@ -114,8 +114,13 @@ namespace DVLD
 
             Person.NationalityCountryID = clsCountries_BLL.GetCountryID(Add_UpdatePerson.CB_Countries.SelectedItem.ToString());
 
-            if (Add_UpdatePerson.ImagePath != string.Empty)
-                Person.ImagePath = Add_UpdatePerson.ImagePath;
+            if (Add_UpdatePerson.PB_PersonImage.Image != null)
+            {
+                if (Add_UpdatePerson.ImagePath != string.Empty)
+                    Person.ImagePath = Add_UpdatePerson.ImagePath;
+            }
+            else
+                Person.ImagePath = string.Empty;
 
             Person.NationalNo = Add_UpdatePerson.TXTB_NationalNo.Text;
         }

@@ -43,6 +43,9 @@ namespace DVLD.Sections.Users
                 Change_UserPassword.UserInfo.Person_Info.LB_Email.Text = Person.Email;
                 Change_UserPassword.UserInfo.Person_Info.LB_Phone.Text = Person.Phone;
                 Change_UserPassword.UserInfo.Person_Info.LB_Country.Text = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
+
+                if (Person.ImagePath != string.Empty)
+                    Change_UserPassword.UserInfo.Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
             }
 
             Change_UserPassword.UserInfo.LB_UserID.Text = User.UserID.ToString();

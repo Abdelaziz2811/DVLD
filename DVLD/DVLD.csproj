@@ -46,6 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsGlobalSettings.cs" />
+    <Compile Include="Sections\Applications\ManageApplicationTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\ManageApplicationTypes.Designer.cs">
+      <DependentUpon>ManageApplicationTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Applications\UpdateApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\UpdateApplication.Designer.cs">
+      <DependentUpon>UpdateApplication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections\Users\Add_UpdateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +156,12 @@
     <Compile Include="User_Controls\Users Section Controls\UC_UserInfo.Designer.cs">
       <DependentUpon>UC_UserInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Sections\Applications\ManageApplicationTypes.resx">
+      <DependentUpon>ManageApplicationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Applications\UpdateApplication.resx">
+      <DependentUpon>UpdateApplication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sections\Users\Add_UpdateUser.resx">
       <DependentUpon>Add_UpdateUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -250,6 +269,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Drivers_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Applications_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Application.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

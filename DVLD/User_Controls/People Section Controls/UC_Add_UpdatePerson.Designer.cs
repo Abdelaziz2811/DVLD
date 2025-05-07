@@ -259,11 +259,11 @@
             this.TXTB_Phone.Size = new System.Drawing.Size(124, 20);
             this.TXTB_Phone.TabIndex = 8;
             // 
-            // CB_Country
+            // CB_Countries
             // 
             this.CB_Countries.FormattingEnabled = true;
             this.CB_Countries.Location = new System.Drawing.Point(349, 182);
-            this.CB_Countries.Name = "CB_Country";
+            this.CB_Countries.Name = "CB_Countries";
             this.CB_Countries.Size = new System.Drawing.Size(111, 21);
             this.CB_Countries.TabIndex = 10;
             // 

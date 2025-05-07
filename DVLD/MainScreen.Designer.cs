@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.MS_MainSections = new System.Windows.Forms.MenuStrip();
             this.TSM_Applications = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_DrivingLicenseServices = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,8 +86,9 @@
             this.TSMI_ManageApplicationType,
             this.mToolStripMenuItem});
             this.TSM_Applications.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TSM_Applications.Image = global::DVLD.Properties.Resources.Applications_s;
             this.TSM_Applications.Name = "TSM_Applications";
-            this.TSM_Applications.Size = new System.Drawing.Size(107, 44);
+            this.TSM_Applications.Size = new System.Drawing.Size(147, 44);
             this.TSM_Applications.Text = "Applications";
             // 
             // TSMI_DrivingLicenseServices
@@ -216,6 +218,7 @@
             this.TSMI_ManageApplicationType.Name = "TSMI_ManageApplicationType";
             this.TSMI_ManageApplicationType.Size = new System.Drawing.Size(261, 26);
             this.TSMI_ManageApplicationType.Text = "Manage Application Types";
+            this.TSMI_ManageApplicationType.Click += new System.EventHandler(this.TSMI_ManageApplicationType_Click);
             // 
             // mToolStripMenuItem
             // 
@@ -284,6 +287,7 @@
             this.TSMI_SignOut.Name = "TSMI_SignOut";
             this.TSMI_SignOut.Size = new System.Drawing.Size(203, 26);
             this.TSMI_SignOut.Text = "Sign out";
+            this.TSMI_SignOut.Click += new System.EventHandler(this.TSMI_SignOut_Click);
             // 
             // MainScreen
             // 
@@ -295,11 +299,12 @@
             this.ClientSize = new System.Drawing.Size(1047, 604);
             this.Controls.Add(this.MS_MainSections);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MS_MainSections;
             this.MaximizeBox = false;
             this.Name = "MainScreen";
             this.Text = "Main Screen";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainScreen_Load);
             this.MS_MainSections.ResumeLayout(false);
             this.MS_MainSections.PerformLayout();
             this.ResumeLayout(false);
