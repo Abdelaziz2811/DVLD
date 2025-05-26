@@ -25,7 +25,7 @@ namespace DVLD
 
         private void ManagePeople_Load(object sender, EventArgs e)
         {
-            GetPeopleRecords();
+            LoadPeopleRecords();
             GetPeopleRecordsCount();
             InitializeCB_FilterBy();
         }
@@ -38,11 +38,11 @@ namespace DVLD
 
         void RefreshPeopleInfo()
         {
-            GetPeopleRecords();
+            LoadPeopleRecords();
             GetPeopleRecordsCount();
         }
 
-        void GetPeopleRecords()
+        void LoadPeopleRecords()
         {
             DTPeople = clsPerson_BLL.GetPeopleRecords();
             DGV_People.DataSource = DTPeople;
@@ -127,85 +127,16 @@ namespace DVLD
             MessageBox.Show("This feature is not implemented yet.", "Feature Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void TB_FilterationValue_Validated(object sender, EventArgs e)
-        {
-            if (!IsInputValid()) return;
-
-            switch (CB_FilterBy.SelectedItem.ToString())
-            {
-                case "Person ID":
-
-                    FilterBy("PersonID");
-
-                    break;
-
-                case "National No.":
-
-                    FilterBy("NationalNo");
-
-                    break;
-
-                case "First Name":
-
-                    FilterBy("FirstName");
-
-                    break;
-                case "Second Name":
-
-                    FilterBy("SecondName");
-
-                    break;
-
-                case "Third Name":
-
-                    FilterBy("ThirdName");
-
-                    break;
-
-                case "Last Name":
-
-                    FilterBy("LastName");
-
-                    break;
-
-                case "Nationality":
-
-                    FilterBy("NationalityCountryID");
-
-                    break;
-
-                case "Gender":
-
-                    FilterBy("Gender");
-
-                    break;
-
-                case "Phone":
-
-                    FilterBy("Phone");
-
-                    break;
-
-                case "Email":
-
-                    FilterBy("Email");
-
-                    break;
-                case "Address":
-
-                    FilterBy("Address");
-
-                    break;
-
-                default:
-                    break;
-            }
-        }
-        
-        private void CB_FilterBy_SelectedIndexChanged(object sender, EventArgs e)
+         private void CB_FilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CB_FilterBy.SelectedItem.ToString() != "None")
                 TB_FilterationValue.Enabled = true;
+            else
+            {
+                TB_FilterationValue.Text = string.Empty;
+                TB_FilterationValue.Enabled = false;
+                LoadPeopleRecords();
+            }
         }
 
         bool IsInputValid()
@@ -228,5 +159,84 @@ namespace DVLD
             else
                 DTPeople.DefaultView.RowFilter = $"{FilterBy} = '{TB_FilterationValue.Text}'";
         }
+
+        private void TB_FilterationValue_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!IsInputValid()) return;
+
+                switch (CB_FilterBy.SelectedItem.ToString())
+                {
+                    case "Person ID":
+
+                        FilterBy("PersonID");
+
+                        break;
+
+                    case "National No.":
+
+                        FilterBy("NationalNo");
+
+                        break;
+
+                    case "First Name":
+
+                        FilterBy("FirstName");
+
+                        break;
+                    case "Second Name":
+
+                        FilterBy("SecondName");
+
+                        break;
+
+                    case "Third Name":
+
+                        FilterBy("ThirdName");
+
+                        break;
+
+                    case "Last Name":
+
+                        FilterBy("LastName");
+
+                        break;
+
+                    case "Nationality":
+
+                        FilterBy("NationalityCountryID");
+
+                        break;
+
+                    case "Gender":
+
+                        FilterBy("Gender");
+
+                        break;
+
+                    case "Phone":
+
+                        FilterBy("Phone");
+
+                        break;
+
+                    case "Email":
+
+                        FilterBy("Email");
+
+                        break;
+                    case "Address":
+
+                        FilterBy("Address");
+
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
     }
 }

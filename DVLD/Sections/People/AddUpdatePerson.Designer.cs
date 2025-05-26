@@ -64,12 +64,12 @@
             this.label4.TabIndex = 23;
             this.label4.Text = "Peron ID :";
             // 
-            // UC_Add_UpdatePerson
+            // Add_UpdatePerson
             // 
             this.Add_UpdatePerson.BackColor = System.Drawing.SystemColors.Window;
             this.Add_UpdatePerson.Location = new System.Drawing.Point(28, 55);
             this.Add_UpdatePerson.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Add_UpdatePerson.Name = "UC_Add_UpdatePerson";
+            this.Add_UpdatePerson.Name = "Add_UpdatePerson";
             this.Add_UpdatePerson.Size = new System.Drawing.Size(747, 336);
             this.Add_UpdatePerson.TabIndex = 0;
             // 

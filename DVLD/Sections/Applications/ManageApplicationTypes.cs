@@ -21,6 +21,7 @@ namespace DVLD.Sections.Applications
         private void ManageApplicationTypes_Load(object sender, EventArgs e)
         {
             LoadApplicationTypes();
+            ApplicationTypesCount();
         }
 
         void LoadApplicationTypes()
@@ -29,10 +30,29 @@ namespace DVLD.Sections.Applications
             DGV_ApplicationTypes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
+        void ApplicationTypesCount()
+        {
+            LB_RecordsCount.Text = DGV_ApplicationTypes.RowCount.ToString();
+        }
+
+        void RefreshApplicationTypes()
+        {
+            LoadApplicationTypes();
+        }
+
         private void TSMI_UpdateApplicationType_Click(object sender, EventArgs e)
         {
-            UpdateApplication updateApplication = new UpdateApplication();
-            updateApplication.ShowDialog();
+            clsApplicationTypes_BLL Application = clsApplicationTypes_BLL.Find(Convert.ToInt32(DGV_ApplicationTypes.CurrentRow.Cells[0].Value));
+            if (Application != null)
+            {
+                UpdateApplication updateApplication = new UpdateApplication(Application);
+                updateApplication.ShowDialog();
+                RefreshApplicationTypes();
+            }
+            else
+            {
+                MessageBox.Show("Please select an application to update.", "No Application Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

@@ -119,50 +119,16 @@ namespace DVLD
             MessageBox.Show("This feature is not implemented yet.", "Feature Not Implemented", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void TB_FilterationValue_Validated(object sender, EventArgs e)
-        {
-            if (!IsInputValid()) return;
-
-            switch (CB_FilterBy.SelectedItem.ToString())
-            {
-                case "User ID":
-
-                    FilterBy("UserID");
-
-                    break;
-
-                case "National No.":
-
-                    FilterBy("NationalNo");
-
-                    break;
-
-                case "User Name":
-
-                    FilterBy("UserName");
-
-                    break;
-                case "Full Name":
-
-                    FilterBy("FirstName  + ' ' +  SecondName  + ' ' +  ThirdName  + ' ' +  LastName");
-
-                    break;
-
-                case "Is Active":
-
-                    FilterBy("IsActive");
-
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
         private void CB_FilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CB_FilterBy.SelectedItem.ToString() != "None")
                 TB_FilterationValue.Enabled = true;
+            else
+            {
+                TB_FilterationValue.Text = string.Empty;
+                TB_FilterationValue.Enabled = false;
+                LoadUsersRecords();
+            }
         }
 
         bool IsInputValid()
@@ -190,5 +156,47 @@ namespace DVLD
                 DTUsers.DefaultView.RowFilter = $"{FilterBy} = '{TB_FilterationValue.Text}'";
         }
 
+        private void TB_FilterationValue_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!IsInputValid()) return;
+
+                switch (CB_FilterBy.SelectedItem.ToString())
+                {
+                    case "User ID":
+
+                        FilterBy("UserID");
+
+                        break;
+
+                    case "National No.":
+
+                        FilterBy("NationalNo");
+
+                        break;
+
+                    case "User Name":
+
+                        FilterBy("UserName");
+
+                        break;
+                    case "Full Name":
+
+                        FilterBy("FirstName  + ' ' +  SecondName  + ' ' +  ThirdName  + ' ' +  LastName");
+
+                        break;
+
+                    case "Is Active":
+
+                        FilterBy("IsActive");
+
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }

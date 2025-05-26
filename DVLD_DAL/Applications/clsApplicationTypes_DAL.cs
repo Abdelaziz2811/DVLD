@@ -41,7 +41,7 @@ namespace DVLD_DAL
             return DTApplicationTypes;
         }
 
-        public static bool Find(int ApplicationTypeID, ref string ApplicationTypeTitle, ref float ApplicationFees)
+        public static bool Find(int ApplicationTypeID, ref string ApplicationTypeTitle, ref decimal ApplicationFees)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
@@ -64,7 +64,7 @@ namespace DVLD_DAL
                 {
                     IsFound = true;
                     ApplicationTypeTitle = Reader["ApplicationTypeTitle"].ToString();
-                    ApplicationFees = (float)Reader["ApplicationFees"];
+                    ApplicationFees = (decimal)Reader["ApplicationFees"];
                 }
             }
             catch (Exception e)
@@ -79,14 +79,14 @@ namespace DVLD_DAL
             return IsFound;
         }
 
-        public static bool Update(int ApplicationTypeID, string ApplicationTypeTitle, float ApplicationFees)
+        public static bool Update(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationFees)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
-            string query = @"UPDATE People
+            string query = @"UPDATE ApplicationTypes
                              SET
                                    ApplicationTypeTitle = @ApplicationTypeTitle,
-                                   ApplicationFees = @ApplicationFees,
+                                   ApplicationFees = @ApplicationFees
                              WHERE ApplicationTypeID = @ApplicationTypeID;";
 
             SqlCommand command = new SqlCommand(query, connection);

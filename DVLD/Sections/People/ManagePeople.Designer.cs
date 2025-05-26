@@ -203,7 +203,7 @@
             this.TB_FilterationValue.Name = "TB_FilterationValue";
             this.TB_FilterationValue.Size = new System.Drawing.Size(100, 20);
             this.TB_FilterationValue.TabIndex = 33;
-            this.TB_FilterationValue.Validated += new System.EventHandler(this.TB_FilterationValue_Validated);
+            this.TB_FilterationValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_FilterationValue_KeyDown);
             // 
             // pictureBox1
             // 

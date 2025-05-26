@@ -116,66 +116,66 @@
             this.TSMI_SendEmail,
             this.TSMI_PhoneCall});
             this.CMS_UsersActions.Name = "CMS_PeopleHandle";
-            this.CMS_UsersActions.Size = new System.Drawing.Size(181, 208);
+            this.CMS_UsersActions.Size = new System.Drawing.Size(166, 186);
             // 
             // TSMI_ShowDetails
             // 
             this.TSMI_ShowDetails.Name = "TSMI_ShowDetails";
-            this.TSMI_ShowDetails.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_ShowDetails.Size = new System.Drawing.Size(165, 22);
             this.TSMI_ShowDetails.Text = "Show Details";
             this.TSMI_ShowDetails.Click += new System.EventHandler(this.TSMI_ShowDetails_Click);
             // 
             // TSMI_AddUser
             // 
             this.TSMI_AddUser.Name = "TSMI_AddUser";
-            this.TSMI_AddUser.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_AddUser.Size = new System.Drawing.Size(165, 22);
             this.TSMI_AddUser.Text = "Add User";
             this.TSMI_AddUser.Click += new System.EventHandler(this.TSMI_AddUser_Click);
             // 
             // TSMI_UpdateUser
             // 
             this.TSMI_UpdateUser.Name = "TSMI_UpdateUser";
-            this.TSMI_UpdateUser.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_UpdateUser.Size = new System.Drawing.Size(165, 22);
             this.TSMI_UpdateUser.Text = "Update User";
             this.TSMI_UpdateUser.Click += new System.EventHandler(this.TSMI_UpdateUser_Click);
             // 
             // TSMI_DeleteUser
             // 
             this.TSMI_DeleteUser.Name = "TSMI_DeleteUser";
-            this.TSMI_DeleteUser.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_DeleteUser.Size = new System.Drawing.Size(165, 22);
             this.TSMI_DeleteUser.Text = "Delete User";
             this.TSMI_DeleteUser.Click += new System.EventHandler(this.TSMI_DeleteUser_Click);
             // 
             // TSMI_ChangePassword
             // 
             this.TSMI_ChangePassword.Name = "TSMI_ChangePassword";
-            this.TSMI_ChangePassword.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_ChangePassword.Size = new System.Drawing.Size(165, 22);
             this.TSMI_ChangePassword.Text = "ChangePassword";
             this.TSMI_ChangePassword.Click += new System.EventHandler(this.TSMI_ChangePassword_Click);
             // 
             // TSMI_Refresh
             // 
             this.TSMI_Refresh.Name = "TSMI_Refresh";
-            this.TSMI_Refresh.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_Refresh.Size = new System.Drawing.Size(165, 22);
             this.TSMI_Refresh.Text = "Refresh";
             this.TSMI_Refresh.Click += new System.EventHandler(this.TSMI_Refresh_Click);
             // 
             // TSMI_Seperator
             // 
             this.TSMI_Seperator.Name = "TSMI_Seperator";
-            this.TSMI_Seperator.Size = new System.Drawing.Size(177, 6);
+            this.TSMI_Seperator.Size = new System.Drawing.Size(162, 6);
             // 
             // TSMI_SendEmail
             // 
             this.TSMI_SendEmail.Name = "TSMI_SendEmail";
-            this.TSMI_SendEmail.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_SendEmail.Size = new System.Drawing.Size(165, 22);
             this.TSMI_SendEmail.Text = "Send Email";
             this.TSMI_SendEmail.Click += new System.EventHandler(this.TSMI_SendEmail_Click);
             // 
             // TSMI_PhoneCall
             // 
             this.TSMI_PhoneCall.Name = "TSMI_PhoneCall";
-            this.TSMI_PhoneCall.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_PhoneCall.Size = new System.Drawing.Size(165, 22);
             this.TSMI_PhoneCall.Text = "Phone Call";
             this.TSMI_PhoneCall.Click += new System.EventHandler(this.TSMI_PhoneCall_Click);
             // 
@@ -232,7 +232,7 @@
             this.TB_FilterationValue.Name = "TB_FilterationValue";
             this.TB_FilterationValue.Size = new System.Drawing.Size(100, 20);
             this.TB_FilterationValue.TabIndex = 34;
-            this.TB_FilterationValue.Validated += new System.EventHandler(this.TB_FilterationValue_Validated);
+            this.TB_FilterationValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_FilterationValue_KeyDown);
             // 
             // ManageUsers
             // 

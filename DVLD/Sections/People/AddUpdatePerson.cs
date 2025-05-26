@@ -81,15 +81,18 @@ namespace DVLD
                 if (Person.Save())
                 {
                     if (Person.Mode == enMode.Add)
+                    {
+                        int PersonID = clsPerson_BLL.GetPersonID(Add_UpdatePerson.TXTB_NationalNo.Text);
+                        if (PersonID != -1)
+                            GetPersonID?.Invoke(PersonID);
+
                         MessageBox.Show($"Person '{Person.FirstName} {Person.LastName}' added seccessfuly", "Seccess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     else
+                    {
+                        GetPersonInfo?.Invoke(Person);
                         MessageBox.Show($"Person updated seccessfuly", "Seccess", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    int PersonID = clsPerson_BLL.GetPersonID(Add_UpdatePerson.TXTB_NationalNo.Text);
-                    if (PersonID != -1)
-                        GetPersonID?.Invoke(PersonID);
-
-                    GetPersonInfo?.Invoke(Person);
+                    }
                 }
             }
             else
