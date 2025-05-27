@@ -38,14 +38,15 @@ namespace DVLD.Sections.Applications
         void RefreshApplicationTypes()
         {
             LoadApplicationTypes();
+            ApplicationTypesCount();
         }
 
         private void TSMI_UpdateApplicationType_Click(object sender, EventArgs e)
         {
-            clsApplicationTypes_BLL Application = clsApplicationTypes_BLL.Find(Convert.ToInt32(DGV_ApplicationTypes.CurrentRow.Cells[0].Value));
-            if (Application != null)
+            clsApplicationTypes_BLL ApplicationType = clsApplicationTypes_BLL.Find(Convert.ToInt32(DGV_ApplicationTypes.CurrentRow.Cells[0].Value));
+            if (ApplicationType != null)
             {
-                UpdateApplication updateApplication = new UpdateApplication(Application);
+                UpdateApplication updateApplication = new UpdateApplication(ApplicationType);
                 updateApplication.ShowDialog();
                 RefreshApplicationTypes();
             }

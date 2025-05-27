@@ -120,6 +120,7 @@
             this.localLicenseToolStripMenuItem.Name = "localLicenseToolStripMenuItem";
             this.localLicenseToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.localLicenseToolStripMenuItem.Text = "Local License";
+            this.localLicenseToolStripMenuItem.Click += new System.EventHandler(this.TSMI_LocalLicense_Click);
             // 
             // internationalLicenseToolStripMenuItem
             // 
@@ -218,7 +219,7 @@
             this.TSMI_ManageApplicationType.Name = "TSMI_ManageApplicationType";
             this.TSMI_ManageApplicationType.Size = new System.Drawing.Size(261, 26);
             this.TSMI_ManageApplicationType.Text = "Manage Application Types";
-            this.TSMI_ManageApplicationType.Click += new System.EventHandler(this.TSMI_ManageApplicationType_Click);
+            this.TSMI_ManageApplicationType.Click += new System.EventHandler(this.TSMI_ManageApplicationTypes_Click);
             // 
             // mToolStripMenuItem
             // 
@@ -226,6 +227,7 @@
             this.mToolStripMenuItem.Name = "mToolStripMenuItem";
             this.mToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.mToolStripMenuItem.Text = "Manage Test Types";
+            this.mToolStripMenuItem.Click += new System.EventHandler(this.TSMI_ManageTestTypes_Click);
             // 
             // TSM_People
             // 

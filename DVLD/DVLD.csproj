@@ -47,17 +47,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsGlobalSettings.cs" />
-    <Compile Include="Sections\Applications\ManageApplicationTypes.cs">
+    <Compile Include="Sections\Applications\Application Types\ManageApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\ManageApplicationTypes.Designer.cs">
+    <Compile Include="Sections\Applications\Application Types\ManageApplicationTypes.Designer.cs">
       <DependentUpon>ManageApplicationTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\UpdateApplication.cs">
+    <Compile Include="Sections\Applications\Application Types\UpdateApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\UpdateApplication.Designer.cs">
+    <Compile Include="Sections\Applications\Application Types\UpdateApplication.Designer.cs">
       <DependentUpon>UpdateApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.Designer.cs">
+      <DependentUpon>Local License.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Applications\TestTypes\ManageTestTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\TestTypes\ManageTestTypes.Designer.cs">
+      <DependentUpon>ManageTestTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Applications\TestTypes\UpdateTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\TestTypes\UpdateTest.Designer.cs">
+      <DependentUpon>UpdateTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Sections\Users\Add_UpdateUser.cs">
       <SubType>Form</SubType>
@@ -156,11 +174,20 @@
     <Compile Include="User_Controls\Users Section Controls\UC_UserInfo.Designer.cs">
       <DependentUpon>UC_UserInfo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Sections\Applications\ManageApplicationTypes.resx">
+    <EmbeddedResource Include="Sections\Applications\Application Types\ManageApplicationTypes.resx">
       <DependentUpon>ManageApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\UpdateApplication.resx">
+    <EmbeddedResource Include="Sections\Applications\Application Types\UpdateApplication.resx">
       <DependentUpon>UpdateApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.resx">
+      <DependentUpon>Local License.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Applications\TestTypes\ManageTestTypes.resx">
+      <DependentUpon>ManageTestTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Applications\TestTypes\UpdateTest.resx">
+      <DependentUpon>UpdateTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Users\Add_UpdateUser.resx">
       <DependentUpon>Add_UpdateUser.cs</DependentUpon>
@@ -275,6 +302,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Application.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checklist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sections\Applications\Driving Licenses Services\New Driving License\International License\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

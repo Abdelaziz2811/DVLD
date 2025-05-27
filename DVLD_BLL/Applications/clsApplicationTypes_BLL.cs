@@ -13,14 +13,14 @@ namespace DVLD_BLL
     {
         public int ApplicationTypeID { get; }
         public string ApplicationTypeTitle { get; set; }
-        public decimal ApplicationFees { get; set; }
+        public short ApplicationFees { get; set; }
 
         public static DataTable GetApplicationTypes()
         {
             return clsApplicationTypes_DAL.GetApplicationTypes();
         }
 
-        clsApplicationTypes_BLL(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationFees)
+        clsApplicationTypes_BLL(int ApplicationTypeID, string ApplicationTypeTitle, short ApplicationFees)
         {
             this.ApplicationTypeID = ApplicationTypeID;
             this.ApplicationTypeTitle = ApplicationTypeTitle;
@@ -30,7 +30,7 @@ namespace DVLD_BLL
         public static clsApplicationTypes_BLL Find(int ApplicationTypeID)
         {
             string ApplicationTypeTitle = string.Empty;
-            decimal ApplicationFees = 0;
+            short ApplicationFees = 0;
 
             if (clsApplicationTypes_DAL.Find(ApplicationTypeID, ref ApplicationTypeTitle, ref ApplicationFees))
             {

@@ -1,4 +1,5 @@
 ﻿using DVLD.Sections.Applications;
+using DVLD.Sections.Tests;
 using DVLD.Sections.Users;
 using DVLD_BLL.Users;
 using System;
@@ -66,10 +67,21 @@ namespace DVLD
             Application.Restart();
         }
 
-        private void TSMI_ManageApplicationType_Click(object sender, EventArgs e)
+        private void TSMI_ManageApplicationTypes_Click(object sender, EventArgs e)
         {
             ManageApplicationTypes manageApplicationTypes = new ManageApplicationTypes();
             manageApplicationTypes.ShowDialog();
+        }
+
+        private void TSMI_ManageTestTypes_Click(object sender, EventArgs e)
+        {
+            ManageTestTypes manageTestsTypes = new ManageTestTypes();
+            manageTestsTypes.ShowDialog();
+        }
+
+        private void TSMI_LocalLicense_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

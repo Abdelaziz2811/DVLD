@@ -36,20 +36,18 @@ namespace DVLD.Sections.Applications
         void SetApplicationInfo()
         {
             ApplicationType.ApplicationTypeTitle = TB_ApplicationTitle.Text;
-            ApplicationType.ApplicationFees = NUD_ApplicationFees.Value;
+            ApplicationType.ApplicationFees = (short)NUD_ApplicationFees.Value;
         }
 
         private void BTN_Save_Click(object sender, EventArgs e)
         {
-            if (ApplicationType.ApplicationTypeID.ToString() == LB_ApplicationID.Text
-                && ApplicationType.ApplicationTypeTitle == TB_ApplicationTitle.Text
+            if (ApplicationType.ApplicationTypeTitle == TB_ApplicationTitle.Text
                 && ApplicationType.ApplicationFees == NUD_ApplicationFees.Value)
             {
                 MessageBox.Show("Please update application info", "No Updates", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (LB_ApplicationID.Text == string.Empty
-                || TB_ApplicationTitle.Text == string.Empty
-                || NUD_ApplicationFees.Value == 0)
+                || TB_ApplicationTitle.Text == string.Empty)
             {
                 MessageBox.Show("Invalid application info", "No Updates", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }

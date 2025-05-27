@@ -41,7 +41,7 @@ namespace DVLD_DAL
             return DTApplicationTypes;
         }
 
-        public static bool Find(int ApplicationTypeID, ref string ApplicationTypeTitle, ref decimal ApplicationFees)
+        public static bool Find(int ApplicationTypeID, ref string ApplicationTypeTitle, ref short ApplicationFees)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
@@ -64,7 +64,7 @@ namespace DVLD_DAL
                 {
                     IsFound = true;
                     ApplicationTypeTitle = Reader["ApplicationTypeTitle"].ToString();
-                    ApplicationFees = (decimal)Reader["ApplicationFees"];
+                    ApplicationFees = Convert.ToInt16(Reader["ApplicationFees"]);
                 }
             }
             catch (Exception e)
@@ -79,7 +79,7 @@ namespace DVLD_DAL
             return IsFound;
         }
 
-        public static bool Update(int ApplicationTypeID, string ApplicationTypeTitle, decimal ApplicationFees)
+        public static bool Update(int ApplicationTypeID, string ApplicationTypeTitle, short ApplicationFees)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 

@@ -46,6 +46,7 @@
     <Compile Include="People\clsPersons_DAL.cs" />
     <Compile Include="DAL_Settings\DAL_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\clsTestTypes_DAL.cs" />
     <Compile Include="Users\clsUsers_DAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
