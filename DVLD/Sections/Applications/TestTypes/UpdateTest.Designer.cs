@@ -129,6 +129,7 @@
             this.TB_TestDescription.Location = new System.Drawing.Point(207, 186);
             this.TB_TestDescription.Multiline = true;
             this.TB_TestDescription.Name = "TB_TestDescription";
+            this.TB_TestDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TB_TestDescription.Size = new System.Drawing.Size(282, 57);
             this.TB_TestDescription.TabIndex = 25;
             // 

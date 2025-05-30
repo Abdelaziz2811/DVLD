@@ -58,6 +58,7 @@
             this.DGV_People.AllowUserToAddRows = false;
             this.DGV_People.AllowUserToDeleteRows = false;
             this.DGV_People.AllowUserToOrderColumns = true;
+            this.DGV_People.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_People.BackgroundColor = System.Drawing.SystemColors.Window;
             this.DGV_People.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_People.ContextMenuStrip = this.CMS_PeopleActions;

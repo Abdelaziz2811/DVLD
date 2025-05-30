@@ -32,7 +32,8 @@ namespace DVLD.User_Controls
 
         void GetCountries()
         {
-            foreach (DataRow Row in clsCountries_BLL.GetCountries().Rows)
+            DataTable DTCountries = clsCountries_BLL.GetCountries();
+            foreach (DataRow Row in DTCountries.Rows)
                 CB_Countries.Items.Add(Row["CountryName"]);
             CB_Countries.SelectedItem = "Morocco";
         }

@@ -1,4 +1,6 @@
 ﻿using DVLD.Sections.Applications;
+using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Local_License;
+using DVLD.Sections.Applications.Manage_Applications.Local_License_Applications;
 using DVLD.Sections.Tests;
 using DVLD.Sections.Users;
 using DVLD_BLL.Users;
@@ -81,7 +83,14 @@ namespace DVLD
 
         private void TSMI_LocalLicense_Click(object sender, EventArgs e)
         {
-            
+            Local_License local_License = new Local_License();
+            local_License.ShowDialog();
+        }
+
+        private void TSMI_LocalDrivingLicenseApplications_Click(object sender, EventArgs e)
+        {
+            LocalLicenseApplications localLicenseApplications = new LocalLicenseApplications();
+            localLicenseApplications.ShowDialog();
         }
     }
 }

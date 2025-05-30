@@ -65,6 +65,12 @@
     <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.Designer.cs">
       <DependentUpon>Local License.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sections\Applications\Manage Applications\Local License Applications\LocalLicenseApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\Manage Applications\Local License Applications\LocalLicenseApplications.Designer.cs">
+      <DependentUpon>LocalLicenseApplications.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections\Applications\TestTypes\ManageTestTypes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.resx">
       <DependentUpon>Local License.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Applications\Manage Applications\Local License Applications\LocalLicenseApplications.resx">
+      <DependentUpon>LocalLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\TestTypes\ManageTestTypes.resx">
       <DependentUpon>ManageTestTypes.cs</DependentUpon>
@@ -308,6 +317,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sections\Applications\Driving Licenses Services\New Driving License\International License\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\licence.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New_license.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
