@@ -41,13 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Applications\clsApplicationTypes_DAL.cs" />
+    <Compile Include="Applications\Application Types\clsApplicationTypes_DAL.cs" />
+    <Compile Include="Applications\Applications\clsApplications_DAL.cs" />
+    <Compile Include="Applications\Local License Application\clsLocalLicenseApplication_DAL.cs" />
     <Compile Include="Countries\clsCountries_DAL.cs" />
+    <Compile Include="License Classes\clsLicenseClasses_DAL.cs" />
     <Compile Include="People\clsPersons_DAL.cs" />
     <Compile Include="DAL_Settings\DAL_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\clsTestTypes_DAL.cs" />
+    <Compile Include="Applications\Tests\clsTestTypes_DAL.cs" />
     <Compile Include="Users\clsUsers_DAL.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

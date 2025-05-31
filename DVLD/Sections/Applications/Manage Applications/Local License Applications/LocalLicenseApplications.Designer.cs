@@ -69,6 +69,7 @@
             this.TB_FilterationValue.Name = "TB_FilterationValue";
             this.TB_FilterationValue.Size = new System.Drawing.Size(100, 20);
             this.TB_FilterationValue.TabIndex = 48;
+            this.TB_FilterationValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_FilterationValue_KeyDown);
             // 
             // LB_RecordsCount
             // 
@@ -105,21 +106,15 @@
             this.CB_FilterBy.FormattingEnabled = true;
             this.CB_FilterBy.Items.AddRange(new object[] {
             "None",
-            "Person ID",
-            "National No.",
-            "First Name",
-            "Second Name",
-            "Third Name",
-            "Last Name",
-            "Nationality",
-            "Gender",
-            "Phone",
-            "Email",
-            "Address"});
+            "L.D.L AppID",
+            "National No",
+            "Full Name",
+            "Status"});
             this.CB_FilterBy.Location = new System.Drawing.Point(89, 147);
             this.CB_FilterBy.Name = "CB_FilterBy";
             this.CB_FilterBy.Size = new System.Drawing.Size(124, 21);
             this.CB_FilterBy.TabIndex = 42;
+            this.CB_FilterBy.SelectedIndexChanged += new System.EventHandler(this.CB_FilterBy_SelectedIndexChanged);
             // 
             // label4
             // 

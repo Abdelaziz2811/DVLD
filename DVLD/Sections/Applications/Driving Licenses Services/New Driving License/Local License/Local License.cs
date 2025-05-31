@@ -79,18 +79,24 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         private void BTN_Save_Click(object sender, EventArgs e)
         {
-            if (Application.Add() != 0)
+            if (!clsLocalLicenseApplication_BLL.IsLocalLicenseApplicationExists(Application.ApplicantPersonID,
+                                        clsLicenseClasses_BLL.LicenseClassID(CB_LicenseClasses.SelectedItem.ToString())))
             {
-                clsLocalLicenseApplication_BLL LocalLicenseApplication = new clsLocalLicenseApplication_BLL();
-                SetLocalLicenseApplicationInfo(ref LocalLicenseApplication);
-                if (LocalLicenseApplication.Add() != 0)
+                if (Application.Add() != 0)
                 {
-                    MessageBox.Show("Application added successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                    return;
+                    clsLocalLicenseApplication_BLL LocalLicenseApplication = new clsLocalLicenseApplication_BLL();
+                    SetLocalLicenseApplicationInfo(ref LocalLicenseApplication);
+                    if (LocalLicenseApplication.Add() != 0)
+                    {
+                        MessageBox.Show("Application added successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                        return;
+                    }
                 }
+                MessageBox.Show("Something went wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MessageBox.Show("Something went wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                MessageBox.Show("Choose another license class, The selected license class already has an active application Link to the selected Person", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         void SetLocalLicenseApplicationInfo(ref clsLocalLicenseApplication_BLL LocalLicenseApplication)
@@ -101,29 +107,6 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
                 LocalLicenseApplication.LicenseClassID = ClassID;
             else
                 MessageBox.Show("The selected class doesn't exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            @"select * from LicenseClasses
-select * from Applications
-
-SELECT * from LocalDrivingLicenseApplications
-
-SELECT * FROM TestAppointments
-
-select LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID, ClassName, NationalNo,
-	   (FirstName + ' ' + SecondName + ' ' + ThirdName + ' ' + LastName) AS FullName,
-	   ApplicationDate,
-	   COUNT(TestAppointments.LocalDrivingLicenseApplicationID) AS PassedTest
-FROM LocalDrivingLicenseApplications
-INNER JOIN LicenseClasses ON LicenseClasses.LicenseClassID = LocalDrivingLicenseApplications.LicenseClassID
-INNER JOIN Applications ON Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
-INNER JOIN People ON People.PersonID = Applications.ApplicantPersonID
-INNER JOIN TestAppointments ON TestAppointments.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
-GROUP BY LocalDrivingLicenseApplications.LocalDrivingLicenseApplicationID
-
-
-
-select * from LocalDrivingLicenseApplications_View
-"
         }
     }
 }

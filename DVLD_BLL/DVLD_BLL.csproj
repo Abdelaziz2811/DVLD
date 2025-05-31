@@ -41,11 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Applications\clsApplicationTypes_BLL.cs" />
+    <Compile Include="Applications\Application Types\clsApplicationTypes_BLL.cs" />
+    <Compile Include="Applications\Applications\clsApplications_BLL.cs" />
+    <Compile Include="Applications\LocalLicenseApplication\clsLocalLicenseApplication_BLL.cs" />
     <Compile Include="Countries\clsCountries_BLL.cs" />
+    <Compile Include="License Classes\clsLicenseClasses_BLL.cs" />
     <Compile Include="People\clsPerson_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\clsTestTypes_BLL.cs" />
+    <Compile Include="Applications\Tests\clsTestTypes_BLL.cs" />
     <Compile Include="Users\clsUsers_BLL.cs" />
   </ItemGroup>
   <ItemGroup>
