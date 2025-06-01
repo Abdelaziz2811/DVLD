@@ -135,8 +135,7 @@ namespace DVLD_DAL.Applications.New_Local_License_Application
                              WHERE EXISTS (
                              SELECT * FROM LocalDrivingLicenseApplications
                              iNNER JOIN Applications ON LocalDrivingLicenseApplications.ApplicationID = Applications.ApplicationID
-                             WHERE ApplicantPersonID = @ApplicantID AND LicenseClassID = @LicenseClassID AND ApplicationStatus = 3 );";
-            // we still didn't figure the condition that prevent addition of an active application.
+                             WHERE ApplicantPersonID = @ApplicantID AND LicenseClassID = @LicenseClassID AND ApplicationStatus != 2 );";
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@ApplicantID", ApplicantID);

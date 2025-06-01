@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LB_Opration = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TB_FilterationValue = new System.Windows.Forms.TextBox();
@@ -39,8 +40,19 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BTN_AddLocalLicenseApplication = new System.Windows.Forms.Button();
             this.DGV_LocalLicenseApplications = new System.Windows.Forms.DataGridView();
+            this.CMS_LocalLicenseApplicationsActions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TSMI_ApplicationDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_UpdateApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_DeleteApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_CancelApplication = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_ScheduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Seperator = new System.Windows.Forms.ToolStripSeparator();
+            this.TSMI_IssueLicense_FirstTime = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_ShowLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_PersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_LocalLicenseApplications)).BeginInit();
+            this.CMS_LocalLicenseApplicationsActions.SuspendLayout();
             this.SuspendLayout();
             // 
             // LB_Opration
@@ -150,6 +162,7 @@
             this.BTN_AddLocalLicenseApplication.Size = new System.Drawing.Size(49, 38);
             this.BTN_AddLocalLicenseApplication.TabIndex = 43;
             this.BTN_AddLocalLicenseApplication.UseVisualStyleBackColor = false;
+            this.BTN_AddLocalLicenseApplication.Click += new System.EventHandler(this.BTN_AddLocalLicenseApplication_Click);
             // 
             // DGV_LocalLicenseApplications
             // 
@@ -159,11 +172,83 @@
             this.DGV_LocalLicenseApplications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_LocalLicenseApplications.BackgroundColor = System.Drawing.SystemColors.Window;
             this.DGV_LocalLicenseApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_LocalLicenseApplications.ContextMenuStrip = this.CMS_LocalLicenseApplicationsActions;
             this.DGV_LocalLicenseApplications.Location = new System.Drawing.Point(17, 180);
             this.DGV_LocalLicenseApplications.Name = "DGV_LocalLicenseApplications";
             this.DGV_LocalLicenseApplications.ReadOnly = true;
             this.DGV_LocalLicenseApplications.Size = new System.Drawing.Size(963, 349);
             this.DGV_LocalLicenseApplications.TabIndex = 49;
+            // 
+            // CMS_LocalLicenseApplicationsActions
+            // 
+            this.CMS_LocalLicenseApplicationsActions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMI_ApplicationDetails,
+            this.TSMI_UpdateApplication,
+            this.TSMI_DeleteApplication,
+            this.TSMI_CancelApplication,
+            this.TSMI_ScheduleTests,
+            this.TSMI_Seperator,
+            this.TSMI_IssueLicense_FirstTime,
+            this.TSMI_ShowLicense,
+            this.TSMI_PersonLicenseHistory});
+            this.CMS_LocalLicenseApplicationsActions.Name = "CMS_PeopleHandle";
+            this.CMS_LocalLicenseApplicationsActions.Size = new System.Drawing.Size(205, 186);
+            // 
+            // TSMI_ApplicationDetails
+            // 
+            this.TSMI_ApplicationDetails.Name = "TSMI_ApplicationDetails";
+            this.TSMI_ApplicationDetails.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_ApplicationDetails.Text = "Application Details";
+            // 
+            // TSMI_UpdateApplication
+            // 
+            this.TSMI_UpdateApplication.Name = "TSMI_UpdateApplication";
+            this.TSMI_UpdateApplication.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_UpdateApplication.Text = "Update Application";
+            // 
+            // TSMI_DeleteApplication
+            // 
+            this.TSMI_DeleteApplication.Name = "TSMI_DeleteApplication";
+            this.TSMI_DeleteApplication.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_DeleteApplication.Text = "Delete Application";
+            // 
+            // TSMI_CancelApplication
+            // 
+            this.TSMI_CancelApplication.Name = "TSMI_CancelApplication";
+            this.TSMI_CancelApplication.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_CancelApplication.Text = "Cancel Application";
+            this.TSMI_CancelApplication.Click += new System.EventHandler(this.TSMI_CancelApplication_Click);
+            // 
+            // TSMI_ScheduleTests
+            // 
+            this.TSMI_ScheduleTests.Name = "TSMI_ScheduleTests";
+            this.TSMI_ScheduleTests.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_ScheduleTests.Text = "Schedule Tests";
+            // 
+            // TSMI_Seperator
+            // 
+            this.TSMI_Seperator.Name = "TSMI_Seperator";
+            this.TSMI_Seperator.Size = new System.Drawing.Size(201, 6);
+            // 
+            // TSMI_IssueLicense_FirstTime
+            // 
+            this.TSMI_IssueLicense_FirstTime.Enabled = false;
+            this.TSMI_IssueLicense_FirstTime.Name = "TSMI_IssueLicense_FirstTime";
+            this.TSMI_IssueLicense_FirstTime.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_IssueLicense_FirstTime.Text = "Issue License (First Time)";
+            // 
+            // TSMI_ShowLicense
+            // 
+            this.TSMI_ShowLicense.Enabled = false;
+            this.TSMI_ShowLicense.Name = "TSMI_ShowLicense";
+            this.TSMI_ShowLicense.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_ShowLicense.Text = "Show License";
+            // 
+            // TSMI_PersonLicenseHistory
+            // 
+            this.TSMI_PersonLicenseHistory.Name = "TSMI_PersonLicenseHistory";
+            this.TSMI_PersonLicenseHistory.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_PersonLicenseHistory.Text = "Person License History";
             // 
             // LocalLicenseApplications
             // 
@@ -191,6 +276,7 @@
             this.Load += new System.EventHandler(this.LocalLicenseApplications_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_LocalLicenseApplications)).EndInit();
+            this.CMS_LocalLicenseApplicationsActions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,5 +295,15 @@
         private System.Windows.Forms.ComboBox CB_FilterBy;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView DGV_LocalLicenseApplications;
+        private System.Windows.Forms.ContextMenuStrip CMS_LocalLicenseApplicationsActions;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_ApplicationDetails;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_UpdateApplication;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_DeleteApplication;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_CancelApplication;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_ScheduleTests;
+        private System.Windows.Forms.ToolStripSeparator TSMI_Seperator;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_IssueLicense_FirstTime;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_ShowLicense;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_PersonLicenseHistory;
     }
 }

@@ -1,4 +1,6 @@
-﻿using DVLD_BLL.Applications.LocalLicenseApplication;
+﻿using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Local_License;
+using DVLD_BLL.Applications.Applications;
+using DVLD_BLL.Applications.LocalLicenseApplication;
 using DVLD_BLL.Countries;
 using System;
 using System.Collections.Generic;
@@ -54,6 +56,19 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
             CB_FilterBy.SelectedIndex = 0;
         }
 
+        void RefreshLocalLicenseApplications()
+        {
+            LoadLocalLicensApplications();
+            LocalLicenseApplicationsCount();
+        }
+
+        private void BTN_AddLocalLicenseApplication_Click(object sender, EventArgs e)
+        {
+            LocalLicense localLicense = new LocalLicense();
+            localLicense.ShowDialog();
+            RefreshLocalLicenseApplications();
+        }
+
         private void CB_FilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CB_FilterBy.SelectedItem.ToString() == "None")
@@ -91,19 +106,19 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
                 {
                     case "L.D.L AppID":
 
-                        FilterBy("L.D.L AppID");
+                        FilterBy("LocalDrivingLicenseApplicationID");
 
                         break;
 
                     case "National No":
 
-                        FilterBy("National No");
+                        FilterBy("NationalNo");
 
                         break;
 
                     case "Full Name":
 
-                        FilterBy("Full Name");
+                        FilterBy("FullName");
 
                         break;
                     case "Status":
@@ -116,6 +131,23 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
                         break;
                 }
             }
+        }
+
+        private void TSMI_CancelApplication_Click(object sender, EventArgs e)
+        {
+            //the code still doesn't do its functionality
+            clsLocalLicenseApplication_BLL LocalLicenseApplication =  clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
+            if (LocalLicenseApplication != null)
+            {
+                clsApplications_BLL Application = clsApplications_BLL.Find(LocalLicenseApplication.ApplicationID);
+                if (Application != null)
+                {
+                    Application.ApplicationStatus = enApplicationStatus.Canceled;
+                    MessageBox.Show("The selected local license application has been canceled", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            MessageBox.Show("The selected local license application doesn't exists anymore", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

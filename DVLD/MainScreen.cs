@@ -83,7 +83,7 @@ namespace DVLD
 
         private void TSMI_LocalLicense_Click(object sender, EventArgs e)
         {
-            Local_License local_License = new Local_License();
+            LocalLicense local_License = new LocalLicense();
             local_License.ShowDialog();
         }
 

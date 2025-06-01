@@ -15,11 +15,11 @@ using System.Windows.Forms;
 
 namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Local_License
 {
-    public partial class Local_License : Form
+    public partial class LocalLicense : Form
     {
         clsApplications_BLL Application;
 
-        public Local_License()
+        public LocalLicense()
         {
             InitializeComponent();
         }
@@ -96,7 +96,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
                 MessageBox.Show("Something went wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show("Choose another license class, The selected license class already has an active application Link to the selected Person", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Choose another license class, The selected license class already has an active or complete application Link to the selected Person", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         void SetLocalLicenseApplicationInfo(ref clsLocalLicenseApplication_BLL LocalLicenseApplication)

@@ -1,10 +1,13 @@
-﻿using DVLD_DAL.Applications.Local_License;
+﻿using DVLD_BLL.Applications.LocalLicenseApplication;
+using DVLD_DAL.Applications.Local_License;
+using DVLD_DAL.Applications.New_Local_License_Application;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_BLL.Applications.Applications
 {
@@ -53,5 +56,25 @@ namespace DVLD_BLL.Applications.Applications
         {
             return clsApplications_DAL.GetApplications();
         }
+
+        public static clsApplications_BLL Find(int ApplicationID)
+        { 
+            int ApplicationTypeID = 0;
+            int ApplicantPersonID = 0;
+            DateTime ApplicationDate = DateTime.Now;
+            byte ApplicationStatus = 0;
+            DateTime LastStatusDate = DateTime.Now;
+            short PaidFees = 0;
+            int CreatedByUserID = 0;
+
+            if (clsApplications_DAL.Find(ApplicationID, ref ApplicantPersonID, ref ApplicationDate, ref ApplicationTypeID, ref ApplicationStatus,
+                ref LastStatusDate, ref PaidFees, ref CreatedByUserID))
+            {
+                return new clsApplications_BLL(ApplicationID, ApplicationDate, ApplicationTypeID, ApplicationStatus,
+                            LastStatusDate, PaidFees, CreatedByUserID);
+            }
+            else return null;
+        }
+
     }
 }

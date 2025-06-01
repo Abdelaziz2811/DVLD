@@ -1,6 +1,6 @@
 ﻿namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Local_License
 {
-    partial class Local_License
+    partial class LocalLicense
     {
         /// <summary>
         /// Required designer variable.
