@@ -142,6 +142,52 @@ namespace DVLD_DAL
             return IsFound;
         }
 
+        public static bool Find(string FullName, ref int PersonID, ref string NationalNo, ref DateTime BirthDate,
+        ref char Gender, ref string Address, ref string Phone, ref string Email, ref int NationalityCountryID, ref string ImagePath)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT * FROM People
+                             WHERE FirstName + ' ' + SecondName + ' ' + ThirdName + ' ' + LastName = @FullName";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@FullName", FullName);
+
+            bool IsFound = false;
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    IsFound = true;
+                    PersonID = (int)Reader["PersonID"];
+                    NationalNo = Reader["NationalNo"].ToString();
+                    BirthDate = (DateTime)Reader["BirthDate"];
+                    Gender = Convert.ToChar(Reader["Gender"]);
+                    Address = Reader["Address"].ToString();
+                    Phone = Reader["Phone"].ToString();
+                    Email = Reader["Email"].ToString();
+                    NationalityCountryID = (int)Reader["NationalityCountryID"];
+                    ImagePath = Reader["ImagePath"].ToString();
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+
         public static int Add(string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName, DateTime BirthDate,
                 char Gender, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {

@@ -1,4 +1,5 @@
 ﻿using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Local_License;
+using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Test_Appointments;
 using DVLD_BLL.Applications.Applications;
 using DVLD_BLL.Applications.LocalLicenseApplication;
 using DVLD_BLL.Countries;
@@ -134,20 +135,34 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
         }
 
         private void TSMI_CancelApplication_Click(object sender, EventArgs e)
-        {
-            //the code still doesn't do its functionality
+        {  
             clsLocalLicenseApplication_BLL LocalLicenseApplication =  clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
-            if (LocalLicenseApplication != null)
+            clsApplications_BLL Application;
+            if(LocalLicenseApplication != null && (Application = clsApplications_BLL.Find(LocalLicenseApplication.ApplicationID)) != null)
             {
-                clsApplications_BLL Application = clsApplications_BLL.Find(LocalLicenseApplication.ApplicationID);
-                if (Application != null)
+                if (Application.ApplicationStatus == enApplicationStatus.New)
                 {
                     Application.ApplicationStatus = enApplicationStatus.Canceled;
-                    MessageBox.Show("The selected local license application has been canceled", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.LastStatusDate = DateTime.Now;
+                    if (Application.Save())
+                    {
+                        MessageBox.Show("The selected local license application has been canceled", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RefreshLocalLicenseApplications();
+                        return;
+                    }
+                    MessageBox.Show("The selected local license application has not been canceled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                MessageBox.Show("The selected local license application cannot be canceled", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
             MessageBox.Show("The selected local license application doesn't exists anymore", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void TSMI_VisionTest_Click(object sender, EventArgs e)
+        {
+            VisionTestAppointments visionTestAppointments = new VisionTestAppointments(clsLocalLicenseApplication_BLL.FindInView(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)));
+            visionTestAppointments.ShowDialog();
         }
     }
 }

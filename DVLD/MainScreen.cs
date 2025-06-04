@@ -42,13 +42,13 @@ namespace DVLD
         private void TSM_People_Click(object sender, EventArgs e)
         {
             ManagePeople managePeople = new ManagePeople();
-            managePeople.ShowDialog();
+            managePeople.Show();
         }
 
         private void TSM_Users_Click(object sender, EventArgs e)
         {
             ManageUsers manageUsers = new ManageUsers();
-            manageUsers.ShowDialog();
+            manageUsers.Show();
         }
 
         private void TSMI_CurrentUser_Click(object sender, EventArgs e)
@@ -72,7 +72,7 @@ namespace DVLD
         private void TSMI_ManageApplicationTypes_Click(object sender, EventArgs e)
         {
             ManageApplicationTypes manageApplicationTypes = new ManageApplicationTypes();
-            manageApplicationTypes.ShowDialog();
+            manageApplicationTypes.Show();
         }
 
         private void TSMI_ManageTestTypes_Click(object sender, EventArgs e)

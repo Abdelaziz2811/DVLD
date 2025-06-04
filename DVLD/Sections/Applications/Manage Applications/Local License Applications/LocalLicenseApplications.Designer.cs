@@ -46,6 +46,9 @@
             this.TSMI_DeleteApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_CancelApplication = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_ScheduleTests = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_VisionTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_WrittenTest = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_StreetTest = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Seperator = new System.Windows.Forms.ToolStripSeparator();
             this.TSMI_IssueLicense_FirstTime = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_ShowLicense = new System.Windows.Forms.ToolStripMenuItem();
@@ -181,6 +184,7 @@
             // 
             // CMS_LocalLicenseApplicationsActions
             // 
+            this.CMS_LocalLicenseApplicationsActions.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CMS_LocalLicenseApplicationsActions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMI_ApplicationDetails,
             this.TSMI_UpdateApplication,
@@ -192,62 +196,88 @@
             this.TSMI_ShowLicense,
             this.TSMI_PersonLicenseHistory});
             this.CMS_LocalLicenseApplicationsActions.Name = "CMS_PeopleHandle";
-            this.CMS_LocalLicenseApplicationsActions.Size = new System.Drawing.Size(205, 186);
+            this.CMS_LocalLicenseApplicationsActions.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.CMS_LocalLicenseApplicationsActions.Size = new System.Drawing.Size(220, 208);
             // 
             // TSMI_ApplicationDetails
             // 
             this.TSMI_ApplicationDetails.Name = "TSMI_ApplicationDetails";
-            this.TSMI_ApplicationDetails.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_ApplicationDetails.Size = new System.Drawing.Size(219, 22);
             this.TSMI_ApplicationDetails.Text = "Application Details";
             // 
             // TSMI_UpdateApplication
             // 
             this.TSMI_UpdateApplication.Name = "TSMI_UpdateApplication";
-            this.TSMI_UpdateApplication.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_UpdateApplication.Size = new System.Drawing.Size(219, 22);
             this.TSMI_UpdateApplication.Text = "Update Application";
             // 
             // TSMI_DeleteApplication
             // 
             this.TSMI_DeleteApplication.Name = "TSMI_DeleteApplication";
-            this.TSMI_DeleteApplication.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_DeleteApplication.Size = new System.Drawing.Size(219, 22);
             this.TSMI_DeleteApplication.Text = "Delete Application";
             // 
             // TSMI_CancelApplication
             // 
             this.TSMI_CancelApplication.Name = "TSMI_CancelApplication";
-            this.TSMI_CancelApplication.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_CancelApplication.Size = new System.Drawing.Size(219, 22);
             this.TSMI_CancelApplication.Text = "Cancel Application";
             this.TSMI_CancelApplication.Click += new System.EventHandler(this.TSMI_CancelApplication_Click);
             // 
             // TSMI_ScheduleTests
             // 
+            this.TSMI_ScheduleTests.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMI_VisionTest,
+            this.TSMI_WrittenTest,
+            this.TSMI_StreetTest});
             this.TSMI_ScheduleTests.Name = "TSMI_ScheduleTests";
-            this.TSMI_ScheduleTests.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_ScheduleTests.Size = new System.Drawing.Size(219, 22);
             this.TSMI_ScheduleTests.Text = "Schedule Tests";
+            // 
+            // TSMI_VisionTest
+            // 
+            this.TSMI_VisionTest.Name = "TSMI_VisionTest";
+            this.TSMI_VisionTest.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_VisionTest.Text = "Vision Test";
+            this.TSMI_VisionTest.Click += new System.EventHandler(this.TSMI_VisionTest_Click);
+            // 
+            // TSMI_WrittenTest
+            // 
+            this.TSMI_WrittenTest.Enabled = false;
+            this.TSMI_WrittenTest.Name = "TSMI_WrittenTest";
+            this.TSMI_WrittenTest.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_WrittenTest.Text = "Written Test";
+            // 
+            // TSMI_StreetTest
+            // 
+            this.TSMI_StreetTest.Enabled = false;
+            this.TSMI_StreetTest.Name = "TSMI_StreetTest";
+            this.TSMI_StreetTest.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_StreetTest.Text = "Street Test";
             // 
             // TSMI_Seperator
             // 
             this.TSMI_Seperator.Name = "TSMI_Seperator";
-            this.TSMI_Seperator.Size = new System.Drawing.Size(201, 6);
+            this.TSMI_Seperator.Size = new System.Drawing.Size(216, 6);
             // 
             // TSMI_IssueLicense_FirstTime
             // 
             this.TSMI_IssueLicense_FirstTime.Enabled = false;
             this.TSMI_IssueLicense_FirstTime.Name = "TSMI_IssueLicense_FirstTime";
-            this.TSMI_IssueLicense_FirstTime.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_IssueLicense_FirstTime.Size = new System.Drawing.Size(219, 22);
             this.TSMI_IssueLicense_FirstTime.Text = "Issue License (First Time)";
             // 
             // TSMI_ShowLicense
             // 
             this.TSMI_ShowLicense.Enabled = false;
             this.TSMI_ShowLicense.Name = "TSMI_ShowLicense";
-            this.TSMI_ShowLicense.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_ShowLicense.Size = new System.Drawing.Size(219, 22);
             this.TSMI_ShowLicense.Text = "Show License";
             // 
             // TSMI_PersonLicenseHistory
             // 
             this.TSMI_PersonLicenseHistory.Name = "TSMI_PersonLicenseHistory";
-            this.TSMI_PersonLicenseHistory.Size = new System.Drawing.Size(204, 22);
+            this.TSMI_PersonLicenseHistory.Size = new System.Drawing.Size(219, 22);
             this.TSMI_PersonLicenseHistory.Text = "Person License History";
             // 
             // LocalLicenseApplications
@@ -305,5 +335,8 @@
         private System.Windows.Forms.ToolStripMenuItem TSMI_IssueLicense_FirstTime;
         private System.Windows.Forms.ToolStripMenuItem TSMI_ShowLicense;
         private System.Windows.Forms.ToolStripMenuItem TSMI_PersonLicenseHistory;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_VisionTest;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_WrittenTest;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_StreetTest;
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_BLL.Applications.LocalLicenseApplication
 {
@@ -18,7 +19,7 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
         public string NationalNo { get; set; }
         public string FullName { get; set; }
         public DateTime ApplicationDate { get; set; }
-        public byte PassedTestCount { get; set; }
+        public int PassedTestCount { get; set; }
         public string Status { get; set; }
 
         public clsLocalLicenseApplication_BLL()
@@ -28,8 +29,15 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             LicenseClassID = 0;
         }
 
+        clsLocalLicenseApplication_BLL(int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID)
+        {
+            this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
+            this.ApplicationID = ApplicationID;
+            this.LicenseClassID = LicenseClassID;
+        }
+
         clsLocalLicenseApplication_BLL(int LocalDrivingLicenseApplicationID, string ClassName, string NationalNo, string FullName,
-            DateTime ApplicationDate, byte PassedTestCount, string Status)
+            DateTime ApplicationDate, int PassedTestCount, string Status)
         {
             this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.ClassName = ClassName;
@@ -45,16 +53,16 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             return clsLocalLicenseApplication_DAL.GetLocalLicenseApplications();
         }
 
-        public static clsLocalLicenseApplication_BLL Find(int LocalDrivingLicenseApplicationID)
+        public static clsLocalLicenseApplication_BLL FindInView(int LocalDrivingLicenseApplicationID)
         {
             string ClassName = string.Empty;
             string NationalNo = string.Empty;
             string FullName = string.Empty;
             DateTime ApplicationDate = DateTime.Now;
-            byte PassedTestCount = 0;
+            int PassedTestCount = 0;
             string Status = string.Empty;
 
-            if (clsLocalLicenseApplication_DAL.Find(LocalDrivingLicenseApplicationID, ref ClassName, ref NationalNo, ref FullName,
+            if (clsLocalLicenseApplication_DAL.FindInView(LocalDrivingLicenseApplicationID, ref ClassName, ref NationalNo, ref FullName,
                     ref ApplicationDate, ref PassedTestCount, ref Status))
             {
                 return new clsLocalLicenseApplication_BLL(LocalDrivingLicenseApplicationID, ClassName, NationalNo, FullName,
@@ -63,9 +71,22 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             else return null;
         }
 
-        public int Add()
+        public static clsLocalLicenseApplication_BLL Find(int LocalDrivingLicenseApplicationID)
         {
-            return clsLocalLicenseApplication_DAL.Add(ApplicationID, LicenseClassID);
+            int ApplicationID = 0;
+            int LicenseClassID = 0;
+
+            if (clsLocalLicenseApplication_DAL.Find(LocalDrivingLicenseApplicationID, ref ApplicationID, ref LicenseClassID))
+            {
+                return new clsLocalLicenseApplication_BLL(LocalDrivingLicenseApplicationID, ApplicationID, LicenseClassID);
+            }
+            else return null;
+        }
+
+        public bool Add()
+        {
+            LocalDrivingLicenseApplicationID = clsLocalLicenseApplication_DAL.Add(ApplicationID, LicenseClassID);
+            return LocalDrivingLicenseApplicationID != 0;
         }
 
         public static bool IsLocalLicenseApplicationExists(int ApplicantID, int ClassID)

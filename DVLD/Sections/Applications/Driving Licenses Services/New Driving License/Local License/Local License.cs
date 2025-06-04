@@ -82,11 +82,11 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
             if (!clsLocalLicenseApplication_BLL.IsLocalLicenseApplicationExists(Application.ApplicantPersonID,
                                         clsLicenseClasses_BLL.LicenseClassID(CB_LicenseClasses.SelectedItem.ToString())))
             {
-                if (Application.Add() != 0)
+                if (Application.Save())
                 {
                     clsLocalLicenseApplication_BLL LocalLicenseApplication = new clsLocalLicenseApplication_BLL();
                     SetLocalLicenseApplicationInfo(ref LocalLicenseApplication);
-                    if (LocalLicenseApplication.Add() != 0)
+                    if (LocalLicenseApplication.Add())
                     {
                         MessageBox.Show("Application added successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();

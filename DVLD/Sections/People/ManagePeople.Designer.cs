@@ -70,6 +70,7 @@
             // 
             // CMS_PeopleActions
             // 
+            this.CMS_PeopleActions.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.CMS_PeopleActions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMI_ShowDetails,
             this.TSMI_AddPerson,
@@ -80,59 +81,60 @@
             this.TSMI_SendEmail,
             this.TSMI_PhoneCall});
             this.CMS_PeopleActions.Name = "CMS_PeopleHandle";
-            this.CMS_PeopleActions.Size = new System.Drawing.Size(152, 164);
+            this.CMS_PeopleActions.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.CMS_PeopleActions.Size = new System.Drawing.Size(181, 186);
             // 
             // TSMI_ShowDetails
             // 
             this.TSMI_ShowDetails.Name = "TSMI_ShowDetails";
-            this.TSMI_ShowDetails.Size = new System.Drawing.Size(151, 22);
+            this.TSMI_ShowDetails.Size = new System.Drawing.Size(180, 22);
             this.TSMI_ShowDetails.Text = "Show Details";
             this.TSMI_ShowDetails.Click += new System.EventHandler(this.TSMI_ShowDetails_Click);
             // 
             // TSMI_AddPerson
             // 
             this.TSMI_AddPerson.Name = "TSMI_AddPerson";
-            this.TSMI_AddPerson.Size = new System.Drawing.Size(151, 22);
+            this.TSMI_AddPerson.Size = new System.Drawing.Size(180, 22);
             this.TSMI_AddPerson.Text = "Add Person";
             this.TSMI_AddPerson.Click += new System.EventHandler(this.TSMI_AddPerson_Click);
             // 
             // TSMI_UpdatePerson
             // 
             this.TSMI_UpdatePerson.Name = "TSMI_UpdatePerson";
-            this.TSMI_UpdatePerson.Size = new System.Drawing.Size(151, 22);
+            this.TSMI_UpdatePerson.Size = new System.Drawing.Size(180, 22);
             this.TSMI_UpdatePerson.Text = "Update Person";
             this.TSMI_UpdatePerson.Click += new System.EventHandler(this.TSMI_UpdatePerson_Click);
             // 
             // TSMI_DeletePerson
             // 
             this.TSMI_DeletePerson.Name = "TSMI_DeletePerson";
-            this.TSMI_DeletePerson.Size = new System.Drawing.Size(151, 22);
+            this.TSMI_DeletePerson.Size = new System.Drawing.Size(180, 22);
             this.TSMI_DeletePerson.Text = "Delete Person";
             this.TSMI_DeletePerson.Click += new System.EventHandler(this.TSMI_DeletePerson_Click);
             // 
             // TSMI_Refresh
             // 
             this.TSMI_Refresh.Name = "TSMI_Refresh";
-            this.TSMI_Refresh.Size = new System.Drawing.Size(151, 22);
+            this.TSMI_Refresh.Size = new System.Drawing.Size(180, 22);
             this.TSMI_Refresh.Text = "Refresh";
             this.TSMI_Refresh.Click += new System.EventHandler(this.TSMI_Refresh_Click);
             // 
             // TSMI_Seperator
             // 
             this.TSMI_Seperator.Name = "TSMI_Seperator";
-            this.TSMI_Seperator.Size = new System.Drawing.Size(148, 6);
+            this.TSMI_Seperator.Size = new System.Drawing.Size(177, 6);
             // 
             // TSMI_SendEmail
             // 
             this.TSMI_SendEmail.Name = "TSMI_SendEmail";
-            this.TSMI_SendEmail.Size = new System.Drawing.Size(151, 22);
+            this.TSMI_SendEmail.Size = new System.Drawing.Size(180, 22);
             this.TSMI_SendEmail.Text = "Send Email";
             this.TSMI_SendEmail.Click += new System.EventHandler(this.TSMI_SendEmail_Click);
             // 
             // TSMI_PhoneCall
             // 
             this.TSMI_PhoneCall.Name = "TSMI_PhoneCall";
-            this.TSMI_PhoneCall.Size = new System.Drawing.Size(151, 22);
+            this.TSMI_PhoneCall.Size = new System.Drawing.Size(180, 22);
             this.TSMI_PhoneCall.Text = "Phone Call";
             this.TSMI_PhoneCall.Click += new System.EventHandler(this.TSMI_PhoneCall_Click);
             // 

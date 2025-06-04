@@ -142,6 +142,28 @@ namespace DVLD_BLL
             else return null;
         }
 
+        public static clsPerson_BLL FindByName(string FullName)
+        {
+            int PersonID = -1;
+            string NationalNo = string.Empty;
+            DateTime BirthDate = DateTime.Now.AddYears(-18);
+            char Gender = 'U';
+            string Address = string.Empty;
+            string Phone = string.Empty;
+            string Email = string.Empty;
+            int NationalityCountryID = -1;
+            string ImagePath = string.Empty;
+
+            if (clsPersons_DAL.Find(FullName, ref PersonID, ref NationalNo, ref BirthDate,
+                ref Gender, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref ImagePath))
+            {
+                string[] SFullName = FullName.Split();
+                return new clsPerson_BLL(PersonID, NationalNo, SFullName[0], SFullName[1], SFullName[2], SFullName[3], BirthDate,
+                Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+            }
+            else return null;
+        }
+
         public static bool Delete(int PersonID)
         {
             return clsPersons_DAL.Delete(PersonID);

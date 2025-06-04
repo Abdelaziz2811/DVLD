@@ -43,7 +43,7 @@ namespace DVLD_DAL.Applications.Local_License
         }
 
         public static bool Find(int ApplicationID, ref int ApplicantPersonID, ref DateTime ApplicationDate,
-            ref int ApplicationTypeID, ref byte ApplicationStatus, ref DateTime LastStatusDate, ref short PaidFees, ref int CreatedByUserID)
+            ref int ApplicationTypeID, ref byte ApplicationStatus, ref DateTime LastStatusDate, ref decimal PaidFees, ref int CreatedByUserID)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
@@ -69,7 +69,7 @@ namespace DVLD_DAL.Applications.Local_License
                     ApplicationTypeID = (int)Reader["ApplicationTypeID"];
                     ApplicationStatus = (byte)Reader["ApplicationStatus"];
                     LastStatusDate = (DateTime)Reader["LastStatusDate"];
-                    PaidFees = (short)Reader["PaidFees"];
+                    PaidFees = (decimal)Reader["PaidFees"];
                     CreatedByUserID = (int)Reader["CreatedByUserID"];
                 }
             }
@@ -86,7 +86,7 @@ namespace DVLD_DAL.Applications.Local_License
         }
 
         public static int Add(int ApplicantPersonID, DateTime ApplicationDate,
-              int ApplicationTypeID, byte ApplicationStatus, DateTime LastStatusDate, short PaidFees, int CreatedByUserID)
+              int ApplicationTypeID, byte ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
@@ -127,6 +127,54 @@ namespace DVLD_DAL.Applications.Local_License
             }
 
             return ApplicationID;
+        }
+
+        public static bool Update(int ApplicationID, int ApplicantPersonID, DateTime ApplicationDate,
+            int ApplicationTypeID, byte ApplicationStatus, DateTime LastStatusDate, decimal PaidFees, int CreatedByUserID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"UPDATE Applications
+                                SET
+                                    ApplicantPersonID = @ApplicantPersonID,
+                                    ApplicationDate = @ApplicationDate,
+                                    ApplicationTypeID = @ApplicationTypeID,
+                                    ApplicationStatus = @ApplicationStatus,
+                                    LastStatusDate = @LastStatusDate,
+                                    PaidFees = @PaidFees,
+                                    CreatedByUserID = @CreatedByUserID
+                                WHERE ApplicationID = @ApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            command.Parameters.AddWithValue("@ApplicantPersonID", ApplicantPersonID);
+            command.Parameters.AddWithValue("@ApplicationDate", ApplicationDate);
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            command.Parameters.AddWithValue("@ApplicationStatus", ApplicationStatus);
+            command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
+            command.Parameters.AddWithValue("@PaidFees", PaidFees);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+
+            int RowsAffected = 0;
+
+            try
+            {
+                connection.Open();
+
+                RowsAffected = command.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return RowsAffected != 0;
         }
     }
 }

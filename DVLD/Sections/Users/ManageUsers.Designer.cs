@@ -117,6 +117,7 @@
             this.TSMI_SendEmail,
             this.TSMI_PhoneCall});
             this.CMS_UsersActions.Name = "CMS_PeopleHandle";
+            this.CMS_UsersActions.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.CMS_UsersActions.Size = new System.Drawing.Size(166, 186);
             // 
             // TSMI_ShowDetails

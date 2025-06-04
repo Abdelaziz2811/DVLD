@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,6 +79,12 @@
     </Compile>
     <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.Designer.cs">
       <DependentUpon>Local License.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\VisionTestAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\VisionTestAppointments.Designer.cs">
+      <DependentUpon>VisionTestAppointments.cs</DependentUpon>
     </Compile>
     <Compile Include="Sections\Applications\Manage Applications\Local License Applications\LocalLicenseApplications.cs">
       <SubType>Form</SubType>
@@ -144,40 +165,46 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User_Controls\People Section Controls\UC_Add_UpdatePerson.cs">
+    <Compile Include="User_Controls\Applications Section\UC_LicenseApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\People Section Controls\UC_Add_UpdatePerson.Designer.cs">
+    <Compile Include="User_Controls\Applications Section\UC_LicenseApplicationInfo.Designer.cs">
+      <DependentUpon>UC_LicenseApplicationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\People Section\UC_Add_UpdatePerson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User_Controls\People Section\UC_Add_UpdatePerson.Designer.cs">
       <DependentUpon>UC_Add_UpdatePerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\People Section Controls\UC_Person_Info.cs">
+    <Compile Include="User_Controls\People Section\UC_Person_Info.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\People Section Controls\UC_Person_Info.Designer.cs">
+    <Compile Include="User_Controls\People Section\UC_Person_Info.Designer.cs">
       <DependentUpon>UC_Person_Info.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\People Section Controls\UC_Person_Selector.cs">
+    <Compile Include="User_Controls\People Section\UC_Person_Selector.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\People Section Controls\UC_Person_Selector.Designer.cs">
+    <Compile Include="User_Controls\People Section\UC_Person_Selector.Designer.cs">
       <DependentUpon>UC_Person_Selector.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Users Section Controls\UC_Change_UserPassword.cs">
+    <Compile Include="User_Controls\Users Section\UC_Change_UserPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Users Section Controls\UC_Change_UserPassword.Designer.cs">
+    <Compile Include="User_Controls\Users Section\UC_Change_UserPassword.Designer.cs">
       <DependentUpon>UC_Change_UserPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Users Section Controls\UC_Add_UpdateUser.cs">
+    <Compile Include="User_Controls\Users Section\UC_Add_UpdateUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Users Section Controls\UC_Add_UpdateUser.Designer.cs">
+    <Compile Include="User_Controls\Users Section\UC_Add_UpdateUser.Designer.cs">
       <DependentUpon>UC_Add_UpdateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Users Section Controls\UC_UserInfo.cs">
+    <Compile Include="User_Controls\Users Section\UC_UserInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Users Section Controls\UC_UserInfo.Designer.cs">
+    <Compile Include="User_Controls\Users Section\UC_UserInfo.Designer.cs">
       <DependentUpon>UC_UserInfo.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Sections\Applications\Application Types\ManageApplicationTypes.resx">
@@ -188,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.resx">
       <DependentUpon>Local License.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\VisionTestAppointments.resx">
+      <DependentUpon>VisionTestAppointments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\Manage Applications\Local License Applications\LocalLicenseApplications.resx">
       <DependentUpon>LocalLicenseApplications.cs</DependentUpon>
@@ -230,22 +260,25 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\People Section Controls\UC_Add_UpdatePerson.resx">
+    <EmbeddedResource Include="User_Controls\Applications Section\UC_LicenseApplicationInfo.resx">
+      <DependentUpon>UC_LicenseApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Controls\People Section\UC_Add_UpdatePerson.resx">
       <DependentUpon>UC_Add_UpdatePerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\People Section Controls\UC_Person_Info.resx">
+    <EmbeddedResource Include="User_Controls\People Section\UC_Person_Info.resx">
       <DependentUpon>UC_Person_Info.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\People Section Controls\UC_Person_Selector.resx">
+    <EmbeddedResource Include="User_Controls\People Section\UC_Person_Selector.resx">
       <DependentUpon>UC_Person_Selector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Users Section Controls\UC_Change_UserPassword.resx">
+    <EmbeddedResource Include="User_Controls\Users Section\UC_Change_UserPassword.resx">
       <DependentUpon>UC_Change_UserPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Users Section Controls\UC_Add_UpdateUser.resx">
+    <EmbeddedResource Include="User_Controls\Users Section\UC_Add_UpdateUser.resx">
       <DependentUpon>UC_Add_UpdateUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Users Section Controls\UC_UserInfo.resx">
+    <EmbeddedResource Include="User_Controls\Users Section\UC_UserInfo.resx">
       <DependentUpon>UC_UserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -323,6 +356,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\New_license.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

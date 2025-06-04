@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,8 +46,8 @@ namespace DVLD_DAL.Applications.New_Local_License_Application
             return DT_LocalLicenseApplications;
         }
 
-        public static bool Find(int LocalDrivingLicenseApplicationID, ref string ClassName, ref string NationalNo, ref string FullName,
-            ref DateTime ApplicationDate, ref byte PassedTestCount, ref string Status)
+        public static bool FindInView(int LocalDrivingLicenseApplicationID, ref string ClassName, ref string NationalNo, ref string FullName,
+            ref DateTime ApplicationDate, ref int PassedTestCount, ref string Status)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
@@ -72,7 +73,7 @@ namespace DVLD_DAL.Applications.New_Local_License_Application
                     NationalNo = Reader["NationalNo"].ToString();
                     FullName = Reader["FullName"].ToString();
                     ApplicationDate = (DateTime)Reader["ApplicationDate"];
-                    PassedTestCount = (byte)Reader["PassedTestCount"];
+                    PassedTestCount = (int)Reader["PassedTestCount"];
                     Status = Reader["Status"].ToString();
                 }
 
@@ -88,6 +89,46 @@ namespace DVLD_DAL.Applications.New_Local_License_Application
 
             return isFound;
         }
+
+        public static bool Find(int LocalDrivingLicenseApplicationID, ref int ApplicationID, ref int LicenseClassID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT * FROM LocalDrivingLicenseApplications
+                             WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            bool isFound = false;
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    isFound = true;
+                    ApplicationID = (int)Reader["ApplicationID"];
+                    LicenseClassID = (int)Reader["LicenseClassID"];
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
 
         public static int Add(int ApplicationID, int LicenseClassID)
         {
