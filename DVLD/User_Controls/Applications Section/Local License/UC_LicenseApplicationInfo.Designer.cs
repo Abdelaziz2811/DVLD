@@ -353,15 +353,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox GB_LicenseApplicationInfo;
         public System.Windows.Forms.Label LB_PassedTest;
         private System.Windows.Forms.Label label18;
         public System.Windows.Forms.Label LB_LicenseClass;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label LB_DLAppID;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox GB_ApplicationInfo;
         public System.Windows.Forms.Label LB_ApplicationDate;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label LB_ApplicationID;
@@ -379,5 +376,7 @@
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.Label LB_CreatedBy;
         private System.Windows.Forms.Label label12;
+        public System.Windows.Forms.GroupBox GB_LicenseApplicationInfo;
+        public System.Windows.Forms.GroupBox GB_ApplicationInfo;
     }
 }

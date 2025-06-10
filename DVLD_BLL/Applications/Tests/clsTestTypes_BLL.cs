@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace DVLD_BLL.Tests
 {
+    public enum enTestType { VisionTest = 1, WrittenTest, StreetTest };
     public class clsTestTypes_BLL
     {
         public int TestTypeID { get; }
         public string TestTypeTitle { get; set; }
         public string TestTypeDescription { get; set; }
         public short TestTypeFees { get; set; }
+        public enTestType TestType { get; set; }
 
         clsTestTypes_BLL(int TestTypeID, string TestTypeTitle, string TestTypeDescription, short TestTypeFees)
         {
@@ -21,6 +23,7 @@ namespace DVLD_BLL.Tests
             this.TestTypeTitle = TestTypeTitle;
             this.TestTypeDescription = TestTypeDescription;
             this.TestTypeFees = TestTypeFees;
+            this.TestType = (enTestType)TestTypeID;
         }
 
         public static DataTable GetTestTypes()
@@ -39,6 +42,20 @@ namespace DVLD_BLL.Tests
                 return new clsTestTypes_BLL(TestTypeID, TestTypeTitle, TestTypeDescription, TestTypeFees);
             }
             else 
+                return null;
+        }
+
+        public static clsTestTypes_BLL Find(string TestTypeTitle)
+        {
+            int TestTypeID = 0;
+            string TestTypeDescription = string.Empty;
+            short TestTypeFees = 0;
+
+            if (clsTestTypes_DAL.Find(ref TestTypeID, TestTypeTitle, ref TestTypeDescription, ref TestTypeFees))
+            {
+                return new clsTestTypes_BLL(TestTypeID, TestTypeTitle, TestTypeDescription, TestTypeFees);
+            }
+            else
                 return null;
         }
 

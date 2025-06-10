@@ -1,8 +1,11 @@
-﻿using DVLD.User_Controls.Applications_Section;
+﻿using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Tests;
+using DVLD.User_Controls.Applications_Section;
 using DVLD_BLL;
 using DVLD_BLL.Applications.Applications;
 using DVLD_BLL.Applications.LocalLicenseApplication;
+using DVLD_BLL.Applications.TestAppointments;
 using DVLD_BLL.License_Classes;
+using DVLD_BLL.Tests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,26 +18,41 @@ using System.Windows.Forms;
 
 namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Test_Appointments
 {
-    public partial class VisionTestAppointments : Form
+    public partial class TestAppointments : Form
     {
         clsLocalLicenseApplication_BLL LocalLicenseApplication;
         clsApplications_BLL Application;
-        public VisionTestAppointments(clsLocalLicenseApplication_BLL LocalLicenseApplication)
+        enTestType TestType;
+        public TestAppointments(clsLocalLicenseApplication_BLL LocalLicenseApplication, enTestType TestType)
         {
             InitializeComponent();
             
             this.LocalLicenseApplication = LocalLicenseApplication;
             this.Application = clsApplications_BLL.Find(clsLocalLicenseApplication_BLL.Find(LocalLicenseApplication.LocalDrivingLicenseApplicationID).ApplicationID);
+            this.TestType = TestType;
         }
 
         private void VisionTestVisionTestAppointments_Load(object sender, EventArgs e)
         {
             LoadLocalLicenseApplicationInfo();
             LoadTestAppointments();
+            TestAppointmentsCount();
+        }
+
+        void LoadTestAppointments()
+        {
+            DGV_TestAppointments.DataSource = clsTestAppointments_BLL.LoadTestAppointments(enTestType.VisionTest, LocalLicenseApplication.LocalDrivingLicenseApplicationID);
+        }
+
+        void TestAppointmentsCount()
+        {
+            LB_RecordsCount.Text = DGV_TestAppointments.RowCount.ToString();
         }
 
         void LoadLocalLicenseApplicationInfo()
         {
+            SetTestType();
+
             UC_LicenseApplicationInfo.LB_DLAppID.Text = LocalLicenseApplication.LocalDrivingLicenseApplicationID.ToString();
             UC_LicenseApplicationInfo.LB_PassedTest.Text = LocalLicenseApplication.PassedTestCount.ToString() + "/3";
             UC_LicenseApplicationInfo.LB_LicenseClass.Text = LocalLicenseApplication.ClassName;
@@ -52,9 +70,36 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
             UC_LicenseApplicationInfo.LB_CreatedBy.Text = Application.CreatedByUserID.ToString();
         }
 
-        void LoadTestAppointments()
+        void SetTestType()
         {
-            //DGV_TestAppointments.DataSource = clsTestAppointments.TestsAppointmentsRecords();
+            switch (TestType)
+            {
+                case enTestType.VisionTest:
+                    LB_TestType.Text = "Vision Test Appointments";
+                    break;
+                case enTestType.WrittenTest:
+                    LB_TestType.Text = "Written Test Appointments";
+                    break;
+                case enTestType.StreetTest:
+                    LB_TestType.Text = "Street Test Appointments";
+                    break;
+            }
+        }
+
+        private void BTN_ScheduleAppointment_Click(object sender, EventArgs e)
+        {
+            ScheduleTest scheduleTest = new ScheduleTest(UC_LicenseApplicationInfo);
+            scheduleTest.ShowDialog();
+        }
+
+        private void TSMI_UpdateTestAppointment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TSMI_TakeTest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

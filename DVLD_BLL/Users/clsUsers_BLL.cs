@@ -72,7 +72,7 @@ namespace DVLD_BLL.Users
         {
             string UserName = string.Empty;
             int PersonID = -1;
-            string Password = string .Empty;
+            string Password = string.Empty;
             bool IsActive = false;
 
             if (clsUsers_DAL.Find(UserID, ref PersonID, ref UserName, ref Password, ref IsActive))

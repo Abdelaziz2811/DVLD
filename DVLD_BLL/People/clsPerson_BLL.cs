@@ -45,7 +45,7 @@ namespace DVLD_BLL
             this.Mode = enMode.Add;
         }
 
-        public clsPerson_BLL(int PersonID, string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName, DateTime BirthDate,
+        clsPerson_BLL(int PersonID, string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName, DateTime BirthDate,
                 char Gender, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {
             this.PersonID = PersonID;

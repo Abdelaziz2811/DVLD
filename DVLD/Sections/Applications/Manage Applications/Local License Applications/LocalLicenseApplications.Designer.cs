@@ -84,7 +84,7 @@
             this.TB_FilterationValue.Name = "TB_FilterationValue";
             this.TB_FilterationValue.Size = new System.Drawing.Size(100, 20);
             this.TB_FilterationValue.TabIndex = 48;
-            this.TB_FilterationValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_FilterationValue_KeyDown);
+            this.TB_FilterationValue.TextChanged += new System.EventHandler(this.TB_FilterationValue_TextChanged);
             // 
             // LB_RecordsCount
             // 
@@ -198,6 +198,7 @@
             this.CMS_LocalLicenseApplicationsActions.Name = "CMS_PeopleHandle";
             this.CMS_LocalLicenseApplicationsActions.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.CMS_LocalLicenseApplicationsActions.Size = new System.Drawing.Size(220, 208);
+            this.CMS_LocalLicenseApplicationsActions.Opening += new System.ComponentModel.CancelEventHandler(this.CMS_LocalLicenseApplicationsActions_Opening);
             // 
             // TSMI_ApplicationDetails
             // 
@@ -243,17 +244,17 @@
             // 
             // TSMI_WrittenTest
             // 
-            this.TSMI_WrittenTest.Enabled = false;
             this.TSMI_WrittenTest.Name = "TSMI_WrittenTest";
             this.TSMI_WrittenTest.Size = new System.Drawing.Size(180, 22);
             this.TSMI_WrittenTest.Text = "Written Test";
+            this.TSMI_WrittenTest.Click += new System.EventHandler(this.TSMI_WrittenTest_Click);
             // 
             // TSMI_StreetTest
             // 
-            this.TSMI_StreetTest.Enabled = false;
             this.TSMI_StreetTest.Name = "TSMI_StreetTest";
             this.TSMI_StreetTest.Size = new System.Drawing.Size(180, 22);
             this.TSMI_StreetTest.Text = "Street Test";
+            this.TSMI_StreetTest.Click += new System.EventHandler(this.TSMI_StreetTest_Click);
             // 
             // TSMI_Seperator
             // 
@@ -262,14 +263,12 @@
             // 
             // TSMI_IssueLicense_FirstTime
             // 
-            this.TSMI_IssueLicense_FirstTime.Enabled = false;
             this.TSMI_IssueLicense_FirstTime.Name = "TSMI_IssueLicense_FirstTime";
             this.TSMI_IssueLicense_FirstTime.Size = new System.Drawing.Size(219, 22);
             this.TSMI_IssueLicense_FirstTime.Text = "Issue License (First Time)";
             // 
             // TSMI_ShowLicense
             // 
-            this.TSMI_ShowLicense.Enabled = false;
             this.TSMI_ShowLicense.Name = "TSMI_ShowLicense";
             this.TSMI_ShowLicense.Size = new System.Drawing.Size(219, 22);
             this.TSMI_ShowLicense.Text = "Show License";

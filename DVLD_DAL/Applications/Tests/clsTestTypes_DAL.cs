@@ -80,6 +80,45 @@ namespace DVLD_DAL.Tests
             return isFound;
         }
 
+        public static bool Find(ref int TestTypeID, string TestTypeTitle, ref string TestTypeDesription, ref short TestTypeFees)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT * FROM TestTypes
+                             WHERE TestTypeTitle = @TestTypeTitle";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestTypeTitle", TestTypeTitle);
+
+            bool isFound = false;
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    isFound = true;
+                    TestTypeID = Convert.ToInt32(Reader["TestTypeID"]);
+                    TestTypeDesription = Reader["TestTypeDescription"].ToString();
+                    TestTypeFees = Convert.ToInt16(Reader["TestTypeFees"]);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
         public static bool Update(int TestTypeID, string TestTypeTitle, string TestTypeDescription, short TestTypeFees)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
