@@ -44,5 +44,77 @@ namespace DVLD_DAL.Applications.TestAppointments
 
             return DTTestAppointments;
         }
+
+        public static bool Exists(byte TestType, int LocalDrivingLicenseID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT * FROM TestAppointments
+                             WHERE TestTypeID = @TestType AND LocalDrivingLicenseApplicationID = @LocalDrivingLicenseID AND IsLocked = 1";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestType", TestType);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseID", LocalDrivingLicenseID);
+
+            bool IsFound = false;
+
+            try
+            {
+                connection.Open();
+
+                object Result = command.ExecuteScalar();
+
+                if (Result != null)
+                    IsFound = true;
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+
+        public static int TrialCount(byte TestType, int LocalDrivingLicenseID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT COUNT(*) FROM TestAppointments
+                             WHERE TestTypeID = @TestType AND LocalDrivingLicenseApplicationID = @LocalDrivingLicenseID AND IsLocked = 1";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestType", TestType);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseID", LocalDrivingLicenseID);
+
+            int Trial = 0;
+
+            try
+            {
+                connection.Open();
+
+                object Result = command.ExecuteScalar();
+
+                if (Result != null && int.TryParse(Result.ToString(), out int T))
+                    Trial = T;
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return Trial;
+        }
+        
+        // implement add and update methods
     }
 }

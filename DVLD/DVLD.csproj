@@ -178,12 +178,6 @@
     <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseApplicationInfo.Designer.cs">
       <DependentUpon>UC_LicenseApplicationInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Test Appointment\UC_ScheduleTest.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="User_Controls\Applications Section\Test Appointment\UC_ScheduleTest.Designer.cs">
-      <DependentUpon>UC_ScheduleTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="User_Controls\People Section\UC_Add_UpdatePerson.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -278,9 +272,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User_Controls\Applications Section\Local License\UC_LicenseApplicationInfo.resx">
       <DependentUpon>UC_LicenseApplicationInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Applications Section\Test Appointment\UC_ScheduleTest.resx">
-      <DependentUpon>UC_ScheduleTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Controls\People Section\UC_Add_UpdatePerson.resx">
       <DependentUpon>UC_Add_UpdatePerson.cs</DependentUpon>
@@ -393,6 +384,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\VisionTest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StreetTest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WrittenTest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

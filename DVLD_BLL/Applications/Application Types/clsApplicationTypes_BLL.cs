@@ -39,6 +39,18 @@ namespace DVLD_BLL
             else return null;
         }
 
+        public static clsApplicationTypes_BLL Find(string ApplicationTypeTitle)
+        {
+            int ApplicationTypeID = 0;
+            short ApplicationFees = 0;
+
+            if (clsApplicationTypes_DAL.Find(ref ApplicationTypeID, ApplicationTypeTitle, ref ApplicationFees))
+            {
+                return new clsApplicationTypes_BLL(ApplicationTypeID, ApplicationTypeTitle, ApplicationFees);
+            }
+            else return null;
+        }
+
         public bool Update()
         {
             return clsApplicationTypes_DAL.Update(ApplicationTypeID, ApplicationTypeTitle, ApplicationFees);

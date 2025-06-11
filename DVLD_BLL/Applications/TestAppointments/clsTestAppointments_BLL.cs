@@ -46,5 +46,15 @@ namespace DVLD_BLL.Applications.TestAppointments
         {
             return clsTestAppointments_DAL.LoadTestAppointments(Convert.ToInt32(TestType), LocalDrivingLicenseID);
         }
+
+        public static bool Exists(enTestType TestType, int LocalDrivingLicenseID)
+        {
+            return clsTestAppointments_DAL.Exists((byte)TestType, LocalDrivingLicenseID);
+        }
+
+        public static int TrialCount(enTestType TestType, int LocalDrivingLicenseID)
+        {
+            return clsTestAppointments_DAL.TrialCount((byte)TestType, LocalDrivingLicenseID);
+        }
     }
 }

@@ -213,6 +213,16 @@ namespace DVLD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap StreetTest {
+            get {
+                object obj = ResourceManager.GetObject("StreetTest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap System_Settings_s {
             get {
                 object obj = ResourceManager.GetObject("System_Settings_s", resourceCulture);
@@ -246,6 +256,36 @@ namespace DVLD.Properties {
         internal static System.Drawing.Bitmap VisionTest {
             get {
                 object obj = ResourceManager.GetObject("VisionTest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VisionTest1 {
+            get {
+                object obj = ResourceManager.GetObject("VisionTest1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VisionTest2 {
+            get {
+                object obj = ResourceManager.GetObject("VisionTest2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WrittenTest {
+            get {
+                object obj = ResourceManager.GetObject("WrittenTest", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

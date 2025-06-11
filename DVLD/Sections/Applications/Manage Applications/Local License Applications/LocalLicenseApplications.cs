@@ -96,6 +96,9 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
             {
                 if (Application.ApplicationStatus == enApplicationStatus.New)
                 {
+                    if (MessageBox.Show("Are you sure you want to cancel the current application!","Warning",MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+
                     Application.ApplicationStatus = enApplicationStatus.Canceled;
                     Application.LastStatusDate = DateTime.Now;
                     if (Application.Save())

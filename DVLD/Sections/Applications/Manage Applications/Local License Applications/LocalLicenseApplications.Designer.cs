@@ -197,7 +197,7 @@
             this.TSMI_PersonLicenseHistory});
             this.CMS_LocalLicenseApplicationsActions.Name = "CMS_PeopleHandle";
             this.CMS_LocalLicenseApplicationsActions.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.CMS_LocalLicenseApplicationsActions.Size = new System.Drawing.Size(220, 208);
+            this.CMS_LocalLicenseApplicationsActions.Size = new System.Drawing.Size(220, 186);
             this.CMS_LocalLicenseApplicationsActions.Opening += new System.ComponentModel.CancelEventHandler(this.CMS_LocalLicenseApplicationsActions_Opening);
             // 
             // TSMI_ApplicationDetails
@@ -238,21 +238,21 @@
             // TSMI_VisionTest
             // 
             this.TSMI_VisionTest.Name = "TSMI_VisionTest";
-            this.TSMI_VisionTest.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_VisionTest.Size = new System.Drawing.Size(145, 22);
             this.TSMI_VisionTest.Text = "Vision Test";
             this.TSMI_VisionTest.Click += new System.EventHandler(this.TSMI_VisionTest_Click);
             // 
             // TSMI_WrittenTest
             // 
             this.TSMI_WrittenTest.Name = "TSMI_WrittenTest";
-            this.TSMI_WrittenTest.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_WrittenTest.Size = new System.Drawing.Size(145, 22);
             this.TSMI_WrittenTest.Text = "Written Test";
             this.TSMI_WrittenTest.Click += new System.EventHandler(this.TSMI_WrittenTest_Click);
             // 
             // TSMI_StreetTest
             // 
             this.TSMI_StreetTest.Name = "TSMI_StreetTest";
-            this.TSMI_StreetTest.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_StreetTest.Size = new System.Drawing.Size(145, 22);
             this.TSMI_StreetTest.Text = "Street Test";
             this.TSMI_StreetTest.Click += new System.EventHandler(this.TSMI_StreetTest_Click);
             // 

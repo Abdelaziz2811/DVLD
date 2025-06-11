@@ -88,8 +88,13 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         private void BTN_ScheduleAppointment_Click(object sender, EventArgs e)
         {
-            ScheduleTest scheduleTest = new ScheduleTest(UC_LicenseApplicationInfo);
-            scheduleTest.ShowDialog();
+            if (clsTestAppointments_BLL.Exists(TestType, LocalLicenseApplication.LocalDrivingLicenseApplicationID))
+                MessageBox.Show("The current Driving License Application has an active Test Appointment, you can't schedule another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                ScheduleTest scheduleTest = new ScheduleTest(UC_LicenseApplicationInfo, TestType);
+                scheduleTest.ShowDialog();
+            }
         }
 
         private void TSMI_UpdateTestAppointment_Click(object sender, EventArgs e)

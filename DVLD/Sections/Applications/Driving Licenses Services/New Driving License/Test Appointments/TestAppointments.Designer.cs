@@ -159,7 +159,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView DGV_TestAppointments;
         private System.Windows.Forms.Label LB_TestType;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LB_RecordsCount;
@@ -168,5 +167,6 @@
         private System.Windows.Forms.ToolStripMenuItem TSMI_UpdateTestAppointment;
         private System.Windows.Forms.ToolStripMenuItem TSMI_TakeTest;
         public User_Controls.Applications_Section.UC_LicenseApplicationInfo UC_LicenseApplicationInfo;
+        private System.Windows.Forms.DataGridView DGV_TestAppointments;
     }
 }

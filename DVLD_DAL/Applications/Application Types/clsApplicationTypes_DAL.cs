@@ -79,6 +79,44 @@ namespace DVLD_DAL
             return IsFound;
         }
 
+        public static bool Find(ref int ApplicationTypeID, string ApplicationTypeTitle, ref short ApplicationFees)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT * FROM ApplicationTypes 
+                             WHERE ApplicationTypeTitle = @ApplicationTypeTitle";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ApplicationTypeTitle", ApplicationTypeTitle);
+
+            bool IsFound = false;
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    IsFound = true;
+                    ApplicationTypeID = Convert.ToInt32(Reader["ApplicationTypeID"]);
+                    ApplicationFees = Convert.ToInt16(Reader["ApplicationFees"]);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+
         public static bool Update(int ApplicationTypeID, string ApplicationTypeTitle, short ApplicationFees)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
