@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,12 +47,153 @@ namespace DVLD_DAL.Applications.TestAppointments
             return DTTestAppointments;
         }
 
+        public static bool Find(int TestAppointmentID, ref int TestTypeID, ref int LocalDrivingLicenseApplicationID, ref DateTime AppointmentDate
+            , ref decimal PaidFees, ref int CreatedByUserID, ref bool IsLocked)
+        {
+
+            {
+                SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+                string query = @"SELECT * FROM TestAppointments
+                             WHERE TestAppointmentID = @TestAppointmentID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+
+                bool IsFound = false;
+
+                try
+                {
+                    connection.Open();
+
+                    SqlDataReader Reader = command.ExecuteReader();
+
+                    if (Reader.Read())
+                    {
+                        IsFound = true;
+                        TestTypeID = (int)Reader["TestTypeID"];
+                        LocalDrivingLicenseApplicationID = (int)Reader["LocalDrivingLicenseApplicationID"];
+                        AppointmentDate = (DateTime)Reader["AppointmentDate"];
+                        PaidFees = (decimal)Reader["PaidFees"];
+                        CreatedByUserID = (int)Reader["CreatedByUserID"];
+                        IsLocked = (bool)Reader["IsLocked"];
+                    }
+                }
+                catch (Exception e)
+                {
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                return IsFound;
+            }
+        }
+
+        public static int Add(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate
+            , decimal PaidFees, int CreatedByUserID, bool IsLocked)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"INSERT INTO TestAppointments
+                             VALUES(                                   
+                                   @TestTypeID,
+                                   @LocalDrivingLicenseApplicationID,
+                                   @AppointmentDate,
+                                   @PaidFees,
+                                   @CreatedByUserID,
+                                   @IsLocked);
+                             SELECT SCOPE_IDENTITY();";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
+            command.Parameters.AddWithValue("@PaidFees", PaidFees);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+            command.Parameters.AddWithValue("@IsLocked", IsLocked);
+
+            int TestAppointmentID = 0;
+
+            try
+            {
+                connection.Open();
+
+                object Result = command.ExecuteScalar();
+
+                if (Result != null && int.TryParse(Result.ToString(), out int ID))
+                    TestAppointmentID = ID;
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return TestAppointmentID;
+        }
+
+        public static bool Update(int TestAppointmentID, int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate
+            , decimal PaidFees, int CreatedByUserID, bool IsLocked)
+        {
+
+            {
+                SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+                string query = @"UPDATE TestAppointments
+                             SET                                   
+                                   TestTypeID = @TestTypeID,
+                                   LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID,
+                                   AppointmentDate = @AppointmentDate,
+                                   PaidFees = @PaidFees,
+                                   CreatedByUserID = @CreatedByUserID,
+                                   IsLocked = @IsLocked
+                             WHERE TestAppointmentID = @TestAppointmentID;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+                command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+                command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+                command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
+                command.Parameters.AddWithValue("@PaidFees", PaidFees);
+                command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+                command.Parameters.AddWithValue("@IsLocked", IsLocked);
+
+                int RowsAffected = 0;
+
+                try
+                {
+                    connection.Open();
+
+                    RowsAffected = command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+                return RowsAffected > 0;
+            }
+        }
+       
         public static bool Exists(byte TestType, int LocalDrivingLicenseID)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
             string query = @"SELECT * FROM TestAppointments
-                             WHERE TestTypeID = @TestType AND LocalDrivingLicenseApplicationID = @LocalDrivingLicenseID AND IsLocked = 1";
+                             WHERE TestTypeID = @TestType AND LocalDrivingLicenseApplicationID = @LocalDrivingLicenseID AND IsLocked = 0";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -114,7 +257,5 @@ namespace DVLD_DAL.Applications.TestAppointments
 
             return Trial;
         }
-        
-        // implement add and update methods
     }
 }

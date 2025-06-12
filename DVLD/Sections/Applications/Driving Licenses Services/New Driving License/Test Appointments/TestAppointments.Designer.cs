@@ -49,6 +49,7 @@
             this.DGV_TestAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_TestAppointments.BackgroundColor = System.Drawing.SystemColors.Window;
             this.DGV_TestAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_TestAppointments.ContextMenuStrip = this.CMS_LocalLicenseApplicationsActions;
             this.DGV_TestAppointments.Location = new System.Drawing.Point(12, 409);
             this.DGV_TestAppointments.Name = "DGV_TestAppointments";
             this.DGV_TestAppointments.ReadOnly = true;

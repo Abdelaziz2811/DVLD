@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DVLD_BLL.Applications.TestAppointments
 {
+    public enum enTestAppointmentMode { Add, Update }
     public class clsTestAppointments_BLL
     {
         public int TestAppointmentID { get; set; }
@@ -18,6 +19,7 @@ namespace DVLD_BLL.Applications.TestAppointments
         public decimal PaidFees { get; set; }
         public int CreatedByUserID { get; set; }
         public bool IsLocked { get; set; }
+        public enTestAppointmentMode Mode { get; set; }
 
         public clsTestAppointments_BLL()
         {
@@ -28,6 +30,7 @@ namespace DVLD_BLL.Applications.TestAppointments
             PaidFees = 0;
             CreatedByUserID = 0;
             IsLocked = false;
+            Mode = enTestAppointmentMode.Add;
         }
 
         clsTestAppointments_BLL(int TestAppointmentID, int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate
@@ -40,11 +43,50 @@ namespace DVLD_BLL.Applications.TestAppointments
             this.PaidFees = PaidFees;
             this.CreatedByUserID = CreatedByUserID;
             this.IsLocked = IsLocked;
+            Mode = enTestAppointmentMode.Update;
+        }
+
+        private bool _Add()
+        {
+            TestAppointmentID = clsTestAppointments_DAL.Add(TestTypeID, LocalDrivingLicenseApplicationID, AppointmentDate,
+                                                        PaidFees, CreatedByUserID, IsLocked);
+            return TestAppointmentID != 0;
+        }
+
+        private bool _Update()
+        {
+            return clsTestAppointments_DAL.Update(TestAppointmentID, TestTypeID, LocalDrivingLicenseApplicationID,
+                                           AppointmentDate, PaidFees, CreatedByUserID, IsLocked);
+        }
+
+        public bool Save()
+        {
+            if (Mode == enTestAppointmentMode.Add)
+                return _Add();
+
+            return _Update();
         }
 
         public static DataTable LoadTestAppointments(enTestType TestType, int LocalDrivingLicenseID)
         {
             return clsTestAppointments_DAL.LoadTestAppointments(Convert.ToInt32(TestType), LocalDrivingLicenseID);
+        }
+
+        public static clsTestAppointments_BLL Find(int TestAppointmentID)
+        {
+            int TestTypeID = 0;
+            int LocalDrivingLicenseApplicationID = 0;
+            DateTime AppointmentDate = DateTime.Now;
+            decimal PaidFees = 0; 
+            int CreatedByUserID = 0;
+            bool IsLocked = false;
+            if (clsTestAppointments_DAL.Find(TestAppointmentID, ref TestTypeID, ref LocalDrivingLicenseApplicationID,
+                ref AppointmentDate, ref PaidFees, ref CreatedByUserID, ref IsLocked))
+            {
+                return new clsTestAppointments_BLL(TestAppointmentID, TestTypeID, LocalDrivingLicenseApplicationID,
+                                                   AppointmentDate, PaidFees, CreatedByUserID, IsLocked);
+            }
+            return null;
         }
 
         public static bool Exists(enTestType TestType, int LocalDrivingLicenseID)
