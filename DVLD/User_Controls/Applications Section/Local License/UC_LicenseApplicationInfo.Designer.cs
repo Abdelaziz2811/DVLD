@@ -33,7 +33,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.LB_LicenseClass = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.LB_DLAppID = new System.Windows.Forms.Label();
+            this.LB_LDLAppID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.GB_ApplicationInfo = new System.Windows.Forms.GroupBox();
             this.LB_CreatedBy = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             this.GB_LicenseApplicationInfo.Controls.Add(this.label18);
             this.GB_LicenseApplicationInfo.Controls.Add(this.LB_LicenseClass);
             this.GB_LicenseApplicationInfo.Controls.Add(this.label4);
-            this.GB_LicenseApplicationInfo.Controls.Add(this.LB_DLAppID);
+            this.GB_LicenseApplicationInfo.Controls.Add(this.LB_LDLAppID);
             this.GB_LicenseApplicationInfo.Controls.Add(this.label1);
             this.GB_LicenseApplicationInfo.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GB_LicenseApplicationInfo.Location = new System.Drawing.Point(2, 3);
@@ -113,15 +113,15 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "License Class :";
             // 
-            // LB_DLAppID
+            // LB_LDLAppID
             // 
-            this.LB_DLAppID.AutoSize = true;
-            this.LB_DLAppID.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_DLAppID.Location = new System.Drawing.Point(129, 28);
-            this.LB_DLAppID.Name = "LB_DLAppID";
-            this.LB_DLAppID.Size = new System.Drawing.Size(21, 19);
-            this.LB_DLAppID.TabIndex = 2;
-            this.LB_DLAppID.Text = "--";
+            this.LB_LDLAppID.AutoSize = true;
+            this.LB_LDLAppID.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_LDLAppID.Location = new System.Drawing.Point(144, 28);
+            this.LB_LDLAppID.Name = "LB_LDLAppID";
+            this.LB_LDLAppID.Size = new System.Drawing.Size(21, 19);
+            this.LB_LDLAppID.TabIndex = 2;
+            this.LB_LDLAppID.Text = "--";
             // 
             // label1
             // 
@@ -129,9 +129,9 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(17, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 19);
+            this.label1.Size = new System.Drawing.Size(121, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "D.L.App ID :";
+            this.label1.Text = "L.D.L.App ID :";
             // 
             // GB_ApplicationInfo
             // 
@@ -357,7 +357,7 @@
         private System.Windows.Forms.Label label18;
         public System.Windows.Forms.Label LB_LicenseClass;
         private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.Label LB_DLAppID;
+        public System.Windows.Forms.Label LB_LDLAppID;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label LB_ApplicationDate;
         private System.Windows.Forms.Label label2;
