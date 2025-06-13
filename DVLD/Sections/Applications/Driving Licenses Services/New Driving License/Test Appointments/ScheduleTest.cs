@@ -97,7 +97,6 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
                 UC_ScheduleTest.LB_Operation.Text = "Scheduled Test";
                 UC_ScheduleTest.LB_Operation.Location = new Point(212, -4);
                 UC_ScheduleTest.DTP_TestAppointment.Enabled = false;
-                UC_ScheduleTest.BTN_Save.Enabled = false;
             }
         }
 
@@ -106,11 +105,20 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
             SetTestAppointmentsInfo();
             if (TestAppointments.Save())
             {
-                MessageBox.Show("Test appointment has been added successfully", "Seccess", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                if (TestAppointments.Mode == enTestAppointmentMode.Add)
+                {
+                    MessageBox.Show("Test appointment has been added successfully", "Seccess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Test appointment has been updated successfully", "Seccess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
             }
             else
-                MessageBox.Show("Something went wrong, Test appointment hasn't been added","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong, Test appointment hasn't been added", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
 
         void SetTestAppointmentsInfo()

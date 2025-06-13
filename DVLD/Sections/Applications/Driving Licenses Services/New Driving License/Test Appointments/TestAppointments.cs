@@ -128,7 +128,8 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         private void TSMI_TakeTest_Click(object sender, EventArgs e)
         {
-
+            TakeTest takeTest = new TakeTest("Take Test");
+            takeTest.ShowDialog();
         }
     }
 }
