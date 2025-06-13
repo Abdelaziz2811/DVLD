@@ -59,8 +59,16 @@ namespace DVLD
 
         void GetRememberedUserCredentials()
         {
+            string EnvPath = Environment.CurrentDirectory;
+            string FilePath = EnvPath + "\\RememberedUsers.txt";
+
+            if (!File.Exists(FilePath))
+            {
+                using (StreamWriter streamWriter = new StreamWriter(FilePath)) { }
+            }
+
             string[] Data = new string[2];
-            using (StreamReader streamReader = new StreamReader("RememberedUsers.txt"))
+            using (StreamReader streamReader = new StreamReader(FilePath))
             {
                 string DataLine;
                 int i = 0;
