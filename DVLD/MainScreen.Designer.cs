@@ -303,7 +303,6 @@
             this.Controls.Add(this.MS_MainSections);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.IsMdiContainer = true;
             this.MainMenuStrip = this.MS_MainSections;
             this.MaximizeBox = false;
             this.Name = "MainScreen";

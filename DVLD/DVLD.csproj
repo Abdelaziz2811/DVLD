@@ -81,6 +81,12 @@
     <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.Designer.cs">
       <DependentUpon>Local License.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TakeTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TakeTest.Designer.cs">
+      <DependentUpon>TakeTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TestAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,11 +184,17 @@
     <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseApplicationInfo.Designer.cs">
       <DependentUpon>UC_LicenseApplicationInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Tests\ScheduleTest.cs">
+    <Compile Include="User_Controls\Applications Section\Tests\UC_ScheduleTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Tests\ScheduleTest.Designer.cs">
-      <DependentUpon>ScheduleTest.cs</DependentUpon>
+    <Compile Include="User_Controls\Applications Section\Tests\UC_ScheduleTest.Designer.cs">
+      <DependentUpon>UC_ScheduleTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Applications Section\Tests\UC_TestDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User_Controls\Applications Section\Tests\UC_TestDetails.Designer.cs">
+      <DependentUpon>UC_TestDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\People Section\UC_Add_UpdatePerson.cs">
       <SubType>UserControl</SubType>
@@ -228,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.resx">
       <DependentUpon>Local License.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TakeTest.resx">
+      <DependentUpon>TakeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TestAppointments.resx">
       <DependentUpon>TestAppointments.cs</DependentUpon>
@@ -279,8 +294,11 @@
     <EmbeddedResource Include="User_Controls\Applications Section\Local License\UC_LicenseApplicationInfo.resx">
       <DependentUpon>UC_LicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Applications Section\Tests\ScheduleTest.resx">
-      <DependentUpon>ScheduleTest.cs</DependentUpon>
+    <EmbeddedResource Include="User_Controls\Applications Section\Tests\UC_ScheduleTest.resx">
+      <DependentUpon>UC_ScheduleTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Controls\Applications Section\Tests\UC_TestDetails.resx">
+      <DependentUpon>UC_TestDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Controls\People Section\UC_Add_UpdatePerson.resx">
       <DependentUpon>UC_Add_UpdatePerson.cs</DependentUpon>
