@@ -203,11 +203,11 @@
             // 
             this.LB_Operation.AutoSize = true;
             this.LB_Operation.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_Operation.Location = new System.Drawing.Point(267, -2);
+            this.LB_Operation.Location = new System.Drawing.Point(273, -2);
             this.LB_Operation.Name = "LB_Operation";
-            this.LB_Operation.Size = new System.Drawing.Size(143, 23);
+            this.LB_Operation.Size = new System.Drawing.Size(123, 23);
             this.LB_Operation.TabIndex = 52;
-            this.LB_Operation.Text = "Schedule Test";
+            this.LB_Operation.Text = "Test Details";
             this.LB_Operation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UC_TestDetails
