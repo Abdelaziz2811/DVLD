@@ -73,7 +73,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
         void LaodNewApplicationInfo()
         {
             LB_ApplicationDate.Text = Application.ApplicationDate.ToString("MM/dd/yyyy");
-            LB_ApplicationFees.Text = Application.PaidFees.ToString();
+            LB_ApplicationFees.Text = Application.PaidFees.ToString("C2");
             LB_CreatedBy.Text = Application.CreatedByUserID.ToString();
         }
 
