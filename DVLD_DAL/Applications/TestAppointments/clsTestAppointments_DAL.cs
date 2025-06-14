@@ -50,47 +50,44 @@ namespace DVLD_DAL.Applications.TestAppointments
         public static bool Find(int TestAppointmentID, ref int TestTypeID, ref int LocalDrivingLicenseApplicationID, ref DateTime AppointmentDate
             , ref decimal PaidFees, ref int CreatedByUserID, ref bool IsLocked)
         {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
-            {
-                SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
-
-                string query = @"SELECT * FROM TestAppointments
+            string query = @"SELECT * FROM TestAppointments
                              WHERE TestAppointmentID = @TestAppointmentID";
 
-                SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand command = new SqlCommand(query, connection);
 
-                command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
 
-                bool IsFound = false;
+            bool IsFound = false;
 
-                try
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = command.ExecuteReader();
+
+                if (Reader.Read())
                 {
-                    connection.Open();
-
-                    SqlDataReader Reader = command.ExecuteReader();
-
-                    if (Reader.Read())
-                    {
-                        IsFound = true;
-                        TestTypeID = (int)Reader["TestTypeID"];
-                        LocalDrivingLicenseApplicationID = (int)Reader["LocalDrivingLicenseApplicationID"];
-                        AppointmentDate = (DateTime)Reader["AppointmentDate"];
-                        PaidFees = (decimal)Reader["PaidFees"];
-                        CreatedByUserID = (int)Reader["CreatedByUserID"];
-                        IsLocked = (bool)Reader["IsLocked"];
-                    }
+                    IsFound = true;
+                    TestTypeID = (int)Reader["TestTypeID"];
+                    LocalDrivingLicenseApplicationID = (int)Reader["LocalDrivingLicenseApplicationID"];
+                    AppointmentDate = (DateTime)Reader["AppointmentDate"];
+                    PaidFees = (decimal)Reader["PaidFees"];
+                    CreatedByUserID = (int)Reader["CreatedByUserID"];
+                    IsLocked = (bool)Reader["IsLocked"];
                 }
-                catch (Exception e)
-                {
-
-                }
-                finally
-                {
-                    connection.Close();
-                }
-
-                return IsFound;
             }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
         }
 
         public static int Add(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate
@@ -143,11 +140,9 @@ namespace DVLD_DAL.Applications.TestAppointments
         public static bool Update(int TestAppointmentID, int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate
             , decimal PaidFees, int CreatedByUserID, bool IsLocked)
         {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
-            {
-                SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
-
-                string query = @"UPDATE TestAppointments
+            string query = @"UPDATE TestAppointments
                              SET                                   
                                    TestTypeID = @TestTypeID,
                                    LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID,
@@ -157,35 +152,34 @@ namespace DVLD_DAL.Applications.TestAppointments
                                    IsLocked = @IsLocked
                              WHERE TestAppointmentID = @TestAppointmentID;";
 
-                SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand command = new SqlCommand(query, connection);
 
-                command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
-                command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
-                command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-                command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
-                command.Parameters.AddWithValue("@PaidFees", PaidFees);
-                command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
-                command.Parameters.AddWithValue("@IsLocked", IsLocked);
+            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@AppointmentDate", AppointmentDate);
+            command.Parameters.AddWithValue("@PaidFees", PaidFees);
+            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
+            command.Parameters.AddWithValue("@IsLocked", IsLocked);
 
-                int RowsAffected = 0;
+            int RowsAffected = 0;
 
-                try
-                {
-                    connection.Open();
+            try
+            {
+                connection.Open();
 
-                    RowsAffected = command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-
-                }
-                finally
-                {
-                    connection.Close();
-                }
-
-                return RowsAffected > 0;
+                RowsAffected = command.ExecuteNonQuery();
             }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return RowsAffected > 0;
         }
        
         public static bool Exists(byte TestType, int LocalDrivingLicenseID)
