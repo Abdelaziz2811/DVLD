@@ -28,25 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.UC_TestDetails = new DVLD.User_Controls.Applications_Section.Tests.UC_TestDetails();
             this.RB_Pass = new System.Windows.Forms.RadioButton();
             this.RB_Fail = new System.Windows.Forms.RadioButton();
-            this.TB_Notes = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BTN_Save = new System.Windows.Forms.Button();
+            this.LB_Notes = new System.Windows.Forms.TextBox();
+            this.UC_TestDetails = new DVLD.User_Controls.Applications_Section.Tests.UC_TestDetails();
             this.SuspendLayout();
-            // 
-            // UC_TestDetails
-            // 
-            this.UC_TestDetails.Location = new System.Drawing.Point(5, -2);
-            this.UC_TestDetails.Name = "UC_TestDetails";
-            this.UC_TestDetails.Size = new System.Drawing.Size(687, 315);
-            this.UC_TestDetails.TabIndex = 0;
             // 
             // RB_Pass
             // 
             this.RB_Pass.AutoSize = true;
+            this.RB_Pass.Checked = true;
             this.RB_Pass.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RB_Pass.Location = new System.Drawing.Point(184, 323);
             this.RB_Pass.Name = "RB_Pass";
@@ -64,17 +58,8 @@
             this.RB_Fail.Name = "RB_Fail";
             this.RB_Fail.Size = new System.Drawing.Size(54, 22);
             this.RB_Fail.TabIndex = 2;
-            this.RB_Fail.TabStop = true;
             this.RB_Fail.Text = "Fail";
             this.RB_Fail.UseVisualStyleBackColor = true;
-            // 
-            // TB_Notes
-            // 
-            this.TB_Notes.Location = new System.Drawing.Point(188, 366);
-            this.TB_Notes.Name = "TB_Notes";
-            this.TB_Notes.Size = new System.Drawing.Size(472, 75);
-            this.TB_Notes.TabIndex = 3;
-            this.TB_Notes.Text = "";
             // 
             // label5
             // 
@@ -103,13 +88,29 @@
             this.BTN_Save.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BTN_Save.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.BTN_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_Save.Location = new System.Drawing.Point(290, 461);
+            this.BTN_Save.Location = new System.Drawing.Point(290, 453);
             this.BTN_Save.Name = "BTN_Save";
             this.BTN_Save.Size = new System.Drawing.Size(117, 33);
             this.BTN_Save.TabIndex = 51;
             this.BTN_Save.Tag = " ";
             this.BTN_Save.Text = "Save";
             this.BTN_Save.UseVisualStyleBackColor = false;
+            this.BTN_Save.Click += new System.EventHandler(this.BTN_Save_Click);
+            // 
+            // LB_Notes
+            // 
+            this.LB_Notes.Location = new System.Drawing.Point(188, 368);
+            this.LB_Notes.Multiline = true;
+            this.LB_Notes.Name = "LB_Notes";
+            this.LB_Notes.Size = new System.Drawing.Size(472, 61);
+            this.LB_Notes.TabIndex = 52;
+            // 
+            // UC_TestDetails
+            // 
+            this.UC_TestDetails.Location = new System.Drawing.Point(5, -2);
+            this.UC_TestDetails.Name = "UC_TestDetails";
+            this.UC_TestDetails.Size = new System.Drawing.Size(687, 315);
+            this.UC_TestDetails.TabIndex = 0;
             // 
             // TakeTest
             // 
@@ -117,10 +118,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(696, 506);
+            this.Controls.Add(this.LB_Notes);
             this.Controls.Add(this.BTN_Save);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.TB_Notes);
             this.Controls.Add(this.RB_Fail);
             this.Controls.Add(this.RB_Pass);
             this.Controls.Add(this.UC_TestDetails);
@@ -141,9 +142,9 @@
         private User_Controls.Applications_Section.Tests.UC_TestDetails UC_TestDetails;
         private System.Windows.Forms.RadioButton RB_Pass;
         private System.Windows.Forms.RadioButton RB_Fail;
-        private System.Windows.Forms.RichTextBox TB_Notes;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button BTN_Save;
+        private System.Windows.Forms.TextBox LB_Notes;
     }
 }

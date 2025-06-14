@@ -65,7 +65,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
             UC_LicenseApplicationInfo.LB_ApplicationID.Text = Application.ApplicationID.ToString();
             UC_LicenseApplicationInfo.LB_ApplicationStatus.Text = Application.ApplicationStatus.ToString();
-            UC_LicenseApplicationInfo.LB_ApplicationFees.Text = Application.PaidFees.ToString();
+            UC_LicenseApplicationInfo.LB_ApplicationFees.Text = Application.PaidFees.ToString("C2");
             UC_LicenseApplicationInfo.LB_ApplicationType.Text = clsApplicationTypes_BLL.Find(Application.ApplicationTypeID).ApplicationTypeTitle;
             
             clsPerson_BLL Person = clsPerson_BLL.Find(Application.ApplicantPersonID);
@@ -128,8 +128,24 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         private void TSMI_TakeTest_Click(object sender, EventArgs e)
         {
-            TakeTest takeTest = new TakeTest("Take Test");
-            takeTest.ShowDialog();
+            clsTestAppointments_BLL TestAppointments = clsTestAppointments_BLL.Find(Convert.ToInt32(DGV_TestAppointments.CurrentRow.Cells[0].Value));
+
+            if (TestAppointments != null)
+            {
+                if (TestAppointments.IsLocked)
+                    MessageBox.Show("The current Test already taken!. Schedule another appointment to take the test again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    TakeTest takeTest = new TakeTest(UC_LicenseApplicationInfo, TestType, TestAppointments);
+                    takeTest.ShowDialog();
+                    RefreshTestAppointments();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Test appointment doesn't exists", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RefreshTestAppointments();
+            }
         }
     }
 }

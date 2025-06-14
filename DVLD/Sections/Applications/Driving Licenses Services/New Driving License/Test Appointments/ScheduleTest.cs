@@ -50,12 +50,14 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
             UC_ScheduleTest.LB_LicenseClass.Text = LicenseApplicationInfo.LB_LicenseClass.Text;
             UC_ScheduleTest.LB_Name.Text = LicenseApplicationInfo.LB_ApplicantName.Text;
             UC_ScheduleTest.LB_Trial.Text = clsTestAppointments_BLL.TrialCount(TestType, Convert.ToInt32(LicenseApplicationInfo.LB_LDLAppID.Text)).ToString();
-            UC_ScheduleTest.LB_Fees.Text = clsTestTypes_BLL.Find(Convert.ToInt32(TestType)).TestTypeFees.ToString();
+            UC_ScheduleTest.LB_Fees.Text = clsTestTypes_BLL.Find(Convert.ToInt32(TestType)).TestTypeFees.ToString("C2");
 
             if (Convert.ToInt16(UC_ScheduleTest.LB_Trial.Text) > 0)
-                UC_ScheduleTest.LB_RetakeAppFees.Text = clsApplicationTypes_BLL.Find("Retake Test").ApplicationFees.ToString();
+                UC_ScheduleTest.LB_RetakeAppFees.Text = clsApplicationTypes_BLL.Find("Retake Test").ApplicationFees.ToString("C2");
 
-            UC_ScheduleTest.LB_TotalFees.Text = (Convert.ToInt16(UC_ScheduleTest.LB_Fees.Text) + Convert.ToInt16(UC_ScheduleTest.LB_RetakeAppFees.Text)).ToString();
+            // when need parse checking here
+            int TotalFees = (Convert.ToInt32(UC_ScheduleTest.LB_Fees.Text) + Convert.ToInt32(UC_ScheduleTest.LB_RetakeAppFees.Text));
+            UC_ScheduleTest.LB_TotalFees.Text = TotalFees.ToString("C2");
         }
 
         void ApplyTestType()
@@ -79,7 +81,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         void SetFormOperation()
         {
-            if (TestAppointments.Mode == enTestAppointmentMode.Add && Convert.ToInt32(UC_ScheduleTest.LB_Trial.Text) > 0)
+            if (!clsTests_BLL.IsPass(TestAppointments.TestAppointmentID))
             {
                 UC_ScheduleTest.LB_Operation.Text = "Schedule Retake Test";
                 UC_ScheduleTest.LB_Operation.Location = new Point(230, -4);
