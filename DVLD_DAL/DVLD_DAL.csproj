@@ -45,6 +45,7 @@
     <Compile Include="Applications\Applications\clsApplications_DAL.cs" />
     <Compile Include="Applications\Local License Application\clsLocalLicenseApplication_DAL.cs" />
     <Compile Include="Applications\TestAppointments\clsTestAppointments_DAL.cs" />
+    <Compile Include="Applications\TestAppointments\clsTests_DAL.cs" />
     <Compile Include="Countries\clsCountries_DAL.cs" />
     <Compile Include="License Classes\clsLicenseClasses_DAL.cs" />
     <Compile Include="People\clsPersons_DAL.cs" />
