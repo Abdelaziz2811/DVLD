@@ -119,7 +119,13 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
         private void TSMI_VisionTest_Click(object sender, EventArgs e)
         {
             TestAppointments visionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.FindInView(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.VisionTest);
-            visionTestAppointments.ShowDialog();
+            if (visionTestAppointments != null)
+            {
+                visionTestAppointments.ShowDialog();
+                RefreshLocalLicenseApplications();
+            }
+            else
+                MessageBox.Show("The selected Test Appointment doesn't exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void TSMI_WrittenTest_Click(object sender, EventArgs e)

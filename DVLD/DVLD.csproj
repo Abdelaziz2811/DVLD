@@ -302,6 +302,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User_Controls\People Section\UC_Add_UpdatePerson.resx">
       <DependentUpon>UC_Add_UpdatePerson.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Controls\People Section\UC_Person_Info.resx">
       <DependentUpon>UC_Person_Info.cs</DependentUpon>
@@ -311,9 +312,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User_Controls\Users Section\UC_Change_UserPassword.resx">
       <DependentUpon>UC_Change_UserPassword.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Controls\Users Section\UC_Add_UpdateUser.resx">
       <DependentUpon>UC_Add_UpdateUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Controls\Users Section\UC_UserInfo.resx">
       <DependentUpon>UC_UserInfo.cs</DependentUpon>
