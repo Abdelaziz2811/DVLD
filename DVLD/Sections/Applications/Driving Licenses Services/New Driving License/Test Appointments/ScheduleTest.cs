@@ -1,8 +1,11 @@
 ﻿using DVLD.Properties;
 using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Test_Appointments;
+using DVLD.Sections.Applications.Manage_Applications.Local_License_Applications;
 using DVLD.User_Controls.Applications_Section;
 using DVLD.User_Controls.Applications_Section.Tests;
 using DVLD_BLL;
+using DVLD_BLL.Applications.Applications;
+using DVLD_BLL.Applications.LocalLicenseApplication;
 using DVLD_BLL.Applications.TestAppointments;
 using DVLD_BLL.Tests;
 using System;
@@ -19,14 +22,14 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 {
     public partial class ScheduleTest : Form
     {
-        UC_LicenseApplicationInfo LicenseApplicationInfo;
+        UC_LicenseApplicationInfo LicenseApplication;
         enTestType TestType;
         clsTestAppointments_BLL TestAppointments;
         public ScheduleTest(UC_LicenseApplicationInfo LicenseApplicationInfo, enTestType TestType, clsTestAppointments_BLL TestAppointments)
         {
             InitializeComponent();
 
-            this.LicenseApplicationInfo = LicenseApplicationInfo;
+            this.LicenseApplication = LicenseApplicationInfo;
             this.TestType = TestType;
             this.TestAppointments = TestAppointments;
         }
@@ -46,18 +49,16 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         void LoadTestAppointmentInfo()
         {
-            UC_ScheduleTest.LB_DLAppID.Text = LicenseApplicationInfo.LB_LDLAppID.Text;
-            UC_ScheduleTest.LB_LicenseClass.Text = LicenseApplicationInfo.LB_LicenseClass.Text;
-            UC_ScheduleTest.LB_Name.Text = LicenseApplicationInfo.LB_ApplicantName.Text;
-            UC_ScheduleTest.LB_Trial.Text = clsTestAppointments_BLL.TrialCount(TestType, Convert.ToInt32(LicenseApplicationInfo.LB_LDLAppID.Text)).ToString();
-            UC_ScheduleTest.LB_Fees.Text = clsTestTypes_BLL.Find(Convert.ToInt32(TestType)).TestTypeFees.ToString("C2");
+            UC_ScheduleTest.LB_DLAppID.Text = LicenseApplication.LB_LDLAppID.Text;
+            UC_ScheduleTest.LB_LicenseClass.Text = LicenseApplication.LB_LicenseClass.Text;
+            UC_ScheduleTest.LB_Name.Text = LicenseApplication.LB_ApplicantName.Text;
+            UC_ScheduleTest.LB_Trial.Text = clsTestAppointments_BLL.TrialCount(TestType, Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text)).ToString();
+            UC_ScheduleTest.LB_Fees.Text = clsTestTypes_BLL.Find(Convert.ToInt32(TestType)).TestTypeFees.ToString();
 
             if (Convert.ToInt16(UC_ScheduleTest.LB_Trial.Text) > 0)
-                UC_ScheduleTest.LB_RetakeAppFees.Text = clsApplicationTypes_BLL.Find("Retake Test").ApplicationFees.ToString("C2");
+                UC_ScheduleTest.LB_RetakeAppFees.Text = clsApplicationTypes_BLL.Find("Retake Test").ApplicationFees.ToString();
 
-            // when need parse checking here
-            int TotalFees = (Convert.ToInt32(UC_ScheduleTest.LB_Fees.Text) + Convert.ToInt32(UC_ScheduleTest.LB_RetakeAppFees.Text));
-            UC_ScheduleTest.LB_TotalFees.Text = TotalFees.ToString("C2");
+            UC_ScheduleTest.LB_TotalFees.Text = (Convert.ToInt32(UC_ScheduleTest.LB_Fees.Text) + Convert.ToInt32(UC_ScheduleTest.LB_RetakeAppFees.Text)).ToString();
         }
 
         void ApplyTestType()
@@ -81,7 +82,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         void SetFormOperation()
         {
-            if (!clsTests_BLL.IsPass(TestAppointments.TestAppointmentID))
+            if (Convert.ToInt32(UC_ScheduleTest.LB_Trial.Text) > 0)
             {
                 UC_ScheduleTest.LB_Operation.Text = "Schedule Retake Test";
                 UC_ScheduleTest.LB_Operation.Location = new Point(230, -4);
@@ -93,17 +94,26 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
                 UC_ScheduleTest.LB_Operation.Text = "Update Test Appointment";
                 UC_ScheduleTest.LB_Operation.Location = new Point(212, -4);
             }
-
-            if (TestAppointments.Mode == enTestAppointmentMode.Update && TestAppointments.IsLocked)
-            {
-                UC_ScheduleTest.LB_Operation.Text = "Scheduled Test";
-                UC_ScheduleTest.LB_Operation.Location = new Point(212, -4);
-                UC_ScheduleTest.DTP_TestAppointment.Enabled = false;
-            }
         }
 
         private void BTN_Save_Click(object sender, EventArgs e)
         {
+            if (clsTestAppointments_BLL.TrialCount(TestType, Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text)) > 0
+                && !clsTests_BLL.IsPass(clsTestAppointments_BLL.GetTestAppointmentID(TestType, Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text))))
+            {
+                clsApplications_BLL RetakeTestApplication = new clsApplications_BLL();
+                SetRetakeTestApplicationInfo(ref RetakeTestApplication);
+                if (RetakeTestApplication.Save())
+                {
+                    clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text));
+                    LocalLicenseApplication.ApplicationID = RetakeTestApplication.ApplicationID;
+                    if (LocalLicenseApplication.Save())
+                    {
+                        LicenseApplication.LB_ApplicationID.Text = RetakeTestApplication.ApplicationID.ToString();
+                    }
+                }
+            }
+
             SetTestAppointmentsInfo();
             if (TestAppointments.Save())
             {
@@ -123,10 +133,21 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         }
 
+        void SetRetakeTestApplicationInfo(ref clsApplications_BLL RetakeTestApplication)
+        {
+            clsApplications_BLL Application = clsApplications_BLL.Find(Convert.ToInt32(LicenseApplication.LB_ApplicationID.Text));
+
+            RetakeTestApplication.ApplicantPersonID = Application.ApplicantPersonID;
+
+            RetakeTestApplication.ApplicationTypeID = 8;
+            RetakeTestApplication.PaidFees = clsApplicationTypes_BLL.Find(8).ApplicationFees;
+            RetakeTestApplication.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
+        }
+
         void SetTestAppointmentsInfo()
         {
             TestAppointments.TestTypeID = (int)TestType;
-            TestAppointments.LocalDrivingLicenseApplicationID = Convert.ToInt32(LicenseApplicationInfo.LB_LDLAppID.Text);
+            TestAppointments.LocalDrivingLicenseApplicationID = Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text);
             TestAppointments.AppointmentDate = UC_ScheduleTest.DTP_TestAppointment.Value;
             TestAppointments.PaidFees = Convert.ToDecimal(UC_ScheduleTest.LB_TotalFees.Text);
             TestAppointments.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
