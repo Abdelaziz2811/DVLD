@@ -129,7 +129,6 @@ namespace DVLD_DAL.Applications.New_Local_License_Application
             return isFound;
         }
 
-
         public static int Add(int ApplicationID, int LicenseClassID)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
@@ -166,6 +165,42 @@ namespace DVLD_DAL.Applications.New_Local_License_Application
             }
 
             return LocalDrivingLicenseApplicationID;
+        }
+
+        public static bool Update(int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"UPDATE LocalDrivingLicenseApplications
+                             SET
+                             ApplicationID = @ApplicationID,
+                             LicenseClassID = @LicenseClassID                      
+                             WHERE @LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
+            command.Parameters.AddWithValue("@LicenseClassID", LicenseClassID);
+
+            int RowsAffected = 0;
+
+            try
+            {
+                connection.Open();
+
+                RowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return RowsAffected > 0;
         }
 
         public static bool IsLocalLicenseApplicationExists(int ApplicantID, int LicenseClassID)
