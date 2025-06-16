@@ -86,7 +86,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
                 {
                     clsLocalLicenseApplication_BLL LocalLicenseApplication = new clsLocalLicenseApplication_BLL();
                     SetLocalLicenseApplicationInfo(ref LocalLicenseApplication);
-                    if (LocalLicenseApplication.Add())
+                    if (LocalLicenseApplication.Save())
                     {
                         MessageBox.Show("Application added successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
