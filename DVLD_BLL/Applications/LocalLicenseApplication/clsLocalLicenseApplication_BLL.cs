@@ -9,6 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_BLL.Applications.LocalLicenseApplication
 {
+    public enum enLocalLicenseApplicationMode { Add, Update }
     public class clsLocalLicenseApplication_BLL
     {
         public int LocalDrivingLicenseApplicationID {  get; set; }
@@ -21,12 +22,14 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
         public DateTime ApplicationDate { get; set; }
         public int PassedTestCount { get; set; }
         public string Status { get; set; }
+        public enLocalLicenseApplicationMode Mode { get; set; }
 
         public clsLocalLicenseApplication_BLL()
         {
             LocalDrivingLicenseApplicationID = 0;
             ApplicationID = 0;
             LicenseClassID = 0;
+            Mode = enLocalLicenseApplicationMode.Add;
         }
 
         clsLocalLicenseApplication_BLL(int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID)
@@ -34,6 +37,7 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.ApplicationID = ApplicationID;
             this.LicenseClassID = LicenseClassID;
+            Mode = enLocalLicenseApplicationMode.Update;
         }
 
         clsLocalLicenseApplication_BLL(int LocalDrivingLicenseApplicationID, string ClassName, string NationalNo, string FullName,
@@ -46,6 +50,26 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             this.ApplicationDate = ApplicationDate;
             this.PassedTestCount = PassedTestCount;
             this.Status = Status;
+            Mode = enLocalLicenseApplicationMode.Update;
+        }
+
+        private bool _Add()
+        {
+            LocalDrivingLicenseApplicationID = clsLocalLicenseApplication_DAL.Add(ApplicationID, LicenseClassID);
+            return LocalDrivingLicenseApplicationID != 0;
+        }
+
+        private bool _Update()
+        {
+            return clsLocalLicenseApplication_DAL.Update(LocalDrivingLicenseApplicationID, ApplicationID, LicenseClassID);
+        }
+
+        public bool Save()
+        {
+            if (Mode == enLocalLicenseApplicationMode.Add)
+                return _Add();
+
+            return _Update();
         }
 
         public static DataTable GetLocalLicenseApplications()
@@ -81,12 +105,6 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
                 return new clsLocalLicenseApplication_BLL(LocalDrivingLicenseApplicationID, ApplicationID, LicenseClassID);
             }
             else return null;
-        }
-
-        public bool Add()
-        {
-            LocalDrivingLicenseApplicationID = clsLocalLicenseApplication_DAL.Add(ApplicationID, LicenseClassID);
-            return LocalDrivingLicenseApplicationID != 0;
         }
 
         public static bool IsLocalLicenseApplicationExists(int ApplicantID, int ClassID)
