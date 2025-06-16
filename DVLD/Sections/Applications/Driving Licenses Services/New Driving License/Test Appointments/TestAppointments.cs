@@ -94,6 +94,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         private void BTN_ScheduleAppointment_Click(object sender, EventArgs e)
         {
+            //Check if the application test result is pass if true prevent from scheduling the test
             if (clsTestAppointments_BLL.Exists(TestType, LocalLicenseApplication.LocalDrivingLicenseApplicationID))
                 MessageBox.Show("The current Driving License Application has an active Test Appointment, you can't schedule another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
