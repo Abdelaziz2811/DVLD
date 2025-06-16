@@ -98,5 +98,10 @@ namespace DVLD_BLL.Applications.TestAppointments
         {
             return clsTestAppointments_DAL.TrialCount((byte)TestType, LocalDrivingLicenseID);
         }
+
+        public static int GetTestAppointmentID(enTestType TestType, int LocalDrivingLicenseApplicationID)
+        {
+            return clsTestAppointments_DAL.GetTestAppointmentID((int)TestType, LocalDrivingLicenseApplicationID);
+        }
     }
 }
