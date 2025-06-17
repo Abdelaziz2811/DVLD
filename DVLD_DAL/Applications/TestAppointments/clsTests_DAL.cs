@@ -97,7 +97,12 @@ namespace DVLD_DAL.Applications.Tests
 
             command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
             command.Parameters.AddWithValue("@TestResult", TestResult);
-            command.Parameters.AddWithValue("@Notes", Notes);
+
+            if (Notes == string.Empty)
+                command.Parameters.AddWithValue("@Notes", DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@Notes", Notes);
+
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
             int TestID = 0;
@@ -163,16 +168,19 @@ namespace DVLD_DAL.Applications.Tests
             return RowsAffected > 0;
         }
 
-        public static bool IsPass(int TestAppointmentID)
+        public static bool IsPass(int TestTypeID, int LocalDrivingLicenseApplicationID)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
-            string query = @"SELECT TestResult FROM Tests
-                             WHERE TestAppointmentID = @TestAppointmentID";
+            string query = @"SELECT TOP 1 Tests.TestResult FROM TestAppointments
+                                INNER JOIN Tests ON Tests.TestAppointmentID = TestAppointments.TestAppointmentID
+                                WHERE TestTypeID = @TestTypeID AND LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID
+                                ORDER BY TestResult DESC";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
             
             bool Pass = false;
 
@@ -182,11 +190,8 @@ namespace DVLD_DAL.Applications.Tests
 
                 object TestResult = command.ExecuteScalar();
 
-                if (TestResult != null && int.TryParse(TestResult.ToString(), out int Result))
-                {
-                    if (Result == 1) Pass = true;
-                    else Pass = false;
-                }
+                if (TestResult != null)
+                    Pass = Convert.ToBoolean(TestResult);
                     
             }
             catch (Exception e)
