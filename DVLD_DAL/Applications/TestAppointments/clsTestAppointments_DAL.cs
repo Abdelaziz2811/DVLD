@@ -251,41 +251,5 @@ namespace DVLD_DAL.Applications.TestAppointments
 
             return Trial;
         }
-
-        public static int GetTestAppointmentID(int TestTypeID, int LocalDrivingLicenseApplicationID)
-        {
-            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
-
-            string query = @"SELECT TOP 1 * FROM TestAppointments
-							 WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID AND TestTypeID = TestTypeID
-							 ORDER BY AppointmentDate DESC";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@TestTypeID", TestTypeID);
-            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
-
-            int TestAppointmentID = 0;
-
-            try
-            {
-                connection.Open();
-
-                object Result = command.ExecuteScalar();
-
-                if (Result != null && int.TryParse(Result.ToString(), out int ID))
-                    TestAppointmentID = ID;
-            }
-            catch (Exception e)
-            {
-
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return TestAppointmentID;
-        }
     }
 }
