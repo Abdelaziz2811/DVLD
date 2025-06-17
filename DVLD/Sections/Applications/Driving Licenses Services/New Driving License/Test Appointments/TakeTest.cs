@@ -71,13 +71,16 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
         {
             SetTestInfo();
             SetTestAppointmentAsLocked();
-            if (Test.Save() && TestAppointments.Save())
+            if (MessageBox.Show("Are you sure you want to save the test details", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show("Test has been saved seccessfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                if (TestAppointments.Save() && Test.Save())
+                {
+                    MessageBox.Show("Test Detials has been saved seccessfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Test Details hasn't been saved", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Test hasn't been saved", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         void SetTestInfo()
@@ -88,7 +91,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
                 Test.TestResult = true;
             else Test.TestResult = false;
 
-            Test.Notes = LB_Notes.Text;
+            Test.Notes = TB_Notes.Text;
             Test.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
         }
 
