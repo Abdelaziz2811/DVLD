@@ -1,4 +1,5 @@
 ﻿using DVLD_BLL.Applications.Applications;
+using DVLD_BLL.Tests;
 using DVLD_DAL.Applications.TestAppointments;
 using DVLD_DAL.Applications.Tests;
 using System;
@@ -61,9 +62,9 @@ namespace DVLD_BLL.Applications.TestAppointments
             return _Update();
         }
 
-        public static bool IsPass(int TestAppointmentID)
+        public static bool IsPass(enTestType TestTypeID, int LocalDrivingLicenseApplicationID)
         {
-            return clsTests_DAL.IsPass(TestAppointmentID);
+            return clsTests_DAL.IsPass((int)TestTypeID, LocalDrivingLicenseApplicationID);
         }
     }
 }
