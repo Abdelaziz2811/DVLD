@@ -31,6 +31,7 @@
             this.TC_NewLicenseApplication = new System.Windows.Forms.TabControl();
             this.TP_PersonInfo = new System.Windows.Forms.TabPage();
             this.BTN_NextToApplicationInfo = new System.Windows.Forms.Button();
+            this.UC_Person_Selector = new DVLD.User_Controls.UC_Person_Selector();
             this.TP_ApplicationInfo = new System.Windows.Forms.TabPage();
             this.LB_ApplicationFees = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.LB_ApplicationID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LB_Opration = new System.Windows.Forms.Label();
-            this.UC_Person_Selector = new DVLD.User_Controls.UC_Person_Selector();
             this.TC_NewLicenseApplication.SuspendLayout();
             this.TP_PersonInfo.SuspendLayout();
             this.TP_ApplicationInfo.SuspendLayout();
@@ -89,6 +89,14 @@
             this.BTN_NextToApplicationInfo.Text = "Next";
             this.BTN_NextToApplicationInfo.UseVisualStyleBackColor = false;
             this.BTN_NextToApplicationInfo.Click += new System.EventHandler(this.BTN_NextToApplicationInfo_Click);
+            // 
+            // UC_Person_Selector
+            // 
+            this.UC_Person_Selector.BackColor = System.Drawing.SystemColors.Window;
+            this.UC_Person_Selector.Location = new System.Drawing.Point(41, 6);
+            this.UC_Person_Selector.Name = "UC_Person_Selector";
+            this.UC_Person_Selector.Size = new System.Drawing.Size(651, 386);
+            this.UC_Person_Selector.TabIndex = 0;
             // 
             // TP_ApplicationInfo
             // 
@@ -239,15 +247,7 @@
             this.LB_Opration.Text = "New Local Driving License Application";
             this.LB_Opration.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // UC_Person_Selector
-            // 
-            this.UC_Person_Selector.BackColor = System.Drawing.SystemColors.Window;
-            this.UC_Person_Selector.Location = new System.Drawing.Point(41, 6);
-            this.UC_Person_Selector.Name = "UC_Person_Selector";
-            this.UC_Person_Selector.Size = new System.Drawing.Size(651, 386);
-            this.UC_Person_Selector.TabIndex = 0;
-            // 
-            // Local_License
+            // LocalLicense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -258,7 +258,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Local_License";
+            this.Name = "LocalLicense";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Local License";
             this.Load += new System.EventHandler(this.Local_License_Load);
