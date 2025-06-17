@@ -25,7 +25,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
         UC_LicenseApplicationInfo LicenseApplication;
         enTestType TestType;
         clsTestAppointments_BLL TestAppointments;
-        public ScheduleTest(UC_LicenseApplicationInfo LicenseApplicationInfo, enTestType TestType, clsTestAppointments_BLL TestAppointments)
+        public ScheduleTest(UC_LicenseApplicationInfo LicenseApplicationInfo, enTestType TestType, ref clsTestAppointments_BLL TestAppointments)
         {
             InitializeComponent();
 
@@ -98,8 +98,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         private void BTN_Save_Click(object sender, EventArgs e)
         {
-            if (clsTestAppointments_BLL.TrialCount(TestType, Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text)) > 0
-                && !clsTests_BLL.IsPass(clsTestAppointments_BLL.GetTestAppointmentID(TestType, Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text))))
+            if (clsTestAppointments_BLL.TrialCount(TestType, Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text)) > 0)
             {
                 clsApplications_BLL RetakeTestApplication = new clsApplications_BLL();
                 SetRetakeTestApplicationInfo(ref RetakeTestApplication);
