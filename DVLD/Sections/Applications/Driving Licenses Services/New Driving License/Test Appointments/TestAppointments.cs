@@ -41,7 +41,18 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         void LoadTestAppointments()
         {
-            DGV_TestAppointments.DataSource = clsTestAppointments_BLL.LoadTestAppointments(enTestType.VisionTest, LocalLicenseApplication.LocalDrivingLicenseApplicationID);
+            switch (TestType)
+            {
+                case enTestType.VisionTest:
+                    DGV_TestAppointments.DataSource = clsTestAppointments_BLL.LoadTestAppointments(enTestType.VisionTest, LocalLicenseApplication.LocalDrivingLicenseApplicationID);
+                    break;
+                case enTestType.WrittenTest:
+                    DGV_TestAppointments.DataSource = clsTestAppointments_BLL.LoadTestAppointments(enTestType.WrittenTest, LocalLicenseApplication.LocalDrivingLicenseApplicationID);
+                    break;
+                case enTestType.StreetTest:
+                    DGV_TestAppointments.DataSource = clsTestAppointments_BLL.LoadTestAppointments(enTestType.StreetTest, LocalLicenseApplication.LocalDrivingLicenseApplicationID);
+                    break;
+            }
         }
 
         void TestAppointmentsCount()
@@ -94,13 +105,18 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         private void BTN_ScheduleAppointment_Click(object sender, EventArgs e)
         {
-            //Check if the application test result is pass if true prevent from scheduling the test
             if (clsTestAppointments_BLL.Exists(TestType, LocalLicenseApplication.LocalDrivingLicenseApplicationID))
-                MessageBox.Show("The current Driving License Application has an active Test Appointment, you can't schedule another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The current Applicant has an active Test Appointment, you can't schedule another one", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
+                if (clsTests_BLL.IsPass(TestType, Convert.ToInt32(UC_LicenseApplicationInfo.LB_LDLAppID.Text)))
+                {
+                    MessageBox.Show("The Current Applicant has passed this test, You can't shchedule an appointment", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+               
                 clsTestAppointments_BLL TestAppointments = new clsTestAppointments_BLL();
-                ScheduleTest scheduleTest = new ScheduleTest(UC_LicenseApplicationInfo, TestType, TestAppointments);
+                ScheduleTest scheduleTest = new ScheduleTest(UC_LicenseApplicationInfo, TestType, ref TestAppointments);
                 scheduleTest.ShowDialog();
                 RefreshTestAppointments();
             }
@@ -115,7 +131,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
                     MessageBox.Show("You can't update the current appointment it's locked!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    ScheduleTest scheduleTest = new ScheduleTest(UC_LicenseApplicationInfo, TestType, TestAppointments);
+                    ScheduleTest scheduleTest = new ScheduleTest(UC_LicenseApplicationInfo, TestType, ref TestAppointments);
                     scheduleTest.ShowDialog();
                     RefreshTestAppointments();
                 }
@@ -134,7 +150,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
             if (TestAppointments != null)
             {
                 if (TestAppointments.IsLocked)
-                    MessageBox.Show("The current Test already taken!. Schedule another appointment to take the test again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("The current Test already taken!. Schedule another appointment to take the test again in case the applicant has been failled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
                     TakeTest takeTest = new TakeTest(UC_LicenseApplicationInfo, TestType, TestAppointments);
