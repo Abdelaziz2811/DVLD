@@ -33,7 +33,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BTN_Save = new System.Windows.Forms.Button();
-            this.LB_Notes = new System.Windows.Forms.TextBox();
+            this.TB_Notes = new System.Windows.Forms.TextBox();
             this.UC_TestDetails = new DVLD.User_Controls.Applications_Section.Tests.UC_TestDetails();
             this.SuspendLayout();
             // 
@@ -99,11 +99,11 @@
             // 
             // LB_Notes
             // 
-            this.LB_Notes.Location = new System.Drawing.Point(188, 368);
-            this.LB_Notes.Multiline = true;
-            this.LB_Notes.Name = "LB_Notes";
-            this.LB_Notes.Size = new System.Drawing.Size(472, 61);
-            this.LB_Notes.TabIndex = 52;
+            this.TB_Notes.Location = new System.Drawing.Point(188, 368);
+            this.TB_Notes.Multiline = true;
+            this.TB_Notes.Name = "LB_Notes";
+            this.TB_Notes.Size = new System.Drawing.Size(472, 61);
+            this.TB_Notes.TabIndex = 52;
             // 
             // UC_TestDetails
             // 
@@ -118,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(696, 506);
-            this.Controls.Add(this.LB_Notes);
+            this.Controls.Add(this.TB_Notes);
             this.Controls.Add(this.BTN_Save);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
@@ -145,6 +145,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button BTN_Save;
-        private System.Windows.Forms.TextBox LB_Notes;
+        private System.Windows.Forms.TextBox TB_Notes;
     }
 }
