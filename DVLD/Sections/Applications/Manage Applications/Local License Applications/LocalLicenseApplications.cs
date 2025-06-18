@@ -88,15 +88,110 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
                 DTLocalLicenseApplications.DefaultView.RowFilter = $"{FilterBy} = '{TB_FilterationValue.Text}'";
         }
 
+        private void TB_FilterationValue_TextChanged(object sender, EventArgs e)
+        {
+            switch (CB_FilterBy.SelectedItem.ToString())
+            {
+                case "L.D.L AppID":
+
+                    FilterBy("LocalDrivingLicenseApplicationID");
+
+                    break;
+
+                case "National No":
+
+                    FilterBy("NationalNo");
+
+                    break;
+
+                case "Full Name":
+
+                    FilterBy("FullName");
+
+                    break;
+                case "Status":
+
+                    FilterBy("Status");
+
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
+
+        private void CMS_LocalLicenseApplicationsActions_Opening(object sender, CancelEventArgs e)
+        {
+            EnableCMS_LocalLicenseApplicationsActionsItems();
+            switch (DGV_LocalLicenseApplications.CurrentRow.Cells[6].Value.ToString())
+            {
+                case "New":
+                    TSMI_IssueLicense_FirstTime.Enabled = false;
+                    TSMI_ShowLicense.Enabled = false;
+                    switch (DGV_LocalLicenseApplications.CurrentRow.Cells[5].Value.ToString())
+                    {
+                        case "0":
+                            TSMI_WrittenTest.Enabled = false;
+                            TSMI_StreetTest.Enabled = false;
+                            break;
+                        case "1":
+                            TSMI_VisionTest.Enabled = false;
+                            TSMI_StreetTest.Enabled = false;
+                            break;
+                        case "2":
+                            TSMI_VisionTest.Enabled = false;
+                            TSMI_WrittenTest.Enabled = false;
+                            break;
+                        case "3":
+                            TSMI_ScheduleTests.Enabled = false;
+                            TSMI_IssueLicense_FirstTime.Enabled = true;
+                            break;
+                    }
+                    break;
+
+                case "Canceled":
+
+                    TSMI_CancelApplication.Enabled = false;
+                    TSMI_ScheduleTests.Enabled = false;
+                    TSMI_IssueLicense_FirstTime.Enabled = false;
+                    TSMI_ShowLicense.Enabled = false;
+                    TSMI_PersonLicenseHistory.Enabled = false;
+                    break;
+                case "Completed":
+                    TSMI_UpdateApplication.Enabled = false;
+                    TSMI_DeleteApplication.Enabled = false;
+                    TSMI_CancelApplication.Enabled = false;
+                    TSMI_ScheduleTests.Enabled = false;
+                    TSMI_IssueLicense_FirstTime.Enabled = false;
+                    break;
+            }
+        }
+
+        void EnableCMS_LocalLicenseApplicationsActionsItems()
+        {
+            TSMI_IssueLicense_FirstTime.Enabled = true;
+            TSMI_ShowLicense.Enabled = true;
+            TSMI_CancelApplication.Enabled = true;
+            TSMI_ScheduleTests.Enabled = true;
+            TSMI_PersonLicenseHistory.Enabled = true;
+            TSMI_UpdateApplication.Enabled = true;
+            TSMI_DeleteApplication.Enabled = true;
+
+            TSMI_VisionTest.Enabled = true;
+            TSMI_WrittenTest.Enabled = true;
+            TSMI_StreetTest.Enabled = true;
+        }
+
         private void TSMI_CancelApplication_Click(object sender, EventArgs e)
-        {  
-            clsLocalLicenseApplication_BLL LocalLicenseApplication =  clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
+        {
+            clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
             clsApplications_BLL Application;
-            if(LocalLicenseApplication != null && (Application = clsApplications_BLL.Find(LocalLicenseApplication.ApplicationID)) != null)
+            if (LocalLicenseApplication != null && (Application = clsApplications_BLL.Find(LocalLicenseApplication.ApplicationID)) != null)
             {
                 if (Application.ApplicationStatus == enApplicationStatus.New)
                 {
-                    if (MessageBox.Show("Are you sure you want to cancel the current application!","Warning",MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    if (MessageBox.Show("Are you sure you want to cancel the current application!", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
 
                     Application.ApplicationStatus = enApplicationStatus.Canceled;
@@ -154,95 +249,16 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         }
 
-        private void TB_FilterationValue_TextChanged(object sender, EventArgs e)
+        private void TSMI_IssueLicense_FirstTime_Click(object sender, EventArgs e)
         {
-            switch (CB_FilterBy.SelectedItem.ToString())
+            clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
+            if (LocalLicenseApplication != null)
             {
-                case "L.D.L AppID":
-
-                    FilterBy("LocalDrivingLicenseApplicationID");
-
-                    break;
-
-                case "National No":
-
-                    FilterBy("NationalNo");
-
-                    break;
-
-                case "Full Name":
-
-                    FilterBy("FullName");
-
-                    break;
-                case "Status":
-
-                    FilterBy("Status");
-
-                    break;
-
-                default:
-                    break;
-
+                IssueLicense_FirstTime issueLicense_FirstTime = new IssueLicense_FirstTime(ref LocalLicenseApplication);
+                issueLicense_FirstTime.ShowDialog();
             }
+            else
+                MessageBox.Show("The selected local license application doesn't exists anymore", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
-        private void CMS_LocalLicenseApplicationsActions_Opening(object sender, CancelEventArgs e)
-        {
-            EnableCMS_LocalLicenseApplicationsActionsItems();
-            switch (DGV_LocalLicenseApplications.CurrentRow.Cells[6].Value.ToString())
-            {
-                case "New":
-                    TSMI_IssueLicense_FirstTime.Enabled = false;
-                    TSMI_ShowLicense.Enabled = false;
-                    switch (DGV_LocalLicenseApplications.CurrentRow.Cells[5].Value.ToString())
-                    {
-                        case "0":
-                            TSMI_WrittenTest.Enabled = false;
-                            TSMI_StreetTest.Enabled = false;
-                            break;
-                        case "1":
-                            TSMI_VisionTest.Enabled = false;
-                            TSMI_StreetTest.Enabled = false;
-                            break;
-                        case "2":
-                            TSMI_VisionTest.Enabled = false;
-                            TSMI_WrittenTest.Enabled = false;
-                            break;
-                    }
-                    break;
-                case "Canceled":
-
-                    TSMI_CancelApplication.Enabled = false;
-                    TSMI_ScheduleTests.Enabled = false;
-                    TSMI_IssueLicense_FirstTime.Enabled = false;
-                    TSMI_ShowLicense.Enabled = false;
-                    TSMI_PersonLicenseHistory.Enabled = false;
-                    break;
-                case "Completed":
-                    TSMI_UpdateApplication.Enabled = false;
-                    TSMI_DeleteApplication.Enabled = false;
-                    TSMI_CancelApplication.Enabled = false;
-                    TSMI_ScheduleTests.Enabled = false;
-                    TSMI_IssueLicense_FirstTime.Enabled = false;
-                    break;
-            }
-        }
-
-        void EnableCMS_LocalLicenseApplicationsActionsItems()
-        {
-            TSMI_IssueLicense_FirstTime.Enabled = true;
-            TSMI_ShowLicense.Enabled = true;
-            TSMI_CancelApplication.Enabled = true;
-            TSMI_ScheduleTests.Enabled = true;
-            TSMI_PersonLicenseHistory.Enabled = true;
-            TSMI_UpdateApplication.Enabled = true;
-            TSMI_DeleteApplication.Enabled = true;
-
-            TSMI_VisionTest.Enabled = true;
-            TSMI_WrittenTest.Enabled = true;
-            TSMI_StreetTest.Enabled = true;
-        }
-
     }
 }
