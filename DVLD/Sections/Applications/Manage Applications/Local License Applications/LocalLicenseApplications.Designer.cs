@@ -266,6 +266,7 @@
             this.TSMI_IssueLicense_FirstTime.Name = "TSMI_IssueLicense_FirstTime";
             this.TSMI_IssueLicense_FirstTime.Size = new System.Drawing.Size(219, 22);
             this.TSMI_IssueLicense_FirstTime.Text = "Issue License (First Time)";
+            this.TSMI_IssueLicense_FirstTime.Click += new System.EventHandler(this.TSMI_IssueLicense_FirstTime_Click);
             // 
             // TSMI_ShowLicense
             // 
