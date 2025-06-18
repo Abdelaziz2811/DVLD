@@ -93,6 +93,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
             {
                 UC_ScheduleTest.LB_Operation.Text = "Update Test Appointment";
                 UC_ScheduleTest.LB_Operation.Location = new Point(212, -4);
+                UC_ScheduleTest.DTP_TestAppointment.Value = TestAppointments.AppointmentDate;
             }
         }
 
@@ -102,15 +103,9 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
             {
                 clsApplications_BLL RetakeTestApplication = new clsApplications_BLL();
                 SetRetakeTestApplicationInfo(ref RetakeTestApplication);
-                if (RetakeTestApplication.Save())
-                {
-                    clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text));
-                    LocalLicenseApplication.ApplicationID = RetakeTestApplication.ApplicationID;
-                    if (LocalLicenseApplication.Save())
-                    {
-                        LicenseApplication.LB_ApplicationID.Text = RetakeTestApplication.ApplicationID.ToString();
-                    }
-                }
+                
+                if (!RetakeTestApplication.Save())
+                    MessageBox.Show("The current applicant can't retake this test, Try again later", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             SetTestAppointmentsInfo();
@@ -138,8 +133,8 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
             RetakeTestApplication.ApplicantPersonID = Application.ApplicantPersonID;
 
-            RetakeTestApplication.ApplicationTypeID = 8;
-            RetakeTestApplication.PaidFees = clsApplicationTypes_BLL.Find(8).ApplicationFees;
+            RetakeTestApplication.ApplicationTypeID = 7;
+            RetakeTestApplication.PaidFees = clsApplicationTypes_BLL.Find(7).ApplicationFees;
             RetakeTestApplication.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
         }
 

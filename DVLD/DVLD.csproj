@@ -75,6 +75,12 @@
     <Compile Include="Sections\Applications\Application Types\UpdateApplication.Designer.cs">
       <DependentUpon>UpdateApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\IssueLicense_FirstTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\IssueLicense_FirstTime.Designer.cs">
+      <DependentUpon>IssueLicense_FirstTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +244,9 @@
     <EmbeddedResource Include="Sections\Applications\Application Types\UpdateApplication.resx">
       <DependentUpon>UpdateApplication.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\IssueLicense_FirstTime.resx">
+      <DependentUpon>IssueLicense_FirstTime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.resx">
       <DependentUpon>Local License.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,9 +270,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Users\Add_UpdateUser.resx">
       <DependentUpon>Add_UpdateUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Users\ChangeUserPassword.resx">
       <DependentUpon>ChangeUserPassword.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Users\UserDetails.resx">
       <DependentUpon>UserDetails.cs</DependentUpon>
@@ -273,6 +284,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\People\AddUpdatePerson.resx">
       <DependentUpon>AddUpdatePerson.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
