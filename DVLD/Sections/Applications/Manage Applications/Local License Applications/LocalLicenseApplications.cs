@@ -251,11 +251,27 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TSMI_IssueLicense_FirstTime_Click(object sender, EventArgs e)
         {
-            clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
+            clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.FindInView(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
             if (LocalLicenseApplication != null)
             {
                 IssueLicense_FirstTime issueLicense_FirstTime = new IssueLicense_FirstTime(ref LocalLicenseApplication);
                 issueLicense_FirstTime.ShowDialog();
+                RefreshLocalLicenseApplications();
+            }
+            else
+                MessageBox.Show("The selected local license application doesn't exists anymore", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void TSMI_ShowLicense_Click(object sender, EventArgs e)
+        {
+            clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.FindInView(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
+            if (LocalLicenseApplication != null)
+            {
+                clsApplications_BLL Application = clsApplications_BLL.Find(LocalLicenseApplication.ApplicationID);
+
+                LicenseInfo licenseDetails = new LicenseInfo(Application.ApplicationID, Application.ApplicantPersonID);
+                licenseDetails.ShowDialog();
+                RefreshLocalLicenseApplications();
             }
             else
                 MessageBox.Show("The selected local license application doesn't exists anymore", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
