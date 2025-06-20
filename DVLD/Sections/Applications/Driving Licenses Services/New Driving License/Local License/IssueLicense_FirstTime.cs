@@ -3,6 +3,8 @@ using DVLD.User_Controls.Applications_Section;
 using DVLD_BLL;
 using DVLD_BLL.Applications.Applications;
 using DVLD_BLL.Applications.LocalLicenseApplication;
+using DVLD_BLL.Drivers;
+using DVLD_BLL.License_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,7 +54,44 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         private void BTN_Issue_Click(object sender, EventArgs e)
         {
+            clsDrivers_BLL Driver = new clsDrivers_BLL();
+            SetDriverInfo(ref Driver);
+            if (Driver.Save())
+            {
+                clsLicense_BLL License = new clsLicense_BLL();
+                SetLicenseInfo(ref License, Driver);
+                if (License.Save())
+                {
+                    Application.ApplicationStatus = enApplicationStatus.Completed;
+                    Application.Save();
 
+                    MessageBox.Show($"The License is issued with LicenseID : {License.LicenseID}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
         }
+
+        void SetDriverInfo(ref clsDrivers_BLL Driver)
+        {
+            Driver.PersonID = Application.ApplicantPersonID;
+            Driver.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
+            Driver.CreatedDate = DateTime.Now;
+        }
+
+        void SetLicenseInfo(ref clsLicense_BLL License, clsDrivers_BLL Driver)
+        {
+            clsLicenseClasses_BLL LicenseClass = clsLicenseClasses_BLL.Find(UC_LicenseApplicationInfo.LB_LicenseClass.Text);
+            License.ApplicationID = Application.ApplicationID;
+            License.DriverID = Driver.DriverID;
+            License.LicenseClass = (byte)LicenseClass.LicenseClassID;
+            License.IssueDate = DateTime.Now;
+            License.ExpirationDate = DateTime.Now.AddYears(LicenseClass.DefaultValidityLength);
+            License.Notes = LB_Notes.Text;
+            License.PaidFees = LicenseClass.ClassFees;
+            License.IsActive = true;
+            License.IssueReason = enIssueReason.FirstTime;
+            License.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
+        }
+
     }
 }
