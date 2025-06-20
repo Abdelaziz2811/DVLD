@@ -197,7 +197,7 @@
             this.TSMI_PersonLicenseHistory});
             this.CMS_LocalLicenseApplicationsActions.Name = "CMS_PeopleHandle";
             this.CMS_LocalLicenseApplicationsActions.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.CMS_LocalLicenseApplicationsActions.Size = new System.Drawing.Size(220, 186);
+            this.CMS_LocalLicenseApplicationsActions.Size = new System.Drawing.Size(220, 208);
             this.CMS_LocalLicenseApplicationsActions.Opening += new System.ComponentModel.CancelEventHandler(this.CMS_LocalLicenseApplicationsActions_Opening);
             // 
             // TSMI_ApplicationDetails
@@ -273,6 +273,7 @@
             this.TSMI_ShowLicense.Name = "TSMI_ShowLicense";
             this.TSMI_ShowLicense.Size = new System.Drawing.Size(219, 22);
             this.TSMI_ShowLicense.Text = "Show License";
+            this.TSMI_ShowLicense.Click += new System.EventHandler(this.TSMI_ShowLicense_Click);
             // 
             // TSMI_PersonLicenseHistory
             // 
