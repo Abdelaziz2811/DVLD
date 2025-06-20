@@ -12,7 +12,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace DVLD_BLL.Applications.Applications
 {
     public enum Mode { Add, Update }
-    public enum enApplicationStatus { New = 1, Canceled, Complete }
+    public enum enApplicationStatus { New = 1, Canceled, Completed }
     public class clsApplications_BLL
     {
         public int ApplicationID { get; set; }

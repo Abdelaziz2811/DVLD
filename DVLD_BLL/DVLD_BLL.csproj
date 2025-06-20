@@ -43,10 +43,12 @@
   <ItemGroup>
     <Compile Include="Applications\Application Types\clsApplicationTypes_BLL.cs" />
     <Compile Include="Applications\Applications\clsApplications_BLL.cs" />
+    <Compile Include="Applications\LocalLicenseApplication\clsLicense_BLL.cs" />
     <Compile Include="Applications\LocalLicenseApplication\clsLocalLicenseApplication_BLL.cs" />
     <Compile Include="Applications\TestAppointments\clsTestAppointments_BLL.cs" />
     <Compile Include="Applications\TestAppointments\clsTests_BLL.cs" />
     <Compile Include="Countries\clsCountries_BLL.cs" />
+    <Compile Include="Drivers\clsDrivers_BLL.cs" />
     <Compile Include="License Classes\clsLicenseClasses_BLL.cs" />
     <Compile Include="People\clsPerson_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
