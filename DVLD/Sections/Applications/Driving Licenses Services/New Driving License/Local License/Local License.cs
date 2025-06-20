@@ -80,7 +80,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
         private void BTN_Save_Click(object sender, EventArgs e)
         {
             if (!clsLocalLicenseApplication_BLL.IsLocalLicenseApplicationExists(Application.ApplicantPersonID,
-                                        clsLicenseClasses_BLL.LicenseClassID(CB_LicenseClasses.SelectedItem.ToString())))
+                                        clsLicenseClasses_BLL.GetLicenseClassID(CB_LicenseClasses.SelectedItem.ToString())))
             {
                 if (Application.Save())
                 {
@@ -102,7 +102,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
         void SetLocalLicenseApplicationInfo(ref clsLocalLicenseApplication_BLL LocalLicenseApplication)
         {
             LocalLicenseApplication.ApplicationID = Application.ApplicationID;
-            int ClassID = clsLicenseClasses_BLL.LicenseClassID(CB_LicenseClasses.SelectedItem.ToString());
+            int ClassID = clsLicenseClasses_BLL.GetLicenseClassID(CB_LicenseClasses.SelectedItem.ToString());
             if (ClassID != 0)
                 LocalLicenseApplication.LicenseClassID = ClassID;
             else
