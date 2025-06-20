@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TB_Notes = new System.Windows.Forms.TextBox();
+            this.LB_Notes = new System.Windows.Forms.TextBox();
             this.BTN_Issue = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.UC_LicenseApplicationInfo = new DVLD.User_Controls.Applications_Section.UC_LicenseApplicationInfo();
             this.SuspendLayout();
             // 
-            // TB_Notes
+            // LB_Notes
             // 
-            this.TB_Notes.Location = new System.Drawing.Point(127, 332);
-            this.TB_Notes.Multiline = true;
-            this.TB_Notes.Name = "TB_Notes";
-            this.TB_Notes.Size = new System.Drawing.Size(667, 61);
-            this.TB_Notes.TabIndex = 55;
+            this.LB_Notes.Location = new System.Drawing.Point(127, 332);
+            this.LB_Notes.Multiline = true;
+            this.LB_Notes.Name = "LB_Notes";
+            this.LB_Notes.Size = new System.Drawing.Size(667, 61);
+            this.LB_Notes.TabIndex = 55;
             // 
             // BTN_Issue
             // 
@@ -81,7 +81,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(834, 450);
-            this.Controls.Add(this.TB_Notes);
+            this.Controls.Add(this.LB_Notes);
             this.Controls.Add(this.BTN_Issue);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UC_LicenseApplicationInfo);
@@ -99,7 +99,7 @@
         #endregion
 
         private User_Controls.Applications_Section.UC_LicenseApplicationInfo UC_LicenseApplicationInfo;
-        private System.Windows.Forms.TextBox TB_Notes;
+        private System.Windows.Forms.TextBox LB_Notes;
         public System.Windows.Forms.Button BTN_Issue;
         private System.Windows.Forms.Label label1;
     }

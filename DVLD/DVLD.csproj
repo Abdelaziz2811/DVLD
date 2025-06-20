@@ -81,6 +81,12 @@
     <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\IssueLicense_FirstTime.Designer.cs">
       <DependentUpon>IssueLicense_FirstTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\LicenseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\LicenseInfo.Designer.cs">
+      <DependentUpon>LicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,12 @@
     <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseApplicationInfo.Designer.cs">
       <DependentUpon>UC_LicenseApplicationInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseInfo.Designer.cs">
+      <DependentUpon>UC_LicenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\Applications Section\Tests\UC_ScheduleTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -246,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\IssueLicense_FirstTime.resx">
       <DependentUpon>IssueLicense_FirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\LicenseInfo.resx">
+      <DependentUpon>LicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License\Local License.resx">
       <DependentUpon>Local License.cs</DependentUpon>
@@ -305,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User_Controls\Applications Section\Local License\UC_LicenseApplicationInfo.resx">
       <DependentUpon>UC_LicenseApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Controls\Applications Section\Local License\UC_LicenseInfo.resx">
+      <DependentUpon>UC_LicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User_Controls\Applications Section\Tests\UC_ScheduleTest.resx">
       <DependentUpon>UC_ScheduleTest.cs</DependentUpon>
