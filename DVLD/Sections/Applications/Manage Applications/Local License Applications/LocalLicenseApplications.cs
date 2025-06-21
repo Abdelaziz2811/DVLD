@@ -213,7 +213,7 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TSMI_VisionTest_Click(object sender, EventArgs e)
         {
-            TestAppointments visionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.FindInView(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.VisionTest);
+            TestAppointments visionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.VisionTest);
             if (visionTestAppointments != null)
             {
                 visionTestAppointments.ShowDialog();
@@ -225,7 +225,7 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TSMI_WrittenTest_Click(object sender, EventArgs e)
         {
-            TestAppointments visionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.FindInView(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.WrittenTest);
+            TestAppointments visionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.WrittenTest);
             if (visionTestAppointments != null)
             {
                 visionTestAppointments.ShowDialog();
@@ -238,7 +238,7 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TSMI_StreetTest_Click(object sender, EventArgs e)
         {
-            TestAppointments visionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.FindInView(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.StreetTest);
+            TestAppointments visionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.StreetTest);
             if (visionTestAppointments != null)
             {
                 visionTestAppointments.ShowDialog();
@@ -251,7 +251,7 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TSMI_IssueLicense_FirstTime_Click(object sender, EventArgs e)
         {
-            clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.FindInView(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
+            clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
             if (LocalLicenseApplication != null)
             {
                 IssueLicense_FirstTime issueLicense_FirstTime = new IssueLicense_FirstTime(ref LocalLicenseApplication);
@@ -264,12 +264,10 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TSMI_ShowLicense_Click(object sender, EventArgs e)
         {
-            clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.FindInView(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
+            clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
             if (LocalLicenseApplication != null)
             {
-                clsApplications_BLL Application = clsApplications_BLL.Find(LocalLicenseApplication.ApplicationID);
-
-                LicenseInfo licenseDetails = new LicenseInfo(Application.ApplicationID, Application.ApplicantPersonID);
+                LicenseInfo licenseDetails = new LicenseInfo(LocalLicenseApplication);
                 licenseDetails.ShowDialog();
                 RefreshLocalLicenseApplications();
             }
