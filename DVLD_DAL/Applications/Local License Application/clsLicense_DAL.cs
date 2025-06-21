@@ -51,21 +51,11 @@ namespace DVLD_DAL.Applications.Local_License_Application
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
             string query = @"SELECT * FROM Licenses
-                             WHERE LicenseID = @LicenseID";
+                             WHERE ApplicationID = @ApplicationID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@LicenseID", LicenseID);
             command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
-            command.Parameters.AddWithValue("@DriverID", DriverID);
-            command.Parameters.AddWithValue("@LicenseClass", LicenseClass);
-            command.Parameters.AddWithValue("@IssueDate", IssueDate);
-            command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
-            command.Parameters.AddWithValue("@Notes", Notes);
-            command.Parameters.AddWithValue("@PaidFees", PaidFees);
-            command.Parameters.AddWithValue("@IsActive", IsActive);
-            command.Parameters.AddWithValue("@IssueReason", IssueReason); 
-            command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
             bool IsFound = false;
 
@@ -78,6 +68,7 @@ namespace DVLD_DAL.Applications.Local_License_Application
                 if (Reader.Read())
                 {
                     IsFound = true;
+                    LicenseID = (int)Reader["LicenseID"];
                     ApplicationID = (int)Reader["ApplicationID"];
                     DriverID = (int)Reader["DriverID"];
                     LicenseClass = (byte)Reader["LicenseClass"];
