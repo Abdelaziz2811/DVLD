@@ -22,6 +22,9 @@ namespace DVLD
             this.Person = Person;
         }
 
+        public delegate void LicenseDetails_LoadPersonInfo(clsPerson_BLL Person);
+        public event LicenseDetails_LoadPersonInfo LoadPersonInfo;
+
         private void PersonDetails_Load(object sender, EventArgs e)
         {
             GetPersonDetails();
@@ -29,20 +32,25 @@ namespace DVLD
 
         public void GetPersonDetails()
         {
-            Person_Info.LB_Name.Text = Person.FirstName + " " + Person.SecondName + " " + Person.ThirdName + " " + Person.LastName;
-            Person_Info.LB_PersonID.Text = Person.PersonID.ToString();
-            Person_Info.LB_NationalNo.Text = Person.NationalNo;
-            Person_Info.LB_Gender.Text = Person.Gender.ToString();
-            Person_Info.LB_BirthDate.Text = Person.BirthDate.ToString("yyyy/MM/dd");
-            Person_Info.LB_Email.Text = Person.Email;
-            Person_Info.LB_Phone.Text = Person.Phone;
-            Person_Info.LB_Address.Text = Person.Address;
-            Person_Info.LB_Country.Text = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
+            UC_Person_Info.LB_Name.Text = Person.FirstName + " " + Person.SecondName + " " + Person.ThirdName + " " + Person.LastName;
+            UC_Person_Info.LB_PersonID.Text = Person.PersonID.ToString();
+            UC_Person_Info.LB_NationalNo.Text = Person.NationalNo;
+            UC_Person_Info.LB_Gender.Text = Person.Gender.ToString();
+            UC_Person_Info.LB_BirthDate.Text = Person.BirthDate.ToString("d");
+            UC_Person_Info.LB_Email.Text = Person.Email;
+            UC_Person_Info.LB_Phone.Text = Person.Phone;
+            UC_Person_Info.LB_Address.Text = Person.Address;
+            UC_Person_Info.LB_Country.Text = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
 
-            if (Person.ImagePath != string.Empty)
-            {
-                Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
-            }
+            if (Person.ImagePath != null)
+                UC_Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
+            else
+                UC_Person_Info.PB_PersonImage.Image = null;
+        }
+
+        private void PersonDetails_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoadPersonInfo?.Invoke(Person);
         }
     }
 }

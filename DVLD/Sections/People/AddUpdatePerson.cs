@@ -67,7 +67,7 @@ namespace DVLD
 
             Add_UpdatePerson.CB_Countries.SelectedItem = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
 
-            if (Person.ImagePath != string.Empty)
+            if (Person.ImagePath != null)
                 Add_UpdatePerson.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
 
             Add_UpdatePerson.TXTB_NationalNo.Text = Person.NationalNo;
