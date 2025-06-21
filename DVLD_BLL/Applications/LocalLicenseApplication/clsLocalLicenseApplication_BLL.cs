@@ -15,7 +15,6 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
         public int LocalDrivingLicenseApplicationID {  get; set; }
         public int ApplicationID { get; set; }
         public int LicenseClassID { get; set; }
-
         public string ClassName { get; set; }
         public string NationalNo { get; set; }
         public string FullName { get; set; }
@@ -32,18 +31,12 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             Mode = enLocalLicenseApplicationMode.Add;
         }
 
-        clsLocalLicenseApplication_BLL(int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID)
+        clsLocalLicenseApplication_BLL(int LocalDrivingLicenseApplicationID, int ApplicationID, int LicenseClassID, string ClassName,
+                                   string NationalNo, string FullName, DateTime ApplicationDate, int PassedTestCount, string Status)
         {
             this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.ApplicationID = ApplicationID;
             this.LicenseClassID = LicenseClassID;
-            Mode = enLocalLicenseApplicationMode.Update;
-        }
-
-        clsLocalLicenseApplication_BLL(int LocalDrivingLicenseApplicationID, string ClassName, string NationalNo, string FullName,
-            DateTime ApplicationDate, int PassedTestCount, string Status)
-        {
-            this.LocalDrivingLicenseApplicationID = LocalDrivingLicenseApplicationID;
             this.ClassName = ClassName;
             this.NationalNo = NationalNo;
             this.FullName = FullName;
@@ -77,8 +70,10 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             return clsLocalLicenseApplication_DAL.GetLocalLicenseApplications();
         }
 
-        public static clsLocalLicenseApplication_BLL FindInView(int LocalDrivingLicenseApplicationID)
+        public static clsLocalLicenseApplication_BLL Find(int LocalDrivingLicenseApplicationID)
         {
+            int ApplicationID = 0;
+            int LicenseClassID = 0;
             string ClassName = string.Empty;
             string NationalNo = string.Empty;
             string FullName = string.Empty;
@@ -86,23 +81,12 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             int PassedTestCount = 0;
             string Status = string.Empty;
 
-            if (clsLocalLicenseApplication_DAL.FindInView(LocalDrivingLicenseApplicationID, ref ClassName, ref NationalNo, ref FullName,
+            if (clsLocalLicenseApplication_DAL.Find(LocalDrivingLicenseApplicationID, ref ApplicationID, ref LicenseClassID)
+                && clsLocalLicenseApplication_DAL.FindInView(LocalDrivingLicenseApplicationID, ref ClassName, ref NationalNo, ref FullName,
                     ref ApplicationDate, ref PassedTestCount, ref Status))
             {
-                return new clsLocalLicenseApplication_BLL(LocalDrivingLicenseApplicationID, ClassName, NationalNo, FullName,
+                return new clsLocalLicenseApplication_BLL(LocalDrivingLicenseApplicationID, ApplicationID, LicenseClassID, ClassName, NationalNo, FullName,
                             ApplicationDate, PassedTestCount, Status);
-            }
-            else return null;
-        }
-
-        public static clsLocalLicenseApplication_BLL Find(int LocalDrivingLicenseApplicationID)
-        {
-            int ApplicationID = 0;
-            int LicenseClassID = 0;
-
-            if (clsLocalLicenseApplication_DAL.Find(LocalDrivingLicenseApplicationID, ref ApplicationID, ref LicenseClassID))
-            {
-                return new clsLocalLicenseApplication_BLL(LocalDrivingLicenseApplicationID, ApplicationID, LicenseClassID);
             }
             else return null;
         }
