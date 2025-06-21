@@ -58,9 +58,9 @@ namespace DVLD.User_Controls
             LB_Country.Text = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
 
             if (Person.ImagePath != string.Empty)
-            {
                 PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
-            }
+            else
+                PB_PersonImage.Image = null;
         }
     }
 }

@@ -46,7 +46,7 @@
             this.GB_Search.Controls.Add(this.TXTB_SearchBox);
             this.GB_Search.Controls.Add(this.CB_FindBy);
             this.GB_Search.Controls.Add(this.label4);
-            this.GB_Search.Location = new System.Drawing.Point(3, 3);
+            this.GB_Search.Location = new System.Drawing.Point(3, 0);
             this.GB_Search.Name = "GB_Search";
             this.GB_Search.Size = new System.Drawing.Size(645, 81);
             this.GB_Search.TabIndex = 1;
@@ -116,9 +116,9 @@
             // Person_Info
             // 
             this.Person_Info.BackColor = System.Drawing.SystemColors.Window;
-            this.Person_Info.Location = new System.Drawing.Point(0, 90);
+            this.Person_Info.Location = new System.Drawing.Point(3, 86);
             this.Person_Info.Name = "Person_Info";
-            this.Person_Info.Size = new System.Drawing.Size(651, 297);
+            this.Person_Info.Size = new System.Drawing.Size(658, 297);
             this.Person_Info.TabIndex = 0;
             // 
             // UC_Person_Selector
@@ -129,7 +129,7 @@
             this.Controls.Add(this.GB_Search);
             this.Controls.Add(this.Person_Info);
             this.Name = "UC_Person_Selector";
-            this.Size = new System.Drawing.Size(651, 386);
+            this.Size = new System.Drawing.Size(660, 382);
             this.Load += new System.EventHandler(this.UC_Person_Selector_Load);
             this.GB_Search.ResumeLayout(false);
             this.GB_Search.PerformLayout();
