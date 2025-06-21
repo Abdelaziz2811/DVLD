@@ -11,7 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace DVLD_BLL.Applications.LocalLicenseApplication
 {
     public enum enMode { Add, Update }
-    public enum enIssueReason { FirstTime = 1 }
+    public enum enIssueReason { First_Time = 1 }
     public class clsLicense_BLL
     {
         public int LicenseID { get; set; }
@@ -37,7 +37,7 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             Notes = string.Empty;
             PaidFees = 0;
             IsActive = true;
-            IssueReason = enIssueReason.FirstTime;
+            IssueReason = enIssueReason.First_Time;
             CreatedByUserID = 0;
             Mode = enMode.Add;
         }
