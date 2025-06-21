@@ -33,7 +33,6 @@
             this.TC_UserInfo = new System.Windows.Forms.TabControl();
             this.TP_PersonalInfo = new System.Windows.Forms.TabPage();
             this.BTN_NextToLoginInfo = new System.Windows.Forms.Button();
-            this.Person_Selector = new DVLD.User_Controls.UC_Person_Selector();
             this.TP_LoginInfo = new System.Windows.Forms.TabPage();
             this.BTN_Save = new System.Windows.Forms.Button();
             this.CB_IsActive = new System.Windows.Forms.CheckBox();
@@ -46,6 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TB_UserName = new System.Windows.Forms.TextBox();
             this.EP_UserLoginInfoValidation = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Person_Selector = new DVLD.User_Controls.UC_Person_Selector();
             this.TC_UserInfo.SuspendLayout();
             this.TP_PersonalInfo.SuspendLayout();
             this.TP_LoginInfo.SuspendLayout();
@@ -91,14 +91,6 @@
             this.BTN_NextToLoginInfo.Text = "Next";
             this.BTN_NextToLoginInfo.UseVisualStyleBackColor = false;
             this.BTN_NextToLoginInfo.Click += new System.EventHandler(this.BTN_NextToLoginInfo_Click);
-            // 
-            // Person_Selector
-            // 
-            this.Person_Selector.BackColor = System.Drawing.SystemColors.Window;
-            this.Person_Selector.Location = new System.Drawing.Point(24, 16);
-            this.Person_Selector.Name = "Person_Selector";
-            this.Person_Selector.Size = new System.Drawing.Size(651, 386);
-            this.Person_Selector.TabIndex = 23;
             // 
             // TP_LoginInfo
             // 
@@ -228,6 +220,14 @@
             this.EP_UserLoginInfoValidation.BlinkRate = 1;
             this.EP_UserLoginInfoValidation.ContainerControl = this;
             this.EP_UserLoginInfoValidation.Icon = ((System.Drawing.Icon)(resources.GetObject("EP_UserLoginInfoValidation.Icon")));
+            // 
+            // Person_Selector
+            // 
+            this.Person_Selector.BackColor = System.Drawing.SystemColors.Window;
+            this.Person_Selector.Location = new System.Drawing.Point(24, 16);
+            this.Person_Selector.Name = "Person_Selector";
+            this.Person_Selector.Size = new System.Drawing.Size(651, 386);
+            this.Person_Selector.TabIndex = 23;
             // 
             // UC_Add_UpdateUser
             // 
