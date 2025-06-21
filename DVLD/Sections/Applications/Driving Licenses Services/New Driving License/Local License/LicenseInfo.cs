@@ -29,19 +29,32 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         private void LicenseInfo_Load(object sender, EventArgs e)
         {
+            LoadLicenseInfo();
+        }
+
+        void LoadLicenseInfo()
+        {
             UC_LicenseInfo.LB_Class.Text = LocalLicenseApplication.ClassName;
-            UC_LicenseInfo.LB_Name.Text = Person.FirstName + ' ' + Person.SecondName + ' ' + Person.ThirdName + ' ' + Person.LastName;
+            UC_LicenseInfo.LB_Name.Text = LocalLicenseApplication.FullName;
             UC_LicenseInfo.LB_IssueDate.Text = License.IssueDate.ToString("d");
             UC_LicenseInfo.LB_ExpirationDate.Text = License.ExpirationDate.ToString("d");
             UC_LicenseInfo.LB_LicenseID.Text = License.LicenseID.ToString();
             //UC_LicenseInfo.LB_Detained.Text = //...
-            //UC_LicenseInfo.LB_IssueReason.Text = //..
-            UC_LicenseInfo.LB_Notes.Text = License.Notes;
+            UC_LicenseInfo.LB_IssueReason.Text = License.IssueReason.ToString();
+
+            if (License.Notes != null)
+                UC_LicenseInfo.LB_Notes.Text = License.Notes;
+            else
+                UC_LicenseInfo.LB_Notes.Text = "No notes";
+
             UC_LicenseInfo.LB_DriverID.Text = License.DriverID.ToString();
             UC_LicenseInfo.LB_NationalNo.Text = Person.NationalNo;
             UC_LicenseInfo.LB_Gender.Text = Person.Gender.ToString();
             UC_LicenseInfo.LB_BirthDate.Text = Person.BirthDate.ToString("d");
-            //UC_LicenseInfo.LB_Active.Text = //..
+            UC_LicenseInfo.LB_Active.Text = License.IsActive.ToString();
+
+            if (Person.ImagePath != null)
+                UC_LicenseInfo.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
         }
     }
 }
