@@ -89,7 +89,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
             License.Notes = LB_Notes.Text;
             License.PaidFees = LicenseClass.ClassFees;
             License.IsActive = true;
-            License.IssueReason = enIssueReason.FirstTime;
+            License.IssueReason = enIssueReason.First_Time;
             License.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
         }
 
