@@ -78,7 +78,7 @@ namespace DVLD_DAL
                     Phone = Reader["Phone"].ToString();
                     Email = Reader["Email"].ToString();
                     NationalityCountryID = (int)Reader["NationalityCountryID"];
-                    ImagePath = Reader["ImagePath"].ToString();
+                    ImagePath = Reader["ImagePath"] != DBNull.Value ? Reader["ImagePath"].ToString() : null;
                 }
             }
             catch (Exception e)
@@ -127,7 +127,7 @@ namespace DVLD_DAL
                     Phone = Reader["Phone"].ToString();
                     Email = Reader["Email"].ToString();
                     NationalityCountryID = (int)Reader["NationalityCountryID"];
-                    ImagePath = Reader["ImagePath"].ToString();
+                    ImagePath = Reader["ImagePath"] != DBNull.Value ? Reader["ImagePath"].ToString() : null;
                 }
             }
             catch (Exception e)
@@ -173,7 +173,7 @@ namespace DVLD_DAL
                     Phone = Reader["Phone"].ToString();
                     Email = Reader["Email"].ToString();
                     NationalityCountryID = (int)Reader["NationalityCountryID"];
-                    ImagePath = Reader["ImagePath"].ToString();
+                    ImagePath = Reader["ImagePath"] != DBNull.Value ? Reader["ImagePath"].ToString() : null;
                 }
             }
             catch (Exception e)
@@ -222,7 +222,11 @@ namespace DVLD_DAL
             command.Parameters.AddWithValue("@Phone", Phone);
             command.Parameters.AddWithValue("@Email", Email);
             command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
-            command.Parameters.AddWithValue("@ImagePath", ImagePath);
+
+            if (ImagePath != string.Empty)
+                command.Parameters.AddWithValue("@ImagePath", ImagePath);
+            else
+                command.Parameters.AddWithValue("@ImagePath", DBNull.Value);
 
             int PersonID = -1;
 
@@ -282,7 +286,11 @@ namespace DVLD_DAL
             command.Parameters.AddWithValue("@Phone", Phone);
             command.Parameters.AddWithValue("@Email", Email);
             command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
-            command.Parameters.AddWithValue("@ImagePath", ImagePath);
+           
+            if (ImagePath != string.Empty)
+                command.Parameters.AddWithValue("@ImagePath", ImagePath);
+            else
+                command.Parameters.AddWithValue("@ImagePath", DBNull.Value);
 
             int RowsAffected = 0;
 
