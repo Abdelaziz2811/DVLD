@@ -78,7 +78,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(2, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(647, 294);
+            this.groupBox1.Size = new System.Drawing.Size(642, 294);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Person Information";
@@ -296,7 +296,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Controls.Add(this.groupBox1);
             this.Name = "UC_Person_Info";
-            this.Size = new System.Drawing.Size(651, 297);
+            this.Size = new System.Drawing.Size(647, 297);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB_PersonImage)).EndInit();
