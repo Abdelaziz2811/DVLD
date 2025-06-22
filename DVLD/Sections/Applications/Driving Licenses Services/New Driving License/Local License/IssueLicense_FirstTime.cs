@@ -21,11 +21,13 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
     {
         clsLocalLicenseApplication_BLL LocalLicenseApplication;
         clsApplications_BLL Application;
+        clsPerson_BLL Person;
         public IssueLicense_FirstTime(ref clsLocalLicenseApplication_BLL LocalLicenseApplication)
         {
             InitializeComponent();
             this.LocalLicenseApplication = LocalLicenseApplication;
             this.Application = clsApplications_BLL.Find(clsLocalLicenseApplication_BLL.Find(LocalLicenseApplication.LocalDrivingLicenseApplicationID).ApplicationID);
+            this.Person = clsPerson_BLL.Find(Application.ApplicantPersonID);
         }
 
         private void IssueLicense_FirstTime_Load(object sender, EventArgs e)
@@ -44,8 +46,6 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
             UC_LicenseApplicationInfo.LB_ApplicationFees.Text = Application.PaidFees.ToString("C2");
             UC_LicenseApplicationInfo.LB_ApplicationType.Text = clsApplicationTypes_BLL.Find(Application.ApplicationTypeID).ApplicationTypeTitle;
 
-            clsPerson_BLL Person = clsPerson_BLL.Find(Application.ApplicantPersonID);
-
             UC_LicenseApplicationInfo.LB_ApplicantName.Text = Person.FirstName + " " + Person.SecondName + " " + Person.ThirdName + " " + Person.LastName;
             UC_LicenseApplicationInfo.LB_ApplicationDate.Text = Application.ApplicationDate.ToString("MM/dd/yyyy");
             UC_LicenseApplicationInfo.LB_LastStatusDate.Text = Application.LastStatusDate.ToString("MM/dd/yyyy");
@@ -54,20 +54,25 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         private void BTN_Issue_Click(object sender, EventArgs e)
         {
-            clsDrivers_BLL Driver = new clsDrivers_BLL();
-            SetDriverInfo(ref Driver);
-            if (Driver.Save())
+            clsDrivers_BLL Driver;
+            if (!clsDrivers_BLL.IsExists(Person.PersonID))
             {
-                clsLicense_BLL License = new clsLicense_BLL();
-                SetLicenseInfo(ref License, Driver);
-                if (License.Save())
-                {
-                    Application.ApplicationStatus = enApplicationStatus.Completed;
-                    Application.Save();
+                Driver = new clsDrivers_BLL();
+                SetDriverInfo(ref Driver);
+                Driver.Save();
+            }
+            else
+                Driver = clsDrivers_BLL.Find(Person.PersonID);
 
-                    MessageBox.Show($"The License is issued with LicenseID : {License.LicenseID}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
+            clsLicense_BLL License = new clsLicense_BLL();
+            SetLicenseInfo(ref License, Driver);
+            if (License.Save())
+            {
+                Application.ApplicationStatus = enApplicationStatus.Completed;
+                Application.Save();
+
+                MessageBox.Show($"The License is issued with LicenseID : {License.LicenseID}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
         }
 
