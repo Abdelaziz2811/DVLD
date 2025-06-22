@@ -10,15 +10,13 @@ namespace DVLD_DAL.Drivers
 {
     public static class clsDrivers_DAL
     {
-        public static DataTable LoadTestAppointments(int DriverID)
+        public static DataTable LoadDrivers(int DriverID)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
             string query = @"SELECT * FROM Drivers;";
 
             SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@DriverID", DriverID);
 
             DataTable DTDrivers = new DataTable();
 
@@ -43,48 +41,44 @@ namespace DVLD_DAL.Drivers
             return DTDrivers;
         }
 
-        //public static bool Find(int TestAppointmentID, ref int TestTypeID, ref int LocalDrivingLicenseApplicationID, ref DateTime AppointmentDate
-        //    , ref decimal PaidFees, ref int CreatedByUserID, ref bool IsLocked)
-        //{
-        //    SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+        public static bool Find(ref int DriverID, int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
-        //    string query = @"SELECT * FROM TestAppointments
-        //                     WHERE TestAppointmentID = @TestAppointmentID";
+            string query = @"SELECT * FROM Drivers
+                             WHERE PersonID = @PersonID";
 
-        //    SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand command = new SqlCommand(query, connection);
 
-        //    command.Parameters.AddWithValue("@TestAppointmentID", TestAppointmentID);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
 
-        //    bool IsFound = false;
+            bool IsFound = false;
 
-        //    try
-        //    {
-        //        connection.Open();
+            try
+            {
+                connection.Open();
 
-        //        SqlDataReader Reader = command.ExecuteReader();
+                SqlDataReader Reader = command.ExecuteReader();
 
-        //        if (Reader.Read())
-        //        {
-        //            IsFound = true;
-        //            TestTypeID = (int)Reader["TestTypeID"];
-        //            LocalDrivingLicenseApplicationID = (int)Reader["LocalDrivingLicenseApplicationID"];
-        //            AppointmentDate = (DateTime)Reader["AppointmentDate"];
-        //            PaidFees = (decimal)Reader["PaidFees"];
-        //            CreatedByUserID = (int)Reader["CreatedByUserID"];
-        //            IsLocked = (bool)Reader["IsLocked"];
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
+                if (Reader.Read())
+                {
+                    IsFound = true;
+                    DriverID = (int)Reader["DriverID"];
+                    CreatedByUserID = (int)Reader["CreatedByUserID"];
+                    CreatedDate = (DateTime)Reader["CreatedDate"];
+                }
+            }
+            catch (Exception e)
+            {
 
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
+            }
+            finally
+            {
+                connection.Close();
+            }
 
-        //    return IsFound;
-        //}
+            return IsFound;
+        }
 
         public static int Add(int PersonID, int CreatedByUserID, DateTime CreatedDate)
         {
@@ -164,5 +158,36 @@ namespace DVLD_DAL.Drivers
             return RowsAffected > 0;
         }
 
+        public static bool IsExists(int PersonID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT DriverID FROM Drivers
+                             WHERE PersonID = @PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            bool Exists = false;
+
+            try
+            {
+                connection.Open();
+
+                object obj = command.ExecuteScalar();
+                if (obj != null) Exists = true;
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return Exists;
+        }
     }
 }
