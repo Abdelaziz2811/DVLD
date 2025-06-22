@@ -90,6 +90,41 @@ namespace DVLD_DAL.Applications.TestAppointments
             return IsFound;
         }
 
+        public static DateTime TestAppointmentDate(int LocalDrivingLicenseApplicationID, byte TestType)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT AppointmentDate FROM TestAppointments
+                             WHERE TestTypeID = @TestTypeID AND LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@TestType", TestType);
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            DateTime AppointmentDate = DateTime.Now;
+
+            try
+            {
+                connection.Open();
+
+                object obj = command.ExecuteScalar();
+
+                if (obj != null)
+                    AppointmentDate = Convert.ToDateTime(obj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return AppointmentDate;
+        }
+
         public static int Add(int TestTypeID, int LocalDrivingLicenseApplicationID, DateTime AppointmentDate
             , decimal PaidFees, int CreatedByUserID, bool IsLocked)
         {
@@ -182,7 +217,7 @@ namespace DVLD_DAL.Applications.TestAppointments
             return RowsAffected > 0;
         }
        
-        public static bool Exists(byte TestType, int LocalDrivingLicenseID)
+        public static bool IsExists(byte TestType, int LocalDrivingLicenseID)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
@@ -194,7 +229,7 @@ namespace DVLD_DAL.Applications.TestAppointments
             command.Parameters.AddWithValue("@TestType", TestType);
             command.Parameters.AddWithValue("@LocalDrivingLicenseID", LocalDrivingLicenseID);
 
-            bool IsFound = false;
+            bool Exists = false;
 
             try
             {
@@ -203,7 +238,7 @@ namespace DVLD_DAL.Applications.TestAppointments
                 object Result = command.ExecuteScalar();
 
                 if (Result != null)
-                    IsFound = true;
+                    Exists = true;
             }
             catch (Exception e)
             {
@@ -214,7 +249,7 @@ namespace DVLD_DAL.Applications.TestAppointments
                 connection.Close();
             }
 
-            return IsFound;
+            return Exists;
         }
 
         public static int TrialCount(byte TestType, int LocalDrivingLicenseID)

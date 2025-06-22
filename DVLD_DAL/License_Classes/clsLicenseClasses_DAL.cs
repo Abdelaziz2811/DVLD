@@ -42,7 +42,7 @@ namespace DVLD_DAL.License_Classes
             return DTLicenseClasses;
         }
 
-        public static bool Find(ref int LicenseClassID, string ClassName, ref string ClassDescription, ref byte MinimumAllowedAge,
+        public static bool Find(ref byte LicenseClassID, string ClassName, ref string ClassDescription, ref byte MinimumAllowedAge,
                                 ref byte DefaultValidityLength, ref decimal ClassFees)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
@@ -65,7 +65,7 @@ namespace DVLD_DAL.License_Classes
                 if (Reader.Read())
                 {
                     IsFound = true;
-                    LicenseClassID = (int)Reader["LicenseClassID"];
+                    LicenseClassID = (byte)Reader["LicenseClassID"];
                     ClassDescription = Reader["ClassDescription"].ToString();
                     MinimumAllowedAge = (byte)Reader["MinimumAllowedAge"];
                     DefaultValidityLength = (byte)Reader["DefaultValidityLength"];

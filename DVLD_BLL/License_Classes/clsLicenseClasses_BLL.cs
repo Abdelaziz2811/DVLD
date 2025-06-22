@@ -11,14 +11,14 @@ namespace DVLD_BLL.License_Classes
 {
     public class clsLicenseClasses_BLL
     {
-        public int LicenseClassID {  get; set; }
+        public byte LicenseClassID {  get; set; }
         public string ClassName { get; set; }
         public string ClassDescription { get; set; }
         public byte MinimumAllowedAge { get; set; }
         public byte DefaultValidityLength { get; set; }
         public decimal ClassFees { get; set; }
 
-        private clsLicenseClasses_BLL(int LicenseClassID, string ClassName, string ClassDescription,
+        private clsLicenseClasses_BLL(byte LicenseClassID, string ClassName, string ClassDescription,
                                       byte MinimumAllowedAge, byte DefaultValidityLength, decimal ClassFees)
         {
             this.LicenseClassID = LicenseClassID;
@@ -36,7 +36,7 @@ namespace DVLD_BLL.License_Classes
 
         public static clsLicenseClasses_BLL Find(string ClassName)
         {
-            int LicenseClassID = 0;
+            byte LicenseClassID = 0;
             string ClassDescription = string.Empty;
             byte MinimumAllowedAge = 0;
             byte DefaultValidityLength = 0;

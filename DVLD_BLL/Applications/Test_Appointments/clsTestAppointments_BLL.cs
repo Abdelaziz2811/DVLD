@@ -89,9 +89,14 @@ namespace DVLD_BLL.Applications.TestAppointments
             return null;
         }
 
+        public static DateTime TestAppointmentDate(int LocalLicenseAppID, enTestType TestType)
+        {
+            return clsTestAppointments_DAL.TestAppointmentDate(LocalLicenseAppID, (byte)TestType);
+        }
+
         public static bool Exists(enTestType TestType, int LocalDrivingLicenseID)
         {
-            return clsTestAppointments_DAL.Exists((byte)TestType, LocalDrivingLicenseID);
+            return clsTestAppointments_DAL.IsExists((byte)TestType, LocalDrivingLicenseID);
         }
 
         public static int TrialCount(enTestType TestType, int LocalDrivingLicenseID)
