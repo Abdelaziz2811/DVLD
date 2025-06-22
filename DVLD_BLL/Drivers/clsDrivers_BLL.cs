@@ -27,10 +27,14 @@ namespace DVLD_BLL.Drivers
             Mode = enMode.Add;
         }
 
-        //private clsDrivers_BLL()
-        //{
-
-        //}
+        private clsDrivers_BLL(int DriverID, int PersonID, int CreatedByUserID, DateTime CreatedDate)
+        {
+            this.DriverID = DriverID;
+            this.PersonID = PersonID;
+            this.CreatedByUserID = CreatedByUserID;
+            this.CreatedDate = CreatedDate;
+            Mode = enMode.Add;
+        }
 
         private bool _Add()
         {
@@ -50,6 +54,23 @@ namespace DVLD_BLL.Drivers
                 return _Add();
 
             return _Update();
+        }
+
+        public static clsDrivers_BLL Find(int PersonID)
+        {
+            int DriverID = 0;
+            int CreatedByUserID = 0;
+            DateTime CreatedDate = DateTime.Now;
+            if (clsDrivers_DAL.Find(ref DriverID, PersonID, ref CreatedByUserID, ref CreatedDate))
+            {
+                return new clsDrivers_BLL(DriverID, PersonID, CreatedByUserID, CreatedDate);
+            }
+            return null;
+        }
+
+        public static bool IsExists(int PersonID)
+        {
+            return clsDrivers_DAL.IsExists(PersonID);
         }
     }
 }
