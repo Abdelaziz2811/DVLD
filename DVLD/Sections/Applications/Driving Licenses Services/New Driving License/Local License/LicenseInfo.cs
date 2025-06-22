@@ -1,4 +1,5 @@
 ﻿using DVLD_BLL;
+using DVLD_BLL.Applications.Licenses;
 using DVLD_BLL.Applications.LocalLicenseApplication;
 using DVLD_BLL.License_Classes;
 using System;
@@ -39,7 +40,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
             UC_LicenseInfo.LB_IssueDate.Text = License.IssueDate.ToString("d");
             UC_LicenseInfo.LB_ExpirationDate.Text = License.ExpirationDate.ToString("d");
             UC_LicenseInfo.LB_LicenseID.Text = License.LicenseID.ToString();
-            //UC_LicenseInfo.LB_Detained.Text = //...
+            UC_LicenseInfo.LB_Detained.Text = clsDetainedLicenses_BLL.IsExists(License.LicenseID).ToString();
             UC_LicenseInfo.LB_IssueReason.Text = License.IssueReason.ToString();
 
             if (License.Notes != null)
