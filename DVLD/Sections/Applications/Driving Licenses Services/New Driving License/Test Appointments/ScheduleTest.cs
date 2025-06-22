@@ -44,7 +44,18 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         void SetDTPMinDate()
         {
-            UC_ScheduleTest.DTP_TestAppointment.MinDate = DateTime.Now;
+            switch (TestType)
+            {
+                case enTestType.VisionTest:
+                    UC_ScheduleTest.DTP_TestAppointment.MinDate = Convert.ToDateTime(LicenseApplication.LB_ApplicationDate.Text).AddDays(2);
+                    break;
+                case enTestType.WrittenTest:
+                    UC_ScheduleTest.DTP_TestAppointment.MinDate = clsTestAppointments_BLL.TestAppointmentDate(Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text), enTestType.VisionTest).AddDays(5);
+                    break;
+                case enTestType.StreetTest:
+                    UC_ScheduleTest.DTP_TestAppointment.MinDate = clsTestAppointments_BLL.TestAppointmentDate(Convert.ToInt32(LicenseApplication.LB_LDLAppID.Text), enTestType.WrittenTest).AddDays(10);
+                    break;
+            }
         }
 
         void LoadTestAppointmentInfo()
