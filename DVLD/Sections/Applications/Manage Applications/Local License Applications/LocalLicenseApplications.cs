@@ -213,10 +213,10 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TSMI_VisionTest_Click(object sender, EventArgs e)
         {
-            TestAppointments visionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.VisionTest);
-            if (visionTestAppointments != null)
+            TestAppointments VisionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.VisionTest);
+            if (VisionTestAppointments != null)
             {
-                visionTestAppointments.ShowDialog();
+                VisionTestAppointments.ShowDialog();
                 RefreshLocalLicenseApplications();
             }
             else
@@ -225,10 +225,10 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TSMI_WrittenTest_Click(object sender, EventArgs e)
         {
-            TestAppointments visionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.WrittenTest);
-            if (visionTestAppointments != null)
+            TestAppointments WrittenTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.WrittenTest);
+            if (WrittenTestAppointments != null)
             {
-                visionTestAppointments.ShowDialog();
+                WrittenTestAppointments.ShowDialog();
                 RefreshLocalLicenseApplications();
             }
             else
@@ -238,10 +238,10 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TSMI_StreetTest_Click(object sender, EventArgs e)
         {
-            TestAppointments visionTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.StreetTest);
-            if (visionTestAppointments != null)
+            TestAppointments StreetTestAppointments = new TestAppointments(clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value)), enTestType.StreetTest);
+            if (StreetTestAppointments != null)
             {
-                visionTestAppointments.ShowDialog();
+                StreetTestAppointments.ShowDialog();
                 RefreshLocalLicenseApplications();
             }
             else
