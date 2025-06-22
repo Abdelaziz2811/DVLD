@@ -149,6 +149,13 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
             if (TestAppointments != null)
             {
+                if (DateTime.Now < TestAppointments.AppointmentDate)
+                {
+                    MessageBox.Show($"You cannot proceed with this test. The scheduled appointment date is on [{TestAppointments.AppointmentDate.ToString("d")}]." +
+                        $"Please wait until the valid date", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (TestAppointments.IsLocked)
                     MessageBox.Show("The current Test already taken!. Schedule another appointment to take the test again in case the applicant has been failled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
