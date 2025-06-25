@@ -91,6 +91,11 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             else return null;
         }
 
+        public static bool Delete(int LocalDrivingLicenseApplicationID)
+        {
+            return clsLocalLicenseApplication_DAL.Delete(LocalDrivingLicenseApplicationID);
+        }
+
         public static bool IsLocalLicenseApplicationExists(int ApplicantID, int ClassID)
         {
             return clsLocalLicenseApplication_DAL.IsLocalLicenseApplicationExists(ApplicantID, ClassID);
