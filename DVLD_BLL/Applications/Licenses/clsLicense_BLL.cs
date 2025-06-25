@@ -3,6 +3,7 @@ using DVLD_BLL.Users;
 using DVLD_DAL.Applications.Local_License_Application;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,6 +101,11 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
                 return _Add();
 
             return _Update();
+        }
+
+        public static DataTable LoadLicensesHistory(int PersonID)
+        {
+            return clsLicense_DAL.LoadLicensesHistory(PersonID);
         }
     }
 }
