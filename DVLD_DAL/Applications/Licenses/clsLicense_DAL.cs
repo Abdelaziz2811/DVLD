@@ -12,17 +12,20 @@ namespace DVLD_DAL.Applications.Local_License_Application
 {
     public static class clsLicense_DAL
     {
-        public static DataTable LoadTestAppointments(int LicenseID)
+        public static DataTable LoadLicensesHistory(int PersonID)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
-            string query = @"SELECT * FROM Licenses;";
+            string query = @"SELECT LicenseID, ApplicationID, LicenseClasses.ClassName, IssueDate, ExpirationDate, IsActive FROM Licenses
+                             INNER JOIN Drivers ON Drivers.DriverID = Licenses.DriverID
+                             INNER JOIN LicenseClasses ON LicenseClasses.LicenseClassID = Licenses.LicenseClass
+                                 WHERE Drivers.PersonID = @PersonID;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+            command.Parameters.AddWithValue("@PersonID", PersonID);
 
-            DataTable DTLicenseClasses = new DataTable();
+            DataTable DTLicenses = new DataTable();
 
             try
             {
@@ -31,7 +34,7 @@ namespace DVLD_DAL.Applications.Local_License_Application
                 SqlDataReader Reader = command.ExecuteReader();
 
                 if (Reader.HasRows)
-                    DTLicenseClasses.Load(Reader);
+                    DTLicenses.Load(Reader);
             }
             catch (Exception e)
             {
@@ -42,7 +45,7 @@ namespace DVLD_DAL.Applications.Local_License_Application
                 connection.Close();
             }
 
-            return DTLicenseClasses;
+            return DTLicenses;
         }
 
         public static bool Find(ref int LicenseID, int ApplicationID, ref int DriverID, ref byte LicenseClass
