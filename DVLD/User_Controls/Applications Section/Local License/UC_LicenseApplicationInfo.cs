@@ -23,11 +23,14 @@ namespace DVLD.User_Controls.Applications_Section
             if (!string.IsNullOrWhiteSpace(LB_ApplicantName.Text) || LB_ApplicantName.Text != "--")
             {
                 clsPerson_BLL Person = clsPerson_BLL.FindByName(LB_ApplicantName.Text);
-                PersonDetails personDetails = new PersonDetails(ref Person);
-                personDetails.ShowDialog();
+                if (Person != null)
+                {
+                    PersonDetails personDetails = new PersonDetails(ref Person);
+                    personDetails.ShowDialog();
+                }
+                else
+                    MessageBox.Show("Person Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("Person Not Found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
