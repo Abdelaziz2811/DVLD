@@ -139,16 +139,6 @@ namespace DVLD
             }
         }
 
-        bool IsInputValid()
-        {
-            if (string.IsNullOrWhiteSpace(TB_FilterationValue.Text))
-            {
-                MessageBox.Show("Please enter a value to filter by.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            else return true;
-        }
-
         void FilterBy(string FilterBy)
         {
             if (FilterBy == "NationalityCountryID")
@@ -156,87 +146,89 @@ namespace DVLD
                 int ID = clsCountries_BLL.GetCountryID(TB_FilterationValue.Text);
                 DTPeople.DefaultView.RowFilter = $"{FilterBy} = '{ID.ToString()}'";
             }
+            else if (FilterBy == "PersonID")
+            {
+                if (int.TryParse(TB_FilterationValue.Text, out int PersonID))
+                {
+                    DTPeople.DefaultView.RowFilter = $"{FilterBy} = '{PersonID}'";
+                }
+
+            }
             else
                 DTPeople.DefaultView.RowFilter = $"{FilterBy} = '{TB_FilterationValue.Text}'";
         }
 
-        private void TB_FilterationValue_KeyDown(object sender, KeyEventArgs e)
+        private void TB_FilterationValue_TextChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            switch (CB_FilterBy.SelectedItem.ToString())
             {
-                if (!IsInputValid()) return;
+                case "Person ID":
 
-                switch (CB_FilterBy.SelectedItem.ToString())
-                {
-                    case "Person ID":
+                    FilterBy("PersonID");
 
-                        FilterBy("PersonID");
+                    break;
 
-                        break;
+                case "National No.":
 
-                    case "National No.":
+                    FilterBy("NationalNo");
 
-                        FilterBy("NationalNo");
+                    break;
 
-                        break;
+                case "First Name":
 
-                    case "First Name":
+                    FilterBy("FirstName");
 
-                        FilterBy("FirstName");
+                    break;
+                case "Second Name":
 
-                        break;
-                    case "Second Name":
+                    FilterBy("SecondName");
 
-                        FilterBy("SecondName");
+                    break;
 
-                        break;
+                case "Third Name":
 
-                    case "Third Name":
+                    FilterBy("ThirdName");
 
-                        FilterBy("ThirdName");
+                    break;
 
-                        break;
+                case "Last Name":
 
-                    case "Last Name":
+                    FilterBy("LastName");
 
-                        FilterBy("LastName");
+                    break;
 
-                        break;
+                case "Nationality":
 
-                    case "Nationality":
+                    FilterBy("NationalityCountryID");
 
-                        FilterBy("NationalityCountryID");
+                    break;
 
-                        break;
+                case "Gender":
 
-                    case "Gender":
+                    FilterBy("Gender");
 
-                        FilterBy("Gender");
+                    break;
 
-                        break;
+                case "Phone":
 
-                    case "Phone":
+                    FilterBy("Phone");
 
-                        FilterBy("Phone");
+                    break;
 
-                        break;
+                case "Email":
 
-                    case "Email":
+                    FilterBy("Email");
 
-                        FilterBy("Email");
+                    break;
+                case "Address":
 
-                        break;
-                    case "Address":
+                    FilterBy("Address");
 
-                        FilterBy("Address");
+                    break;
 
-                        break;
-
-                    default:
-                        break;
-                }
+                default:
+                    break;
             }
         }
-
     }
 }
