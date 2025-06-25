@@ -234,7 +234,7 @@
             this.TB_FilterationValue.Name = "TB_FilterationValue";
             this.TB_FilterationValue.Size = new System.Drawing.Size(100, 20);
             this.TB_FilterationValue.TabIndex = 34;
-            this.TB_FilterationValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_FilterationValue_KeyDown);
+            this.TB_FilterationValue.TextChanged += new System.EventHandler(this.TB_FilterationValue_TextChanged);
             // 
             // ManageUsers
             // 
