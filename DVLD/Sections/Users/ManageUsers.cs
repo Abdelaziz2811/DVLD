@@ -131,16 +131,6 @@ namespace DVLD
             }
         }
 
-        bool IsInputValid()
-        {
-            if (string.IsNullOrWhiteSpace(TB_FilterationValue.Text))
-            {
-                MessageBox.Show("Please enter a value to filter by.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            else return true;
-        }
-
         void FilterBy(string FilterBy)
         {
             if (FilterBy == "IsActive")
@@ -152,50 +142,50 @@ namespace DVLD
                 else if (TB_FilterationValue.Text.ToLower() == "false")
                     DTUsers.DefaultView.RowFilter = $"{FilterBy} = FALSE";
             }
+            else if (FilterBy == "UserID")
+            {
+                if (int.TryParse(TB_FilterationValue.Text, out int UserID))
+                    DTUsers.DefaultView.RowFilter = $"{FilterBy} = '{UserID}'";
+            }
             else
                 DTUsers.DefaultView.RowFilter = $"{FilterBy} = '{TB_FilterationValue.Text}'";
         }
 
-        private void TB_FilterationValue_KeyDown(object sender, KeyEventArgs e)
+        private void TB_FilterationValue_TextChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            switch (CB_FilterBy.SelectedItem.ToString())
             {
-                if (!IsInputValid()) return;
+                case "User ID":
 
-                switch (CB_FilterBy.SelectedItem.ToString())
-                {
-                    case "User ID":
+                    FilterBy("UserID");
 
-                        FilterBy("UserID");
+                    break;
 
-                        break;
+                case "National No.":
 
-                    case "National No.":
+                    FilterBy("NationalNo");
 
-                        FilterBy("NationalNo");
+                    break;
 
-                        break;
+                case "User Name":
 
-                    case "User Name":
+                    FilterBy("UserName");
 
-                        FilterBy("UserName");
+                    break;
+                case "Full Name":
 
-                        break;
-                    case "Full Name":
+                    FilterBy("FirstName  + ' ' +  SecondName  + ' ' +  ThirdName  + ' ' +  LastName");
 
-                        FilterBy("FirstName  + ' ' +  SecondName  + ' ' +  ThirdName  + ' ' +  LastName");
+                    break;
 
-                        break;
+                case "Is Active":
 
-                    case "Is Active":
+                    FilterBy("IsActive");
 
-                        FilterBy("IsActive");
+                    break;
 
-                        break;
-
-                    default:
-                        break;
-                }
+                default:
+                    break;
             }
         }
     }
