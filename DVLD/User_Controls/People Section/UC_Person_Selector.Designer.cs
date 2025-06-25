@@ -129,7 +129,7 @@
             this.Controls.Add(this.GB_Search);
             this.Controls.Add(this.Person_Info);
             this.Name = "UC_Person_Selector";
-            this.Size = new System.Drawing.Size(660, 382);
+            this.Size = new System.Drawing.Size(652, 382);
             this.Load += new System.EventHandler(this.UC_Person_Selector_Load);
             this.GB_Search.ResumeLayout(false);
             this.GB_Search.PerformLayout();
