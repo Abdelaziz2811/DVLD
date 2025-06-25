@@ -10,11 +10,29 @@ namespace DVLD_DAL.Drivers
 {
     public static class clsDrivers_DAL
     {
-        public static DataTable LoadDrivers(int DriverID)
+        public static DataTable LoadDrivers()
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
-            string query = @"SELECT * FROM Drivers;";
+            string query = @"SELECT 
+                                 Drivers.DriverID,
+                                 Drivers.PersonID,
+                                 People.NationalNo,
+                                 (People.FirstName + ' ' + People.SecondName + ' ' + People.ThirdName + ' ' + People.LastName) AS FullName,
+                                 Drivers.CreatedDate,
+                                 COUNT(CASE WHEN Licenses.IsActive = 1 THEN 1 END) AS ActiveLicenses
+                             FROM Drivers
+                             INNER JOIN People ON People.PersonID = Drivers.PersonID
+                             LEFT JOIN Licenses ON Licenses.DriverID = Drivers.DriverID
+                             GROUP BY 
+                                 Drivers.DriverID,
+                                 Drivers.PersonID,
+                                 People.NationalNo,
+                                 People.FirstName,
+                                 People.SecondName,
+                                 People.ThirdName,
+                                 People.LastName,
+                                 Drivers.CreatedDate;";
 
             SqlCommand command = new SqlCommand(query, connection);
 
