@@ -82,59 +82,59 @@
             this.TSMI_PhoneCall});
             this.CMS_PeopleActions.Name = "CMS_PeopleHandle";
             this.CMS_PeopleActions.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.CMS_PeopleActions.Size = new System.Drawing.Size(181, 186);
+            this.CMS_PeopleActions.Size = new System.Drawing.Size(164, 164);
             // 
             // TSMI_ShowDetails
             // 
             this.TSMI_ShowDetails.Name = "TSMI_ShowDetails";
-            this.TSMI_ShowDetails.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_ShowDetails.Size = new System.Drawing.Size(163, 22);
             this.TSMI_ShowDetails.Text = "Show Details";
             this.TSMI_ShowDetails.Click += new System.EventHandler(this.TSMI_ShowDetails_Click);
             // 
             // TSMI_AddPerson
             // 
             this.TSMI_AddPerson.Name = "TSMI_AddPerson";
-            this.TSMI_AddPerson.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_AddPerson.Size = new System.Drawing.Size(163, 22);
             this.TSMI_AddPerson.Text = "Add Person";
             this.TSMI_AddPerson.Click += new System.EventHandler(this.TSMI_AddPerson_Click);
             // 
             // TSMI_UpdatePerson
             // 
             this.TSMI_UpdatePerson.Name = "TSMI_UpdatePerson";
-            this.TSMI_UpdatePerson.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_UpdatePerson.Size = new System.Drawing.Size(163, 22);
             this.TSMI_UpdatePerson.Text = "Update Person";
             this.TSMI_UpdatePerson.Click += new System.EventHandler(this.TSMI_UpdatePerson_Click);
             // 
             // TSMI_DeletePerson
             // 
             this.TSMI_DeletePerson.Name = "TSMI_DeletePerson";
-            this.TSMI_DeletePerson.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_DeletePerson.Size = new System.Drawing.Size(163, 22);
             this.TSMI_DeletePerson.Text = "Delete Person";
             this.TSMI_DeletePerson.Click += new System.EventHandler(this.TSMI_DeletePerson_Click);
             // 
             // TSMI_Refresh
             // 
             this.TSMI_Refresh.Name = "TSMI_Refresh";
-            this.TSMI_Refresh.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_Refresh.Size = new System.Drawing.Size(163, 22);
             this.TSMI_Refresh.Text = "Refresh";
             this.TSMI_Refresh.Click += new System.EventHandler(this.TSMI_Refresh_Click);
             // 
             // TSMI_Seperator
             // 
             this.TSMI_Seperator.Name = "TSMI_Seperator";
-            this.TSMI_Seperator.Size = new System.Drawing.Size(177, 6);
+            this.TSMI_Seperator.Size = new System.Drawing.Size(160, 6);
             // 
             // TSMI_SendEmail
             // 
             this.TSMI_SendEmail.Name = "TSMI_SendEmail";
-            this.TSMI_SendEmail.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_SendEmail.Size = new System.Drawing.Size(163, 22);
             this.TSMI_SendEmail.Text = "Send Email";
             this.TSMI_SendEmail.Click += new System.EventHandler(this.TSMI_SendEmail_Click);
             // 
             // TSMI_PhoneCall
             // 
             this.TSMI_PhoneCall.Name = "TSMI_PhoneCall";
-            this.TSMI_PhoneCall.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_PhoneCall.Size = new System.Drawing.Size(163, 22);
             this.TSMI_PhoneCall.Text = "Phone Call";
             this.TSMI_PhoneCall.Click += new System.EventHandler(this.TSMI_PhoneCall_Click);
             // 
@@ -206,7 +206,7 @@
             this.TB_FilterationValue.Name = "TB_FilterationValue";
             this.TB_FilterationValue.Size = new System.Drawing.Size(100, 20);
             this.TB_FilterationValue.TabIndex = 33;
-            this.TB_FilterationValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_FilterationValue_KeyDown);
+            this.TB_FilterationValue.TextChanged += new System.EventHandler(this.TB_FilterationValue_TextChanged);
             // 
             // pictureBox1
             // 
