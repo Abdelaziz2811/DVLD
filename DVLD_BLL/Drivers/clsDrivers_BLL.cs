@@ -1,6 +1,7 @@
 ﻿using DVLD_DAL.Drivers;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
@@ -66,6 +67,11 @@ namespace DVLD_BLL.Drivers
                 return new clsDrivers_BLL(DriverID, PersonID, CreatedByUserID, CreatedDate);
             }
             return null;
+        }
+
+        public static DataTable LoadDrivers()
+        {
+            return clsDrivers_DAL.LoadDrivers();
         }
 
         public static bool IsExists(int PersonID)
