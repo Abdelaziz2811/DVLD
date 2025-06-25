@@ -203,6 +203,37 @@ namespace DVLD_DAL.Applications.New_Local_License_Application
             return RowsAffected > 0;
         }
 
+        public static bool Delete(int LocalDrivingLicenseApplicationID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"DELETE FROM LocalDrivingLicenseApplications
+                             WHERE LocalDrivingLicenseApplicationID = @LocalDrivingLicenseApplicationID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalDrivingLicenseApplicationID", LocalDrivingLicenseApplicationID);
+
+            int RowsAffected = 0;
+
+            try
+            {
+                connection.Open();
+
+                RowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return RowsAffected > 0;
+        }
+
         public static bool IsLocalLicenseApplicationExists(int ApplicantID, int LicenseClassID)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
