@@ -1,6 +1,7 @@
 ﻿using DVLD.Sections.Applications;
 using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Local_License;
 using DVLD.Sections.Applications.Manage_Applications.Local_License_Applications;
+using DVLD.Sections.Drivers;
 using DVLD.Sections.Tests;
 using DVLD.Sections.Users;
 using DVLD_BLL.Users;
@@ -35,8 +36,6 @@ namespace DVLD
             Rectangle workArea = Screen.PrimaryScreen.WorkingArea;
             this.Location = new Point(workArea.Left - 8, workArea.Top);
             this.Size = new Size(workArea.Width + 19, workArea.Height + 8);
-
-
         }
 
         private void TSM_People_Click(object sender, EventArgs e)
@@ -89,8 +88,14 @@ namespace DVLD
 
         private void TSMI_LocalDrivingLicenseApplications_Click(object sender, EventArgs e)
         {
-            LocalLicenseApplications localLicenseApplications = new LocalLicenseApplications();
+            ManageLocalLicenseApplications localLicenseApplications = new ManageLocalLicenseApplications();
             localLicenseApplications.ShowDialog();
+        }
+
+        private void TSM_Drivers_Click(object sender, EventArgs e)
+        {
+            Drivers drivers = new Drivers();
+            drivers.ShowDialog();
         }
     }
 }
