@@ -34,55 +34,28 @@ namespace DVLD
             if (User.Mode == enUMode.Add) LB_Opration.Text = "Add User";
             else
             {
-                Update_AddUser.Person_Selector.GB_Search.Enabled = false;
+                UC_Update_AddUser.Person_Selector.GB_Search.Enabled = false;
                 LB_Opration.Text = "Update User";
-                GetUserInfoToUpdate();
-                SetCurrentTapTo(Update_AddUser.TP_LoginInfo);
+                UC_Update_AddUser.GetUserInfoToUpdate(User);
+                SetCurrentTapTo(UC_Update_AddUser.TP_LoginInfo);
             }
         }
 
         void SetCurrentTapTo(TabPage Tab)
         {
-            Update_AddUser.TC_UserInfo.SelectedTab = Tab;
-        }
-
-        public void GetUserInfoToUpdate()
-        {
-            clsPerson_BLL Person = clsPerson_BLL.Find(User.PersonID);
-            
-            if (Person != null)
-            {
-                Update_AddUser.Person_Selector.Person_Info.LB_PersonID.Text = Person.PersonID.ToString();
-                Update_AddUser.Person_Selector.Person_Info.LB_NationalNo.Text = Person.NationalNo;
-                Update_AddUser.Person_Selector.Person_Info.LB_Name.Text = Person.FirstName + " " + Person.SecondName + " " + Person.ThirdName + " " + Person.LastName;
-                Update_AddUser.Person_Selector.Person_Info.LB_BirthDate.Text = Person.BirthDate.ToString("yyyy-MM-dd");
-                Update_AddUser.Person_Selector.Person_Info.LB_Gender.Text = Person.Gender.ToString();
-                Update_AddUser.Person_Selector.Person_Info.LB_Address.Text = Person.Address;
-                Update_AddUser.Person_Selector.Person_Info.LB_Email.Text = Person.Email;
-                Update_AddUser.Person_Selector.Person_Info.LB_Phone.Text = Person.Phone;
-                Update_AddUser.Person_Selector.Person_Info.LB_Country.Text = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
-
-                if (Person.ImagePath != string.Empty)
-                    Update_AddUser.Person_Selector.Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
-
-            }
-
-            Update_AddUser.LB_UserID.Text = User.UserID.ToString();
-            Update_AddUser.TB_UserName.Text = User.UserName.ToString();
-            Update_AddUser.TB_Password.Text = User.Password.ToString();
-            Update_AddUser.CB_IsActive.Checked = User.IsActive;
+            UC_Update_AddUser.TC_UserInfo.SelectedTab = Tab;
         }
 
         private void Add_UpdateUser_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Update_AddUser.BTN_Save.Tag.ToString() == "Inputs are valid")
+            if (UC_Update_AddUser.BTN_Save.Tag.ToString() == "Inputs are valid")
             {
-                SetUserInformation();
+                UC_Update_AddUser.SetUserInformation(User);
                 if (User.Save())
                 {
                     if (User.Mode == enUMode.Add)
                     {
-                        Update_AddUser.LB_UserID.Text = User.UserID.ToString();
+                        UC_Update_AddUser.LB_UserID.Text = User.UserID.ToString();
                         MessageBox.Show($"User '{User.UserName}' added seccessfuly", "Seccess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -97,18 +70,6 @@ namespace DVLD
             else
                 if ((MessageBox.Show("The operation you're making will be canceled, Are you sure you to leave this form ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.No)
                 e.Cancel = true;
-        }
-
-        void SetUserInformation()
-        {
-            User.UserName = Update_AddUser.TB_UserName.Text;
-            User.Password = Update_AddUser.TB_Password.Text;
-
-            if (User.Mode == enUMode.Add)
-                User.PersonID = Convert.ToInt32(Update_AddUser.Person_Selector.Person_Info.LB_PersonID.Text);
-
-            if (Update_AddUser.CB_IsActive.Checked) User.IsActive = true;
-            else User.IsActive = false;
         }
     }
 }
