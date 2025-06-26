@@ -1,13 +1,15 @@
-﻿using System;
+﻿using DVLD_BLL;
+using DVLD_BLL.Countries;
+using DVLD_BLL.Users;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DVLD_BLL.Users;
 
 namespace DVLD.User_Controls.Users_Section_Controls
 {
@@ -16,6 +18,45 @@ namespace DVLD.User_Controls.Users_Section_Controls
         public UC_Add_UpdateUser()
         {
             InitializeComponent();
+        }
+
+        public void GetUserInfoToUpdate(clsUsers_BLL User)
+        {
+            clsPerson_BLL Person = clsPerson_BLL.Find(User.PersonID);
+
+            if (Person != null)
+            {
+                Person_Selector.Person_Info.LB_PersonID.Text = Person.PersonID.ToString();
+                Person_Selector.Person_Info.LB_NationalNo.Text = Person.NationalNo;
+                Person_Selector.Person_Info.LB_Name.Text = Person.FirstName + " " + Person.SecondName + " " + Person.ThirdName + " " + Person.LastName;
+                Person_Selector.Person_Info.LB_BirthDate.Text = Person.BirthDate.ToString("yyyy-MM-dd");
+                Person_Selector.Person_Info.LB_Gender.Text = Person.Gender.ToString();
+                Person_Selector.Person_Info.LB_Address.Text = Person.Address;
+                Person_Selector.Person_Info.LB_Email.Text = Person.Email;
+                Person_Selector.Person_Info.LB_Phone.Text = Person.Phone;
+                Person_Selector.Person_Info.LB_Country.Text = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
+
+                if (Person.ImagePath != string.Empty)
+                    Person_Selector.Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
+
+            }
+
+            LB_UserID.Text = User.UserID.ToString();
+            TB_UserName.Text = User.UserName.ToString();
+            TB_Password.Text = User.Password.ToString();
+            CB_IsActive.Checked = User.IsActive;
+        }
+
+        public void SetUserInformation(clsUsers_BLL User)
+        {
+            User.UserName = TB_UserName.Text;
+            User.Password = TB_Password.Text;
+
+            if (User.Mode == enUMode.Add)
+                User.PersonID = Convert.ToInt32(Person_Selector.Person_Info.LB_PersonID.Text);
+
+            if (CB_IsActive.Checked) User.IsActive = true;
+            else User.IsActive = false;
         }
 
         private void BTN_NextToLoginInfo_Click(object sender, EventArgs e)
