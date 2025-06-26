@@ -96,6 +96,54 @@ namespace DVLD_DAL.Applications.Local_License_Application
             return IsFound;
         }
 
+        public static bool Find(int LicenseID, ref int ApplicationID, ref int DriverID, ref byte LicenseClass
+    , ref DateTime IssueDate, ref DateTime ExpirationDate, ref string Notes, ref decimal PaidFees, ref bool IsActive, ref byte IssueReason, ref int CreatedByUserID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT * FROM Licenses
+                             WHERE LicenseID = @LicenseID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            bool IsFound = false;
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    IsFound = true;
+                    ApplicationID = (int)Reader["ApplicationID"];
+                    ApplicationID = (int)Reader["ApplicationID"];
+                    DriverID = (int)Reader["DriverID"];
+                    LicenseClass = (byte)Reader["LicenseClass"];
+                    IssueDate = (DateTime)Reader["IssueDate"];
+                    ExpirationDate = (DateTime)Reader["ExpirationDate"];
+                    Notes = Reader["Notes"] != DBNull.Value ? Reader["Notes"].ToString() : null;
+                    PaidFees = (decimal)Reader["PaidFees"];
+                    IsActive = (bool)Reader["IsActive"];
+                    IssueReason = (byte)Reader["IssueReason"];
+                    CreatedByUserID = (int)Reader["CreatedByUserID"];
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+
         public static int Add(int ApplicationID, int DriverID, byte LicenseClass
             , DateTime IssueDate, DateTime ExpirationDate, string Notes, decimal PaidFees, bool IsActive, byte IssueReason, int CreatedByUserID)
         {
