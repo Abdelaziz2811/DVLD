@@ -73,7 +73,7 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
                         ExpirationDate, Notes, PaidFees, IsActive, (byte)IssueReason, CreatedByUserID);
         }
 
-        public static clsLicense_BLL Find(int ApplicationID)
+        public static clsLicense_BLL FindByAppID(int ApplicationID)
         {
             int LicenseID = 0;
             int DriverID = 0;
@@ -87,6 +87,28 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             int CreatedByUserID = 0;
 
             if (clsLicense_DAL.Find(ref LicenseID, ApplicationID, ref DriverID, ref LicenseClass, ref IssueDate,
+                ref ExpirationDate, ref Notes, ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID))
+            {
+                return new clsLicense_BLL(LicenseID, ApplicationID, DriverID, LicenseClass, IssueDate, ExpirationDate, Notes,
+                    PaidFees, IsActive, (enIssueReason)IssueReason, CreatedByUserID);
+            }
+            return null;
+        }
+
+        public static clsLicense_BLL FindByLicenseID(int LicenseID)
+        {
+            int ApplicationID = 0;
+            int DriverID = 0;
+            byte LicenseClass = 0;
+            DateTime IssueDate = DateTime.Now;
+            DateTime ExpirationDate = DateTime.Now;
+            string Notes = string.Empty;
+            decimal PaidFees = 0;
+            bool IsActive = true;
+            byte IssueReason = 1;
+            int CreatedByUserID = 0;
+
+            if (clsLicense_DAL.Find(LicenseID, ref ApplicationID, ref DriverID, ref LicenseClass, ref IssueDate,
                 ref ExpirationDate, ref Notes, ref PaidFees, ref IsActive, ref IssueReason, ref CreatedByUserID))
             {
                 return new clsLicense_BLL(LicenseID, ApplicationID, DriverID, LicenseClass, IssueDate, ExpirationDate, Notes,
