@@ -55,5 +55,10 @@ namespace DVLD_BLL.License_Classes
         {
             return clsLicenseClasses_DAL.LicenseClassID(ClassName);
         }
+
+        public static string GetClassName(int ClassID)
+        {
+            return clsLicenseClasses_DAL.ClassName(ClassID);
+        }
     }
 }
