@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.LB_Opration = new System.Windows.Forms.Label();
-            this.Update_AddUser = new DVLD.User_Controls.Users_Section_Controls.UC_Add_UpdateUser();
+            this.UC_Update_AddUser = new DVLD.User_Controls.Users_Section_Controls.UC_Add_UpdateUser();
             this.SuspendLayout();
             // 
             // LB_Opration
@@ -44,10 +44,10 @@
             // 
             // Update_AddUser
             // 
-            this.Update_AddUser.Location = new System.Drawing.Point(44, 49);
-            this.Update_AddUser.Name = "Update_AddUser";
-            this.Update_AddUser.Size = new System.Drawing.Size(713, 483);
-            this.Update_AddUser.TabIndex = 23;
+            this.UC_Update_AddUser.Location = new System.Drawing.Point(44, 49);
+            this.UC_Update_AddUser.Name = "Update_AddUser";
+            this.UC_Update_AddUser.Size = new System.Drawing.Size(713, 483);
+            this.UC_Update_AddUser.TabIndex = 23;
             // 
             // Add_UpdateUser
             // 
@@ -55,7 +55,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(812, 544);
-            this.Controls.Add(this.Update_AddUser);
+            this.Controls.Add(this.UC_Update_AddUser);
             this.Controls.Add(this.LB_Opration);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -73,6 +73,6 @@
         #endregion
 
         private System.Windows.Forms.Label LB_Opration;
-        private User_Controls.Users_Section_Controls.UC_Add_UpdateUser Update_AddUser;
+        private User_Controls.Users_Section_Controls.UC_Add_UpdateUser UC_Update_AddUser;
     }
 }
