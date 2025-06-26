@@ -118,5 +118,40 @@ namespace DVLD_DAL.License_Classes
 
             return ClassID;
         }
+
+        public static string ClassName(int ClassID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT ClassName FROM LicenseClasses
+                             WHERE LicenseClassID = @LicenseClassID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LicenseClassID", ClassID);
+
+            string ClassName = string.Empty;
+
+            try
+            {
+                connection.Open();
+
+                object obj = command.ExecuteScalar();
+
+                if (obj != null)
+                    ClassName = obj.ToString();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ClassName;
+        }
     }
 }
