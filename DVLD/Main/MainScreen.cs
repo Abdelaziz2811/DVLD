@@ -1,4 +1,5 @@
 ﻿using DVLD.Sections.Applications;
+using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.International_License_Applications;
 using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Local_License;
 using DVLD.Sections.Applications.Manage_Applications.Local_License_Applications;
 using DVLD.Sections.Drivers;
@@ -96,6 +97,12 @@ namespace DVLD
         {
             Drivers drivers = new Drivers();
             drivers.ShowDialog();
+        }
+
+        private void TSMI_InternationalDrivingLicenseApplications_Click(object sender, EventArgs e)
+        {
+            InternationalLicenseApplication internationalLicenseApplication = new InternationalLicenseApplication();
+            internationalLicenseApplication.ShowDialog();
         }
     }
 }

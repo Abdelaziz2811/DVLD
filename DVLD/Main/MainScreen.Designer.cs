@@ -181,6 +181,7 @@
             this.TSMI_InternationalDrivingLicenseApplications.Name = "TSMI_InternationalDrivingLicenseApplications";
             this.TSMI_InternationalDrivingLicenseApplications.Size = new System.Drawing.Size(367, 26);
             this.TSMI_InternationalDrivingLicenseApplications.Text = "International Driving License Applications";
+            this.TSMI_InternationalDrivingLicenseApplications.Click += new System.EventHandler(this.TSMI_InternationalDrivingLicenseApplications_Click);
             // 
             // TSMI_DetainLicense
             // 
