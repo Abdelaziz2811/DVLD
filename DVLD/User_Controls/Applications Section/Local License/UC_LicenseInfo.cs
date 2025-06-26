@@ -1,5 +1,9 @@
 ﻿using DVLD.Sections.Applications.Manage_Applications.Local_License_Applications;
 using DVLD_BLL;
+using DVLD_BLL.Applications.Applications;
+using DVLD_BLL.Applications.Licenses;
+using DVLD_BLL.Applications.LocalLicenseApplication;
+using DVLD_BLL.License_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +18,9 @@ namespace DVLD.User_Controls.Applications_Section.Local_License
 {
     public partial class UC_LicenseInfo : UserControl
     {
+        public clsApplications_BLL Application;
+        public clsLicense_BLL License;
+
         public UC_LicenseInfo()
         {
             InitializeComponent();
@@ -42,6 +49,65 @@ namespace DVLD.User_Controls.Applications_Section.Local_License
             LB_BirthDate.Text = person.BirthDate.ToString("d");
             if (person.ImagePath != null)
                 PB_PersonImage.Image = Image.FromFile(person.ImagePath);
+        }
+
+        public void LoadLicenseInfo(clsLicense_BLL License, clsPerson_BLL Person, clsLocalLicenseApplication_BLL LocalLicenseApplication)
+        {
+            LB_Class.Text = LocalLicenseApplication.ClassName;
+            LB_Name.Text = LocalLicenseApplication.FullName;
+            LB_IssueDate.Text = License.IssueDate.ToString("d");
+            LB_ExpirationDate.Text = License.ExpirationDate.ToString("d");
+            LB_LicenseID.Text = License.LicenseID.ToString();
+            LB_Detained.Text = clsDetainedLicenses_BLL.IsExists(License.LicenseID).ToString();
+            LB_IssueReason.Text = License.IssueReason.ToString();
+
+            if (License.Notes != null)
+                LB_Notes.Text = License.Notes;
+            else
+                LB_Notes.Text = "No notes";
+
+            LB_DriverID.Text = License.DriverID.ToString();
+            LB_NationalNo.Text = Person.NationalNo;
+            LB_Gender.Text = Person.Gender.ToString();
+            LB_BirthDate.Text = Person.BirthDate.ToString("d");
+            LB_Active.Text = License.IsActive.ToString();
+
+            if (Person.ImagePath != null)
+                PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
+        }
+
+        public void LoadLicenseInfo(int LicenseID)
+        {
+            License = clsLicense_BLL.FindByLicenseID(LicenseID);
+            if (License != null)
+            {
+                Application = clsApplications_BLL.Find(License.ApplicationID);
+                clsPerson_BLL Person = clsPerson_BLL.Find(Application.ApplicantPersonID);
+
+                LB_Class.Text = clsLicenseClasses_BLL.GetClassName(License.LicenseClass);
+                LB_Name.Text = Person.FirstName + ' ' + Person.SecondName + ' ' + Person.ThirdName + ' ' + Person.LastName;
+                LB_IssueDate.Text = License.IssueDate.ToString("d");
+                LB_ExpirationDate.Text = License.ExpirationDate.ToString("d");
+                LB_LicenseID.Text = License.LicenseID.ToString();
+                LB_Detained.Text = clsDetainedLicenses_BLL.IsExists(License.LicenseID).ToString();
+                LB_IssueReason.Text = License.IssueReason.ToString();
+
+                if (License.Notes != null)
+                    LB_Notes.Text = License.Notes;
+                else
+                    LB_Notes.Text = "No notes";
+
+                LB_DriverID.Text = License.DriverID.ToString();
+                LB_NationalNo.Text = Person.NationalNo;
+                LB_Gender.Text = Person.Gender.ToString();
+                LB_BirthDate.Text = Person.BirthDate.ToString("d");
+                LB_Active.Text = License.IsActive.ToString();
+
+                if (Person.ImagePath != null)
+                    PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
+            }
+            else
+                MessageBox.Show($"License with ID {LicenseID} Not Found", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }
