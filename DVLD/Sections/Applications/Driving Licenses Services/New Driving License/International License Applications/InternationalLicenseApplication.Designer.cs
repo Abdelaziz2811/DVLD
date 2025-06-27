@@ -30,7 +30,7 @@
         {
             this.TC_InternationalLicenseApplication = new System.Windows.Forms.TabControl();
             this.TP_LocalLicenseInfo = new System.Windows.Forms.TabPage();
-            this.BTN_Save = new System.Windows.Forms.Button();
+            this.BTN_Next = new System.Windows.Forms.Button();
             this.UC_LicenseSelector = new DVLD.User_Controls.Applications_Section.Local_License.UC_LicenseSelector();
             this.BTN_NextToApplicationInfo = new System.Windows.Forms.Button();
             this.TP_ApplicationInfo = new System.Windows.Forms.TabPage();
@@ -52,7 +52,7 @@
             this.LB_IssueDate = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BTN_Save = new System.Windows.Forms.Button();
             this.LB_Operation = new System.Windows.Forms.Label();
             this.TC_InternationalLicenseApplication.SuspendLayout();
             this.TP_LocalLicenseInfo.SuspendLayout();
@@ -73,7 +73,7 @@
             // 
             // TP_LocalLicenseInfo
             // 
-            this.TP_LocalLicenseInfo.Controls.Add(this.BTN_Save);
+            this.TP_LocalLicenseInfo.Controls.Add(this.BTN_Next);
             this.TP_LocalLicenseInfo.Controls.Add(this.UC_LicenseSelector);
             this.TP_LocalLicenseInfo.Controls.Add(this.BTN_NextToApplicationInfo);
             this.TP_LocalLicenseInfo.Location = new System.Drawing.Point(4, 22);
@@ -84,22 +84,22 @@
             this.TP_LocalLicenseInfo.Text = "License Info";
             this.TP_LocalLicenseInfo.UseVisualStyleBackColor = true;
             // 
-            // BTN_Save
+            // BTN_Next
             // 
-            this.BTN_Save.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.BTN_Save.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.BTN_Save.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BTN_Save.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.BTN_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_Save.Location = new System.Drawing.Point(328, 448);
-            this.BTN_Save.Name = "BTN_Save";
-            this.BTN_Save.Size = new System.Drawing.Size(117, 28);
-            this.BTN_Save.TabIndex = 30;
-            this.BTN_Save.Tag = " ";
-            this.BTN_Save.Text = "Next";
-            this.BTN_Save.UseVisualStyleBackColor = false;
-            this.BTN_Save.Click += new System.EventHandler(this.BTN_Save_Click);
+            this.BTN_Next.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BTN_Next.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BTN_Next.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTN_Next.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.BTN_Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_Next.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Next.Location = new System.Drawing.Point(328, 448);
+            this.BTN_Next.Name = "BTN_Next";
+            this.BTN_Next.Size = new System.Drawing.Size(117, 28);
+            this.BTN_Next.TabIndex = 30;
+            this.BTN_Next.Tag = " ";
+            this.BTN_Next.Text = "Next";
+            this.BTN_Next.UseVisualStyleBackColor = false;
+            this.BTN_Next.Click += new System.EventHandler(this.BTN_Next_Click);
             // 
             // UC_LicenseSelector
             // 
@@ -128,7 +128,7 @@
             // TP_ApplicationInfo
             // 
             this.TP_ApplicationInfo.Controls.Add(this.GB_ApplicationInfo);
-            this.TP_ApplicationInfo.Controls.Add(this.button1);
+            this.TP_ApplicationInfo.Controls.Add(this.BTN_Save);
             this.TP_ApplicationInfo.Location = new System.Drawing.Point(4, 22);
             this.TP_ApplicationInfo.Name = "TP_ApplicationInfo";
             this.TP_ApplicationInfo.Padding = new System.Windows.Forms.Padding(3);
@@ -341,21 +341,22 @@
             this.label17.TabIndex = 25;
             this.label17.Text = "I.L.Application ID :";
             // 
-            // button1
+            // BTN_Save
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(328, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 35);
-            this.button1.TabIndex = 32;
-            this.button1.Tag = " ";
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = false;
+            this.BTN_Save.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BTN_Save.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BTN_Save.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTN_Save.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.BTN_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Save.Location = new System.Drawing.Point(328, 276);
+            this.BTN_Save.Name = "BTN_Save";
+            this.BTN_Save.Size = new System.Drawing.Size(117, 35);
+            this.BTN_Save.TabIndex = 32;
+            this.BTN_Save.Tag = " ";
+            this.BTN_Save.Text = "Save";
+            this.BTN_Save.UseVisualStyleBackColor = false;
+            this.BTN_Save.Click += new System.EventHandler(this.BTN_Save_Click);
             // 
             // LB_Operation
             // 
@@ -394,9 +395,9 @@
         private System.Windows.Forms.Button BTN_NextToApplicationInfo;
         private System.Windows.Forms.TabPage TP_ApplicationInfo;
         private User_Controls.Applications_Section.Local_License.UC_LicenseSelector UC_LicenseSelector;
-        public System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label LB_Operation;
         public System.Windows.Forms.Button BTN_Save;
+        private System.Windows.Forms.Label LB_Operation;
+        public System.Windows.Forms.Button BTN_Next;
         public System.Windows.Forms.GroupBox GB_ApplicationInfo;
         public System.Windows.Forms.Label LB_ILAppID;
         public System.Windows.Forms.Label LB_ExpirationDate;
