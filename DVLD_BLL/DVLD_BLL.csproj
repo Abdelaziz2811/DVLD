@@ -44,6 +44,7 @@
     <Compile Include="Applications\Application_Types\clsApplicationTypes_BLL.cs" />
     <Compile Include="Applications\Applications\clsApplications_BLL.cs" />
     <Compile Include="Applications\Licenses\clsDetainedLicenses_BLL.cs" />
+    <Compile Include="Applications\Licenses\clsInternationalLicense_BLL.cs" />
     <Compile Include="Applications\Licenses\clsLicense_BLL.cs" />
     <Compile Include="Applications\License_Application\clsLocalLicenseApplication_BLL.cs" />
     <Compile Include="Applications\Test_Appointments\clsTestAppointments_BLL.cs" />
