@@ -1,6 +1,10 @@
 ﻿using DVLD.User_Controls;
 using DVLD.User_Controls.Applications_Section.Local_License;
+using DVLD_BLL;
 using DVLD_BLL.Applications.Applications;
+using DVLD_BLL.Applications.Licenses;
+using DVLD_BLL.Applications.LocalLicenseApplication;
+using DVLD_BLL.License_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +19,13 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 {
     public partial class InternationalLicenseApplication : Form
     {
+        clsApplications_BLL InternationalApplication;
+        clsInternationalLicense_BLL InternationalLicense;
         public InternationalLicenseApplication()
         {
             InitializeComponent();
         }
-        private void BTN_Save_Click(object sender, EventArgs e)
+        private void BTN_Next_Click(object sender, EventArgs e)
         {
             if (UC_LicenseSelector.UC_LicenseInfo.LB_LicenseID.Text != "----")
                 TC_InternationalLicenseApplication.SelectedIndex = 1;
@@ -36,19 +42,70 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
                 }
                 else
                 {
+                    // Create International Application
+                    InternationalApplication = new clsApplications_BLL();
+                    SetInternationalApplicationInfo();
+                    
+                    // Create International License
+                    InternationalLicense = new clsInternationalLicense_BLL();
+                    SetInternationalLicenseInfo_ToView();
                     LoadApplicationInfo();
                 }
             }
         }
 
+        void SetInternationalApplicationInfo()
+        {
+            InternationalApplication.ApplicantPersonID = clsPerson_BLL.Find(UC_LicenseSelector.UC_LicenseInfo.LB_NationalNo.Text).PersonID;
+            InternationalApplication.ApplicationTypeID = 6;
+            InternationalApplication.PaidFees = clsApplicationTypes_BLL.Find(6).ApplicationFees;
+            InternationalApplication.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
+        }
+
+        private void BTN_Save_Click(object sender, EventArgs e)
+        {
+            if (InternationalApplication.Save())
+            {
+                SetInternationalLicenseInfo_ToSave();
+                if (InternationalLicense.Save())
+                {
+                    MessageBox.Show("International License Saved successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadInternationalLicenseInfo();
+                }
+            }
+        }
+
+        void SetInternationalLicenseInfo_ToView()
+        {
+            InternationalLicense.IssueDate = DateTime.Now;
+            InternationalLicense.ExpirationDate = DateTime.Now.AddYears(clsLicenseClasses_BLL.Find(UC_LicenseSelector.UC_LicenseInfo.LB_Class.Text).DefaultValidityLength);
+            InternationalLicense.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
+        }
+
         void LoadApplicationInfo()
         {
-            LB_ApplicationDate.Text = UC_LicenseSelector.UC_LicenseInfo.Application.ApplicationDate.ToString("d");
-            LB_IssueDate.Text = UC_LicenseSelector.UC_LicenseInfo.License.IssueDate.ToString("d");
-            LB_ApplicationFees.Text = UC_LicenseSelector.UC_LicenseInfo.Application.PaidFees.ToString();
+            LB_ApplicationDate.Text = InternationalApplication.ApplicationDate.ToString("d");
+            LB_IssueDate.Text = InternationalLicense.IssueDate.ToString("d");
+            LB_ApplicationFees.Text = InternationalApplication.PaidFees.ToString();
             LB_LLicenseID.Text = UC_LicenseSelector.UC_LicenseInfo.License.LicenseID.ToString();
-            LB_ExpirationDate.Text = UC_LicenseSelector.UC_LicenseInfo.License.ExpirationDate.ToString("d");
-            LB_CreatedBy.Text = UC_LicenseSelector.UC_LicenseInfo.License.CreatedByUserID.ToString();
+            LB_ExpirationDate.Text = InternationalLicense.ExpirationDate.ToString("d");
+            LB_CreatedBy.Text = InternationalLicense.CreatedByUserID.ToString();
+        }
+
+        void SetInternationalLicenseInfo_ToSave()
+        {
+            InternationalLicense.ApplicationID = InternationalApplication.ApplicationID;
+            InternationalLicense.DriverID = int.Parse(UC_LicenseSelector.UC_LicenseInfo.LB_DriverID.Text);
+            InternationalLicense.IssuedUsingLocalLicenseID = int.Parse(UC_LicenseSelector.UC_LicenseInfo.LB_LicenseID.Text);
+            InternationalLicense.IssueDate = DateTime.Now;
+            InternationalLicense.ExpirationDate = DateTime.Now.AddYears(clsLicenseClasses_BLL.Find(UC_LicenseSelector.UC_LicenseInfo.LB_Class.Text).DefaultValidityLength); ;
+            InternationalLicense.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
+        }
+
+        void LoadInternationalLicenseInfo()
+        {
+            LB_ILAppID.Text = InternationalApplication.ApplicationID.ToString();
+            LB_ILicenseID.Text = InternationalLicense.InternationalLicenseID.ToString(); 
         }
     }
 }
