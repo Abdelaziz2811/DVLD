@@ -12,7 +12,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace DVLD_BLL.Applications.LocalLicenseApplication
 {
     public enum enMode { Add, Update }
-    public enum enIssueReason { First_Time = 1 }
+    public enum enIssueReason { First_Time = 1, Renew }
     public class clsLicense_BLL
     {
         public int LicenseID { get; set; }
