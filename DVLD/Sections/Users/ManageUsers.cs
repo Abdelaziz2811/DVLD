@@ -153,6 +153,14 @@ namespace DVLD
 
         private void TB_FilterationValue_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(TB_FilterationValue.Text))
+            {
+                TB_FilterationValue.Text = string.Empty;
+                TB_FilterationValue.Enabled = false;
+                RefreshUsersRecords();
+                return;
+            }
+
             switch (CB_FilterBy.SelectedItem.ToString())
             {
                 case "User ID":
