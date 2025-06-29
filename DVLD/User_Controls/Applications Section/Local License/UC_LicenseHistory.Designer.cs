@@ -32,9 +32,9 @@
             this.TP_Local = new System.Windows.Forms.TabPage();
             this.DGV_LocalLicenseHistory = new System.Windows.Forms.DataGridView();
             this.TP_International = new System.Windows.Forms.TabPage();
-            this.DGV_InternationalLicenseHistory = new System.Windows.Forms.DataGridView();
             this.LB_RecordsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.DGV_InternationalLicenseHistory = new System.Windows.Forms.DataGridView();
             this.TB_LicenseType.SuspendLayout();
             this.TP_Local.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_LocalLicenseHistory)).BeginInit();
@@ -90,20 +90,6 @@
             this.TP_International.Text = "International";
             this.TP_International.UseVisualStyleBackColor = true;
             // 
-            // DGV_InternationalLicenseHistory
-            // 
-            this.DGV_InternationalLicenseHistory.AllowUserToAddRows = false;
-            this.DGV_InternationalLicenseHistory.AllowUserToDeleteRows = false;
-            this.DGV_InternationalLicenseHistory.AllowUserToOrderColumns = true;
-            this.DGV_InternationalLicenseHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DGV_InternationalLicenseHistory.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.DGV_InternationalLicenseHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGV_InternationalLicenseHistory.Location = new System.Drawing.Point(3, 3);
-            this.DGV_InternationalLicenseHistory.Name = "DGV_InternationalLicenseHistory";
-            this.DGV_InternationalLicenseHistory.ReadOnly = true;
-            this.DGV_InternationalLicenseHistory.Size = new System.Drawing.Size(756, 204);
-            this.DGV_InternationalLicenseHistory.TabIndex = 1;
-            // 
             // LB_RecordsCount
             // 
             this.LB_RecordsCount.AutoSize = true;
@@ -123,6 +109,20 @@
             this.label2.Size = new System.Drawing.Size(103, 19);
             this.label2.TabIndex = 48;
             this.label2.Text = "# Records :";
+            // 
+            // DGV_InternationalLicenseHistory
+            // 
+            this.DGV_InternationalLicenseHistory.AllowUserToAddRows = false;
+            this.DGV_InternationalLicenseHistory.AllowUserToDeleteRows = false;
+            this.DGV_InternationalLicenseHistory.AllowUserToOrderColumns = true;
+            this.DGV_InternationalLicenseHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGV_InternationalLicenseHistory.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.DGV_InternationalLicenseHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGV_InternationalLicenseHistory.Location = new System.Drawing.Point(3, 3);
+            this.DGV_InternationalLicenseHistory.Name = "DGV_InternationalLicenseHistory";
+            this.DGV_InternationalLicenseHistory.ReadOnly = true;
+            this.DGV_InternationalLicenseHistory.Size = new System.Drawing.Size(756, 204);
+            this.DGV_InternationalLicenseHistory.TabIndex = 1;
             // 
             // UC_LicenseHistory
             // 
@@ -150,7 +150,7 @@
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TabControl TB_LicenseType;
         public System.Windows.Forms.DataGridView DGV_LocalLicenseHistory;
-        public System.Windows.Forms.DataGridView DGV_InternationalLicenseHistory;
         public System.Windows.Forms.Label LB_RecordsCount;
+        public System.Windows.Forms.DataGridView DGV_InternationalLicenseHistory;
     }
 }
