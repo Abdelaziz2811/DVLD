@@ -46,6 +46,14 @@ namespace DVLD.Sections.Drivers
 
         private void TB_FilterationValue_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(TB_FilterationValue.Text))
+            {
+                TB_FilterationValue.Text = string.Empty;
+                TB_FilterationValue.Enabled = false;
+                LoadDrivers();
+                return;
+            }
+
             switch (CB_FilterBy.SelectedItem.ToString())
             {
                 case "Person ID":
