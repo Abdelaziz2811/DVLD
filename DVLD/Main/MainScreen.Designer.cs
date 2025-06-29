@@ -128,6 +128,7 @@
             this.internationalLicenseToolStripMenuItem.Name = "internationalLicenseToolStripMenuItem";
             this.internationalLicenseToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.internationalLicenseToolStripMenuItem.Text = "International License";
+            this.internationalLicenseToolStripMenuItem.Click += new System.EventHandler(this.internationalLicenseToolStripMenuItem_Click);
             // 
             // TSMI_RenewDrivingLicense
             // 
@@ -135,6 +136,7 @@
             this.TSMI_RenewDrivingLicense.Name = "TSMI_RenewDrivingLicense";
             this.TSMI_RenewDrivingLicense.Size = new System.Drawing.Size(322, 26);
             this.TSMI_RenewDrivingLicense.Text = "Renew Driving License";
+            this.TSMI_RenewDrivingLicense.Click += new System.EventHandler(this.TSMI_RenewDrivingLicense_Click);
             // 
             // TSMI_ReplaceLostOrDamagedLicense
             // 
