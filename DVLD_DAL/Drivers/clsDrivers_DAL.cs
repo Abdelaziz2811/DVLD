@@ -98,6 +98,45 @@ namespace DVLD_DAL.Drivers
             return IsFound;
         }
 
+        public static bool Find(int DriverID, ref int PersonID, ref int CreatedByUserID, ref DateTime CreatedDate)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT * FROM Drivers
+                             WHERE DriverID = @DriverID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@DriverID", DriverID);
+
+            bool IsFound = false;
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    IsFound = true;
+                    PersonID = (int)Reader["PersonID"];
+                    CreatedByUserID = (int)Reader["CreatedByUserID"];
+                    CreatedDate = (DateTime)Reader["CreatedDate"];
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+
         public static int Add(int PersonID, int CreatedByUserID, DateTime CreatedDate)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
