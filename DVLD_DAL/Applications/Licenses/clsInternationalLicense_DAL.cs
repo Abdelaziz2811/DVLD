@@ -10,6 +10,42 @@ namespace DVLD_DAL.Applications.Licenses
 {
     public static class clsInternationalLicense_DAL
     {
+        public static DataTable LoadInternationalLicenses(int PersonID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT InternationalLicenseID, ApplicationID, IssuedUsingLocalLicenseID, IssueDate,
+                                    ExpirationDate, IsActive FROM InternationalLicenses
+                             INNER JOIN Drivers ON Drivers.DriverID = InternationalLicenses.DriverID
+                             WHERE Drivers.PersonID = @PersonID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            DataTable DTInternationalLicenses = new DataTable();
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = command.ExecuteReader();
+
+                if (Reader.HasRows)
+                    DTInternationalLicenses.Load(Reader);
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return DTInternationalLicenses;
+        }
+
         public static DataTable LoadInternationalLicenses()
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
@@ -225,5 +261,40 @@ namespace DVLD_DAL.Applications.Licenses
             return RowsAffected > 0;
         }
 
+        public static bool Exists(int LocalLicenseID, int ClassID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT IsExists = 1 FROM InternationalLicenses
+                             INNER JOIN Licenses ON Licenses.LicenseID = InternationalLicenses.IssuedUsingLocalLicenseID
+                             WHERE IssuedUsingLocalLicenseID = @LocalLicenseID AND Licenses.LicenseClass = @ClassID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LocalLicenseID", LocalLicenseID);
+            command.Parameters.AddWithValue("@ClassID", ClassID);
+
+            bool Exists = false;
+
+            try
+            {
+                connection.Open();
+
+                object Result = command.ExecuteScalar();
+
+                if (Result != null)
+                    Exists = true;
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return Exists;
+        }
     }
 }
