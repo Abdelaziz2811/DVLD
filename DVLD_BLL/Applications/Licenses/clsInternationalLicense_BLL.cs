@@ -112,5 +112,15 @@ namespace DVLD_BLL.Applications.Licenses
         {
             return clsInternationalLicense_DAL.LoadInternationalLicenses();
         }
+
+        public static DataTable LoadInternationalLicenses(int PersonID)
+        {
+            return clsInternationalLicense_DAL.LoadInternationalLicenses(PersonID);
+        }
+
+        public static bool Exists(int LocalLicenseID, int ClassID)
+        {
+            return clsInternationalLicense_DAL.Exists(LocalLicenseID, ClassID);
+        }
     }
 }
