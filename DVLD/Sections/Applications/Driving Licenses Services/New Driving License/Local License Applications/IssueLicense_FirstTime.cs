@@ -62,7 +62,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
                 Driver.Save();
             }
             else
-                Driver = clsDrivers_BLL.Find(Person.PersonID);
+                Driver = clsDrivers_BLL.FindByPersonID(Person.PersonID);
 
             clsLicense_BLL License = new clsLicense_BLL();
             SetLicenseInfo(ref License, Driver);

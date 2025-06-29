@@ -97,6 +97,14 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TB_FilterationValue_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(TB_FilterationValue.Text))
+            {
+                TB_FilterationValue.Text = string.Empty;
+                TB_FilterationValue.Enabled = false;
+                RefreshLocalLicenseApplications();
+                return;
+            }
+
             switch (CB_FilterBy.SelectedItem.ToString())
             {
                 case "L.D.L AppID":
@@ -205,7 +213,7 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
 
         private void TSMI_UpdateApplication_Click(object sender, EventArgs e)
         {
-
+            //..
         }
 
         private void TSMI_DeleteApplication_Click(object sender, EventArgs e)
