@@ -35,7 +35,7 @@
             this.BTN_NextToApplicationInfo = new System.Windows.Forms.Button();
             this.TP_ApplicationInfo = new System.Windows.Forms.TabPage();
             this.GB_ApplicationInfo = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BTN_InternationalLicenseInfo = new System.Windows.Forms.Button();
             this.LB_ILAppID = new System.Windows.Forms.Label();
             this.LB_ExpirationDate = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@
             this.LB_IssueDate = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.BTN_Save = new System.Windows.Forms.Button();
+            this.BTN_Issue = new System.Windows.Forms.Button();
             this.LB_Operation = new System.Windows.Forms.Label();
             this.TC_InternationalLicenseApplication.SuspendLayout();
             this.TP_LocalLicenseInfo.SuspendLayout();
@@ -128,7 +128,7 @@
             // TP_ApplicationInfo
             // 
             this.TP_ApplicationInfo.Controls.Add(this.GB_ApplicationInfo);
-            this.TP_ApplicationInfo.Controls.Add(this.BTN_Save);
+            this.TP_ApplicationInfo.Controls.Add(this.BTN_Issue);
             this.TP_ApplicationInfo.Location = new System.Drawing.Point(4, 22);
             this.TP_ApplicationInfo.Name = "TP_ApplicationInfo";
             this.TP_ApplicationInfo.Padding = new System.Windows.Forms.Padding(3);
@@ -139,7 +139,7 @@
             // 
             // GB_ApplicationInfo
             // 
-            this.GB_ApplicationInfo.Controls.Add(this.button2);
+            this.GB_ApplicationInfo.Controls.Add(this.BTN_InternationalLicenseInfo);
             this.GB_ApplicationInfo.Controls.Add(this.LB_ILAppID);
             this.GB_ApplicationInfo.Controls.Add(this.LB_ExpirationDate);
             this.GB_ApplicationInfo.Controls.Add(this.label12);
@@ -164,22 +164,23 @@
             this.GB_ApplicationInfo.TabStop = false;
             this.GB_ApplicationInfo.Text = "Application Info";
             // 
-            // button2
+            // BTN_InternationalLicenseInfo
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button2.Enabled = false;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(18, 215);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(178, 28);
-            this.button2.TabIndex = 49;
-            this.button2.Tag = " ";
-            this.button2.Text = "International License Info";
-            this.button2.UseVisualStyleBackColor = false;
+            this.BTN_InternationalLicenseInfo.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BTN_InternationalLicenseInfo.Enabled = false;
+            this.BTN_InternationalLicenseInfo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BTN_InternationalLicenseInfo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTN_InternationalLicenseInfo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.BTN_InternationalLicenseInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_InternationalLicenseInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_InternationalLicenseInfo.Location = new System.Drawing.Point(18, 215);
+            this.BTN_InternationalLicenseInfo.Name = "BTN_InternationalLicenseInfo";
+            this.BTN_InternationalLicenseInfo.Size = new System.Drawing.Size(178, 28);
+            this.BTN_InternationalLicenseInfo.TabIndex = 49;
+            this.BTN_InternationalLicenseInfo.Tag = " ";
+            this.BTN_InternationalLicenseInfo.Text = "International License Info";
+            this.BTN_InternationalLicenseInfo.UseVisualStyleBackColor = false;
+            this.BTN_InternationalLicenseInfo.Click += new System.EventHandler(this.BTN_InternationalLicenseInfo_Click);
             // 
             // LB_ILAppID
             // 
@@ -341,22 +342,22 @@
             this.label17.TabIndex = 25;
             this.label17.Text = "I.L.Application ID :";
             // 
-            // BTN_Save
+            // BTN_Issue
             // 
-            this.BTN_Save.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.BTN_Save.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.BTN_Save.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BTN_Save.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.BTN_Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_Save.Location = new System.Drawing.Point(328, 276);
-            this.BTN_Save.Name = "BTN_Save";
-            this.BTN_Save.Size = new System.Drawing.Size(117, 35);
-            this.BTN_Save.TabIndex = 32;
-            this.BTN_Save.Tag = " ";
-            this.BTN_Save.Text = "Save";
-            this.BTN_Save.UseVisualStyleBackColor = false;
-            this.BTN_Save.Click += new System.EventHandler(this.BTN_Save_Click);
+            this.BTN_Issue.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BTN_Issue.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BTN_Issue.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTN_Issue.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.BTN_Issue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_Issue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Issue.Location = new System.Drawing.Point(328, 276);
+            this.BTN_Issue.Name = "BTN_Issue";
+            this.BTN_Issue.Size = new System.Drawing.Size(117, 35);
+            this.BTN_Issue.TabIndex = 32;
+            this.BTN_Issue.Tag = " ";
+            this.BTN_Issue.Text = "Issue";
+            this.BTN_Issue.UseVisualStyleBackColor = false;
+            this.BTN_Issue.Click += new System.EventHandler(this.BTN_Issue_Click);
             // 
             // LB_Operation
             // 
@@ -377,7 +378,10 @@
             this.ClientSize = new System.Drawing.Size(803, 536);
             this.Controls.Add(this.LB_Operation);
             this.Controls.Add(this.TC_InternationalLicenseApplication);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "InternationalLicenseApplication";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "International License Application";
             this.TC_InternationalLicenseApplication.ResumeLayout(false);
             this.TP_LocalLicenseInfo.ResumeLayout(false);
@@ -395,7 +399,7 @@
         private System.Windows.Forms.Button BTN_NextToApplicationInfo;
         private System.Windows.Forms.TabPage TP_ApplicationInfo;
         private User_Controls.Applications_Section.Local_License.UC_LicenseSelector UC_LicenseSelector;
-        public System.Windows.Forms.Button BTN_Save;
+        public System.Windows.Forms.Button BTN_Issue;
         private System.Windows.Forms.Label LB_Operation;
         public System.Windows.Forms.Button BTN_Next;
         public System.Windows.Forms.GroupBox GB_ApplicationInfo;
@@ -415,6 +419,6 @@
         public System.Windows.Forms.Label LB_IssueDate;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label17;
-        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button BTN_InternationalLicenseInfo;
     }
 }

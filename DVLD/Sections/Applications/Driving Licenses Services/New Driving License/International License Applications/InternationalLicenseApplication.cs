@@ -1,4 +1,5 @@
-﻿using DVLD.User_Controls;
+﻿using DVLD.Sections.Applications.Driving_Licenses_Services.Licenses;
+using DVLD.User_Controls;
 using DVLD.User_Controls.Applications_Section.Local_License;
 using DVLD_BLL;
 using DVLD_BLL.Applications.Applications;
@@ -21,6 +22,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
     {
         clsApplications_BLL InternationalApplication;
         clsInternationalLicense_BLL InternationalLicense;
+        clsPerson_BLL Person;
         public InternationalLicenseApplication()
         {
             InitializeComponent();
@@ -56,23 +58,32 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
 
         void SetInternationalApplicationInfo()
         {
-            InternationalApplication.ApplicantPersonID = clsPerson_BLL.Find(UC_LicenseSelector.UC_LicenseInfo.LB_NationalNo.Text).PersonID;
+            Person = clsPerson_BLL.Find(UC_LicenseSelector.UC_LicenseInfo.LB_NationalNo.Text);
+            InternationalApplication.ApplicantPersonID = Person.PersonID;
             InternationalApplication.ApplicationTypeID = 6;
             InternationalApplication.PaidFees = clsApplicationTypes_BLL.Find(6).ApplicationFees;
+            InternationalApplication.ApplicationStatus = enApplicationStatus.Completed;
             InternationalApplication.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
         }
 
-        private void BTN_Save_Click(object sender, EventArgs e)
+        private void BTN_Issue_Click(object sender, EventArgs e)
         {
-            if (InternationalApplication.Save())
+            if (!clsInternationalLicense_BLL.Exists(Convert.ToInt32(UC_LicenseSelector.UC_LicenseInfo.LB_LicenseID.Text),
+                clsLicenseClasses_BLL.GetLicenseClassID(UC_LicenseSelector.UC_LicenseInfo.LB_Class.Text)))
             {
-                SetInternationalLicenseInfo_ToSave();
-                if (InternationalLicense.Save())
+                if (InternationalApplication.Save())
                 {
-                    MessageBox.Show("International License Saved successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadInternationalLicenseInfo();
+                    SetInternationalLicenseInfo_ToSave();
+                    if (InternationalLicense.Save())
+                    {
+                        MessageBox.Show("International License Saved successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadInternationalLicenseInfo();
+                        BTN_InternationalLicenseInfo.Enabled = true;
+                    }
                 }
             }
+            else
+                MessageBox.Show("The International License with the current class already exists", "I.License Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         void SetInternationalLicenseInfo_ToView()
@@ -106,6 +117,12 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
         {
             LB_ILAppID.Text = InternationalApplication.ApplicationID.ToString();
             LB_ILicenseID.Text = InternationalLicense.InternationalLicenseID.ToString(); 
+        }
+
+        private void BTN_InternationalLicenseInfo_Click(object sender, EventArgs e)
+        {
+            InternationalLicenseInfo internationalLicenseInfo = new InternationalLicenseInfo(InternationalLicense, Person);
+            internationalLicenseInfo.ShowDialog();
         }
     }
 }
