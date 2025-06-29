@@ -1,4 +1,5 @@
 ﻿using DVLD.Sections.Applications;
+using DVLD.Sections.Applications.Driving_Licenses_Services.Licenses;
 using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.International_License_Applications;
 using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Local_License;
 using DVLD.Sections.Applications.Manage_Applications.Local_License_Applications;
@@ -99,10 +100,22 @@ namespace DVLD
             drivers.ShowDialog();
         }
 
-        private void TSMI_InternationalDrivingLicenseApplications_Click(object sender, EventArgs e)
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InternationalLicenseApplication internationalLicenseApplication = new InternationalLicenseApplication();
             internationalLicenseApplication.ShowDialog();
+        }
+
+        private void TSMI_InternationalDrivingLicenseApplications_Click(object sender, EventArgs e)
+        {
+            ManageInternationalLicenseApplications manageInternationalLicenseApplications = new ManageInternationalLicenseApplications();
+            manageInternationalLicenseApplications.ShowDialog();
+        }
+
+        private void TSMI_RenewDrivingLicense_Click(object sender, EventArgs e)
+        {
+            RenewDrivingLicense renewDrivingLicense = new RenewDrivingLicense();
+            renewDrivingLicense.ShowDialog();
         }
     }
 }
