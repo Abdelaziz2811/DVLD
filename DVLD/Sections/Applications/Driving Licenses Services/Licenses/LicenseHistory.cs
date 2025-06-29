@@ -1,4 +1,5 @@
 ﻿using DVLD_BLL;
+using DVLD_BLL.Applications.Licenses;
 using DVLD_BLL.Applications.LocalLicenseApplication;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,8 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.Licenses
             LoadPersonInfo();
             LoadPersonLicenseHistory();
             LicensesCount();
-            CustomizeDGVColumns();
+            CustomizeDGV_LocalLicenseHistoryColumns();
+            CustomizeDGV_InternationalLicenseHistoryColumns();
         }
 
         void LoadPersonInfo()
@@ -39,8 +41,9 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.Licenses
 
         void LoadPersonLicenseHistory()
         {
-            UC_LicenseHistory.DGV_LocalLicenseHistory.DataSource = clsLicense_BLL.LoadLicensesHistory(clsPerson_BLL.Find(NationalNo).PersonID);
-            //UC_LicenseHistory.DGV_InternationalLicenseHistory.DataSource = 
+            int PersonID = clsPerson_BLL.Find(NationalNo).PersonID;
+            UC_LicenseHistory.DGV_LocalLicenseHistory.DataSource = clsLicense_BLL.LoadLicensesHistory(PersonID);
+            UC_LicenseHistory.DGV_InternationalLicenseHistory.DataSource = clsInternationalLicense_BLL.LoadInternationalLicenses(PersonID);
         }
 
         void LicensesCount()
@@ -48,16 +51,41 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.Licenses
             UC_LicenseHistory.LB_RecordsCount.Text = UC_LicenseHistory.DGV_LocalLicenseHistory.RowCount.ToString();
         }
 
-        void CustomizeDGVColumns()
+        void CustomizeDGV_LocalLicenseHistoryColumns()
         {
+            //Customize Names
             UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["LicenseID"].HeaderText = "L.ID";
             UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["ApplicationID"].HeaderText = "App.ID";
             UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["ClassName"].HeaderText = "Class Name";
             UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["IssueDate"].HeaderText = "Issue Date";
-            UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["ExpirationDate"].HeaderText = "ExpirationDate";
+            UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["ExpirationDate"].HeaderText = "Expiration Date";
             UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["IsActive"].HeaderText = "Is Active";
 
-            //UC_LicenseHistory.DGV_LocalLicenseHistory.Column = ;
+            //Customize Widths
+            UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["LicenseID"].Width = 50;
+            UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["ApplicationID"].Width = 50;
+            UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["IssueDate"].Width = 100;
+            UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["ExpirationDate"].Width = 100;
+            UC_LicenseHistory.DGV_LocalLicenseHistory.Columns["IsActive"].Width = 80;
+        }
+
+        void CustomizeDGV_InternationalLicenseHistoryColumns()
+        {
+            //Customize Names
+            UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["InternationalLicenseID"].HeaderText = "Inter.L.ID";
+            UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["ApplicationID"].HeaderText = "App.ID";
+            UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IssuedUsingLocalLicenseID"].HeaderText = "Local.L.ID";
+            UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IssueDate"].HeaderText = "Issue Date";
+            UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["ExpirationDate"].HeaderText = "Expiration Date";
+            UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IsActive"].HeaderText = "Is Active";
+
+            ////Customize Widths
+            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["InternationalLicenseID"].Width = 30;
+            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["ApplicationID"].Width = 30;
+            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IssuedUsingLocalLicenseID"].Width = 30;
+            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IssueDate"].Width = 100;
+            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["ExpirationDate"].Width = 100;
+            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IsActive"].Width = 80;
         }
     }
 }
