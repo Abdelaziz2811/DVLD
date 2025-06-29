@@ -57,12 +57,24 @@ namespace DVLD_BLL.Drivers
             return _Update();
         }
 
-        public static clsDrivers_BLL Find(int PersonID)
+        public static clsDrivers_BLL FindByPersonID(int PersonID)
         {
             int DriverID = 0;
             int CreatedByUserID = 0;
             DateTime CreatedDate = DateTime.Now;
             if (clsDrivers_DAL.Find(ref DriverID, PersonID, ref CreatedByUserID, ref CreatedDate))
+            {
+                return new clsDrivers_BLL(DriverID, PersonID, CreatedByUserID, CreatedDate);
+            }
+            return null;
+        }
+
+        public static clsDrivers_BLL FindByDriverID(int DriverID)
+        {
+            int PersonID = 0;
+            int CreatedByUserID = 0;
+            DateTime CreatedDate = DateTime.Now;
+            if (clsDrivers_DAL.Find(DriverID, ref PersonID, ref CreatedByUserID, ref CreatedDate))
             {
                 return new clsDrivers_BLL(DriverID, PersonID, CreatedByUserID, CreatedDate);
             }
