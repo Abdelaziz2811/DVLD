@@ -314,11 +314,15 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
         private void TSMI_ShowLicense_Click(object sender, EventArgs e)
         {
             clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.Find(Convert.ToInt32(DGV_LocalLicenseApplications.CurrentRow.Cells[0].Value));
+            clsLicense_BLL License = clsLicense_BLL.FindByAppID(LocalLicenseApplication.ApplicationID);
             if (LocalLicenseApplication != null)
             {
-                LicenseInfo licenseDetails = new LicenseInfo(LocalLicenseApplication);
-                licenseDetails.ShowDialog();
-                RefreshLocalLicenseApplications();
+                if (License != null)
+                {
+                    LicenseInfo licenseDetails = new LicenseInfo(License);
+                    licenseDetails.ShowDialog();
+                    RefreshLocalLicenseApplications();
+                }
             }
             else
                 MessageBox.Show("The selected local license application doesn't exists anymore", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
