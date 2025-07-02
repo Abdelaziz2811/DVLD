@@ -11,8 +11,8 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace DVLD_BLL.Applications.LocalLicenseApplication
 {
-    public enum enMode { Add, Update }
-    public enum enIssueReason { First_Time = 1, Renew }
+    public enum enLicenseMode { Add, Update }
+    public enum enIssueReason { First_Time = 1, Renew, Replace_For_Damaged, Replace_For_Lost }
     public class clsLicense_BLL
     {
         public int LicenseID { get; set; }
@@ -26,7 +26,7 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
         public bool IsActive {  get; set; }
         public enIssueReason IssueReason {  get; set; }
         public int CreatedByUserID {  get; set; }
-        public enMode Mode { get; set; }
+        public enLicenseMode Mode { get; set; }
         public clsLicense_BLL()
         {
             LicenseID = 0;
@@ -40,7 +40,7 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             IsActive = true;
             IssueReason = enIssueReason.First_Time;
             CreatedByUserID = 0;
-            Mode = enMode.Add;
+            Mode = enLicenseMode.Add;
         }
 
         private clsLicense_BLL(int LicenseID, int ApplicationID, int DriverID, byte LicenseClass, DateTime IssueDate,
@@ -57,7 +57,7 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
             this.IsActive = IsActive;
             this.IssueReason = IssueReason;
             this.CreatedByUserID = CreatedByUserID;
-            Mode = enMode.Update;
+            Mode = enLicenseMode.Update;
         }
 
         private bool _Add()
@@ -119,7 +119,7 @@ namespace DVLD_BLL.Applications.LocalLicenseApplication
 
         public bool Save()
         {
-            if (Mode == enMode.Add)
+            if (Mode == enLicenseMode.Add)
                 return _Add();
 
             return _Update();
