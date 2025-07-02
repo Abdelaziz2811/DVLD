@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Local_License;
+using DVLD_BLL.Applications.LocalLicenseApplication;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +27,13 @@ namespace DVLD.User_Controls.Applications_Section.Local_License
             }
             else
                 LB_RecordsCount.Text = DGV_InternationalLicenseHistory.RowCount.ToString();
+        }
+
+        private void TSMI_ShowLicense_Click(object sender, EventArgs e)
+        {
+            clsLicense_BLL Licenses = clsLicense_BLL.FindByLicenseID(Convert.ToInt32(DGV_LocalLicenseHistory.CurrentRow.Cells[0].Value));
+            LicenseInfo licenseInfo = new LicenseInfo(Licenses);
+            licenseInfo.ShowDialog();
         }
     }
 }
