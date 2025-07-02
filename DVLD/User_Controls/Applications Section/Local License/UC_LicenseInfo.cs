@@ -51,10 +51,10 @@ namespace DVLD.User_Controls.Applications_Section.Local_License
                 PB_PersonImage.Image = Image.FromFile(person.ImagePath);
         }
 
-        public void LoadLicenseInfo(clsLicense_BLL License, clsPerson_BLL Person, clsLocalLicenseApplication_BLL LocalLicenseApplication)
+        public void LoadLicenseInfo(clsLicense_BLL License, clsPerson_BLL Person)
         {
-            LB_Class.Text = LocalLicenseApplication.ClassName;
-            LB_Name.Text = LocalLicenseApplication.FullName;
+            LB_Class.Text = clsLicenseClasses_BLL.GetClassName(License.LicenseClass);
+            LB_Name.Text = Person.FirstName + ' ' + Person.SecondName + ' ' + Person.ThirdName+ ' ' + Person.LastName;
             LB_IssueDate.Text = License.IssueDate.ToString("d");
             LB_ExpirationDate.Text = License.ExpirationDate.ToString("d");
             LB_LicenseID.Text = License.LicenseID.ToString();

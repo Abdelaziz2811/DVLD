@@ -116,9 +116,9 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(23, 226);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 19);
+            this.label3.Size = new System.Drawing.Size(149, 19);
             this.label3.TabIndex = 76;
-            this.label3.Text = "Detained :";
+            this.label3.Text = "Detained            :";
             // 
             // LB_Class
             // 
@@ -136,9 +136,9 @@
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(23, 31);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 19);
+            this.label7.Size = new System.Drawing.Size(147, 19);
             this.label7.TabIndex = 74;
-            this.label7.Text = "Class :";
+            this.label7.Text = "Class                  :";
             // 
             // LB_IssueReason
             // 
@@ -156,9 +156,9 @@
             this.label11.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(23, 265);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 19);
+            this.label11.Size = new System.Drawing.Size(148, 19);
             this.label11.TabIndex = 72;
-            this.label11.Text = "Issue Reason :";
+            this.label11.Text = "Issue Reason     :";
             // 
             // LB_ExpirationDate
             // 
@@ -200,7 +200,7 @@
             // 
             this.LB_DriverID.AutoSize = true;
             this.LB_DriverID.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_DriverID.Location = new System.Drawing.Point(458, 109);
+            this.LB_DriverID.Location = new System.Drawing.Point(481, 109);
             this.LB_DriverID.Name = "LB_DriverID";
             this.LB_DriverID.Size = new System.Drawing.Size(33, 19);
             this.LB_DriverID.TabIndex = 68;
@@ -210,17 +210,17 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(336, 109);
+            this.label14.Location = new System.Drawing.Point(359, 109);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 19);
+            this.label14.Size = new System.Drawing.Size(119, 19);
             this.label14.TabIndex = 67;
-            this.label14.Text = "Driver ID :";
+            this.label14.Text = "Driver ID      :";
             // 
             // LB_Active
             // 
             this.LB_Active.AutoSize = true;
             this.LB_Active.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_Active.Location = new System.Drawing.Point(458, 265);
+            this.LB_Active.Location = new System.Drawing.Point(481, 265);
             this.LB_Active.Name = "LB_Active";
             this.LB_Active.Size = new System.Drawing.Size(33, 19);
             this.LB_Active.TabIndex = 66;
@@ -230,11 +230,11 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(336, 265);
+            this.label16.Location = new System.Drawing.Point(359, 265);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(71, 19);
+            this.label16.Size = new System.Drawing.Size(121, 19);
             this.label16.TabIndex = 65;
-            this.label16.Text = "Active :";
+            this.label16.Text = "Active           :";
             // 
             // LB_Notes
             // 
@@ -252,9 +252,9 @@
             this.label18.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(23, 304);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(67, 19);
+            this.label18.Size = new System.Drawing.Size(147, 19);
             this.label18.TabIndex = 63;
-            this.label18.Text = "Notes :";
+            this.label18.Text = "Notes                 :";
             // 
             // LB_IssueDate
             // 
@@ -272,15 +272,15 @@
             this.label8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(23, 109);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 19);
+            this.label8.Size = new System.Drawing.Size(147, 19);
             this.label8.TabIndex = 61;
-            this.label8.Text = "Issue Date :";
+            this.label8.Text = "Issue Date         :";
             // 
             // LB_BirthDate
             // 
             this.LB_BirthDate.AutoSize = true;
             this.LB_BirthDate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_BirthDate.Location = new System.Drawing.Point(458, 226);
+            this.LB_BirthDate.Location = new System.Drawing.Point(481, 226);
             this.LB_BirthDate.Name = "LB_BirthDate";
             this.LB_BirthDate.Size = new System.Drawing.Size(33, 19);
             this.LB_BirthDate.TabIndex = 60;
@@ -290,17 +290,17 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(336, 187);
+            this.label10.Location = new System.Drawing.Point(359, 187);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 19);
+            this.label10.Size = new System.Drawing.Size(119, 19);
             this.label10.TabIndex = 59;
-            this.label10.Text = "Gender :";
+            this.label10.Text = "Gender         :";
             // 
             // LB_Gender
             // 
             this.LB_Gender.AutoSize = true;
             this.LB_Gender.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_Gender.Location = new System.Drawing.Point(458, 187);
+            this.LB_Gender.Location = new System.Drawing.Point(481, 187);
             this.LB_Gender.Name = "LB_Gender";
             this.LB_Gender.Size = new System.Drawing.Size(33, 19);
             this.LB_Gender.TabIndex = 58;
@@ -310,7 +310,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(336, 148);
+            this.label12.Location = new System.Drawing.Point(359, 148);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(116, 19);
             this.label12.TabIndex = 57;
@@ -320,7 +320,7 @@
             // 
             this.LB_NationalNo.AutoSize = true;
             this.LB_NationalNo.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_NationalNo.Location = new System.Drawing.Point(458, 148);
+            this.LB_NationalNo.Location = new System.Drawing.Point(481, 148);
             this.LB_NationalNo.Name = "LB_NationalNo";
             this.LB_NationalNo.Size = new System.Drawing.Size(33, 19);
             this.LB_NationalNo.TabIndex = 56;
@@ -330,11 +330,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(336, 226);
+            this.label6.Location = new System.Drawing.Point(359, 226);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 19);
+            this.label6.Size = new System.Drawing.Size(119, 19);
             this.label6.TabIndex = 55;
-            this.label6.Text = "Birth Date :";
+            this.label6.Text = "Birth Date    :";
             // 
             // LB_LicenseID
             // 
@@ -352,9 +352,9 @@
             this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(23, 187);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 19);
+            this.label4.Size = new System.Drawing.Size(149, 19);
             this.label4.TabIndex = 53;
-            this.label4.Text = "License ID :";
+            this.label4.Text = "License ID          :";
             // 
             // LB_Name
             // 
@@ -372,9 +372,9 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(23, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 19);
+            this.label1.Size = new System.Drawing.Size(147, 19);
             this.label1.TabIndex = 51;
-            this.label1.Text = "Name :";
+            this.label1.Text = "Name                 :";
             // 
             // PB_PersonImage
             // 

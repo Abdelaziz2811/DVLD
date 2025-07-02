@@ -93,6 +93,12 @@
     <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\RenewDrivingLicense.Designer.cs">
       <DependentUpon>RenewDrivingLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\ReplaceDrivingLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\ReplaceDrivingLicense.Designer.cs">
+      <DependentUpon>ReplaceDrivingLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\International License Applications\InternationalLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\Licenses\RenewDrivingLicense.resx">
       <DependentUpon>RenewDrivingLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\Licenses\ReplaceDrivingLicense.resx">
+      <DependentUpon>ReplaceDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\International License Applications\InternationalLicenseApplication.resx">
       <DependentUpon>InternationalLicenseApplication.cs</DependentUpon>
