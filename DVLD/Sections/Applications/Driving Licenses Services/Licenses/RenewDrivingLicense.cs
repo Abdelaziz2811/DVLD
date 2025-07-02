@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,17 +30,14 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.Licenses
 
         private void BTN_Next_Click(object sender, EventArgs e)
         {
-            if (UC_LicenseSelector.UC_LicenseInfo.LB_LicenseID.Text != "----")
-            {
-                if (Convert.ToDateTime(UC_LicenseSelector.UC_LicenseInfo.LB_ExpirationDate.Text) < DateTime.Now)
-                {
-                    TC_LicenseApplication.SelectedIndex = 1;
-                }
-                else
-                    MessageBox.Show($"The current License didn't expired yet, The expiration date is {UC_LicenseSelector.UC_LicenseInfo.LB_ExpirationDate.Text}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
+            if (UC_LicenseSelector.UC_LicenseInfo.LB_LicenseID.Text == "----")
                 MessageBox.Show("Please select a License first", "No License Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (UC_LicenseSelector.UC_LicenseInfo.LB_Active.Text == "False")
+                MessageBox.Show($"The current License cannot be renewed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (Convert.ToDateTime(UC_LicenseSelector.UC_LicenseInfo.LB_ExpirationDate.Text) > DateTime.Now)
+                MessageBox.Show($"The current License didn't expired yet, The expiration date is {UC_LicenseSelector.UC_LicenseInfo.LB_ExpirationDate.Text}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+                TC_LicenseApplication.SelectedIndex = 1;
         }
 
         private void TC_LicenseApplication_SelectedIndexChanged(object sender, EventArgs e)
@@ -57,6 +55,11 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.Licenses
                     {
                         TC_LicenseApplication.SelectedTab = TP_LicenseInfo;
                         MessageBox.Show($"The current License didn't expired yet, The expiration date is {UC_LicenseSelector.UC_LicenseInfo.LB_ExpirationDate.Text}", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (UC_LicenseSelector.UC_LicenseInfo.LB_Active.Text == "False")
+                    {
+                        TC_LicenseApplication.SelectedTab = TP_LicenseInfo;
+                        MessageBox.Show($"The current License cannot be renewed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -79,23 +82,34 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.Licenses
             RenewalApplication.ApplicantPersonID = Person.PersonID;
             RenewalApplication.ApplicationTypeID = 2;
             RenewalApplication.PaidFees = clsApplicationTypes_BLL.Find(2).ApplicationFees;
-            RenewalApplication.ApplicationStatus = enApplicationStatus.Completed;
+            RenewalApplication.ApplicationStatus = enApplicationStatus.New;
             RenewalApplication.CreatedByUserID = clsGlobalSettings.CurrentUser.UserID;
         }
 
         private void BTN_Renew_Click(object sender, EventArgs e)
         {
-            if (RenewalApplication.Save())
+            if (clsLicense_BLL.FindByLicenseID(License.LicenseID) == null)
             {
-                SetLicenseInfo_ToSave();
-                if (License.Save())
+                if (RenewalApplication.Save())
                 {
-                    MessageBox.Show("License Renewed successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadLicenseInfo();
-                    DisactiveExpiredLicense();
-                    BTN_LicenseInfo.Enabled = true;
+                    RenewalApplication.ApplicationStatus = enApplicationStatus.Completed;
+                    SetLicenseInfo_ToSave();
+                    if (License.Save())
+                    {
+                        MessageBox.Show("License Renewed successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadLicenseInfo();
+                        Enable_DisableButton(BTN_LicenseInfo, true);
+                        DisactiveExpiredLicense();
+                    }
                 }
             }
+            else
+                MessageBox.Show("The current license already renewed, You can't renew it again!", "License Has Been Renewed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        void Enable_DisableButton(Button ButtonName, bool EnabledValue)
+        {
+            ButtonName.Enabled = EnabledValue;
         }
 
         void SetLicenseInfo_ToView()
@@ -149,8 +163,7 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.Licenses
 
         private void BTN_LicenseInfo_Click(object sender, EventArgs e)
         {
-            clsLocalLicenseApplication_BLL LocalLicenseApplication = clsLocalLicenseApplication_BLL.Find(RenewalApplication.ApplicationID);
-            LicenseInfo licenseInfo = new LicenseInfo(LocalLicenseApplication);
+            LicenseInfo licenseInfo = new LicenseInfo(License);
             licenseInfo.ShowDialog();
         }
     }

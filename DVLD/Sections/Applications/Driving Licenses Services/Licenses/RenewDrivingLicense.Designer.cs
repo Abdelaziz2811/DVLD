@@ -356,12 +356,12 @@
             // LB_RenewedLicenseID
             // 
             this.LB_RenewedLicenseID.AutoSize = true;
-            this.LB_RenewedLicenseID.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_RenewedLicenseID.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB_RenewedLicenseID.Location = new System.Drawing.Point(638, 46);
             this.LB_RenewedLicenseID.Name = "LB_RenewedLicenseID";
-            this.LB_RenewedLicenseID.Size = new System.Drawing.Size(21, 19);
+            this.LB_RenewedLicenseID.Size = new System.Drawing.Size(27, 19);
             this.LB_RenewedLicenseID.TabIndex = 35;
-            this.LB_RenewedLicenseID.Text = "--";
+            this.LB_RenewedLicenseID.Text = "??";
             // 
             // label11
             // 
