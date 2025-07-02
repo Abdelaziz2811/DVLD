@@ -1,6 +1,7 @@
 ﻿using DVLD_BLL;
 using DVLD_BLL.Applications.Licenses;
 using DVLD_BLL.Applications.LocalLicenseApplication;
+using DVLD_BLL.Drivers;
 using DVLD_BLL.License_Classes;
 using System;
 using System.Collections.Generic;
@@ -18,19 +19,17 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
     {
         clsLicense_BLL License;
         clsPerson_BLL Person;
-        clsLocalLicenseApplication_BLL LocalLicenseApplication;
-        public LicenseInfo(clsLocalLicenseApplication_BLL LocalLicenseApplication)
+        public LicenseInfo(clsLicense_BLL License)
         {
             InitializeComponent();
 
-            this.LocalLicenseApplication = LocalLicenseApplication;
-            License = clsLicense_BLL.FindByAppID(LocalLicenseApplication.ApplicationID);
-            Person = clsPerson_BLL.Find(LocalLicenseApplication.NationalNo);
+            this.License = License;
+            Person = clsPerson_BLL.Find(clsDrivers_BLL.FindByDriverID(License.DriverID).PersonID);
         }
 
         private void LicenseInfo_Load(object sender, EventArgs e)
         {
-            UC_LicenseInfo.LoadLicenseInfo(License, Person, LocalLicenseApplication);
+            UC_LicenseInfo.LoadLicenseInfo(License, Person);
         }
     }
 }
