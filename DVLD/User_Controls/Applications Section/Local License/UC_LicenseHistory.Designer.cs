@@ -28,18 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TB_LicenseType = new System.Windows.Forms.TabControl();
             this.TP_Local = new System.Windows.Forms.TabPage();
             this.DGV_LocalLicenseHistory = new System.Windows.Forms.DataGridView();
             this.TP_International = new System.Windows.Forms.TabPage();
+            this.DGV_InternationalLicenseHistory = new System.Windows.Forms.DataGridView();
             this.LB_RecordsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.DGV_InternationalLicenseHistory = new System.Windows.Forms.DataGridView();
+            this.CMS_LocalLicensesActions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TSMI_ShowLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.TB_LicenseType.SuspendLayout();
             this.TP_Local.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_LocalLicenseHistory)).BeginInit();
             this.TP_International.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_InternationalLicenseHistory)).BeginInit();
+            this.CMS_LocalLicensesActions.SuspendLayout();
             this.SuspendLayout();
             // 
             // TB_LicenseType
@@ -72,6 +76,7 @@
             this.DGV_LocalLicenseHistory.AllowUserToOrderColumns = true;
             this.DGV_LocalLicenseHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_LocalLicenseHistory.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.DGV_LocalLicenseHistory.ContextMenuStrip = this.CMS_LocalLicensesActions;
             this.DGV_LocalLicenseHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGV_LocalLicenseHistory.Location = new System.Drawing.Point(3, 3);
             this.DGV_LocalLicenseHistory.Name = "DGV_LocalLicenseHistory";
@@ -89,6 +94,20 @@
             this.TP_International.TabIndex = 1;
             this.TP_International.Text = "International";
             this.TP_International.UseVisualStyleBackColor = true;
+            // 
+            // DGV_InternationalLicenseHistory
+            // 
+            this.DGV_InternationalLicenseHistory.AllowUserToAddRows = false;
+            this.DGV_InternationalLicenseHistory.AllowUserToDeleteRows = false;
+            this.DGV_InternationalLicenseHistory.AllowUserToOrderColumns = true;
+            this.DGV_InternationalLicenseHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGV_InternationalLicenseHistory.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.DGV_InternationalLicenseHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGV_InternationalLicenseHistory.Location = new System.Drawing.Point(3, 3);
+            this.DGV_InternationalLicenseHistory.Name = "DGV_InternationalLicenseHistory";
+            this.DGV_InternationalLicenseHistory.ReadOnly = true;
+            this.DGV_InternationalLicenseHistory.Size = new System.Drawing.Size(756, 204);
+            this.DGV_InternationalLicenseHistory.TabIndex = 1;
             // 
             // LB_RecordsCount
             // 
@@ -110,19 +129,21 @@
             this.label2.TabIndex = 48;
             this.label2.Text = "# Records :";
             // 
-            // DGV_InternationalLicenseHistory
+            // CMS_LocalLicensesActions
             // 
-            this.DGV_InternationalLicenseHistory.AllowUserToAddRows = false;
-            this.DGV_InternationalLicenseHistory.AllowUserToDeleteRows = false;
-            this.DGV_InternationalLicenseHistory.AllowUserToOrderColumns = true;
-            this.DGV_InternationalLicenseHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DGV_InternationalLicenseHistory.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.DGV_InternationalLicenseHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGV_InternationalLicenseHistory.Location = new System.Drawing.Point(3, 3);
-            this.DGV_InternationalLicenseHistory.Name = "DGV_InternationalLicenseHistory";
-            this.DGV_InternationalLicenseHistory.ReadOnly = true;
-            this.DGV_InternationalLicenseHistory.Size = new System.Drawing.Size(756, 204);
-            this.DGV_InternationalLicenseHistory.TabIndex = 1;
+            this.CMS_LocalLicensesActions.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CMS_LocalLicensesActions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMI_ShowLicense});
+            this.CMS_LocalLicensesActions.Name = "CMS_PeopleHandle";
+            this.CMS_LocalLicensesActions.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.CMS_LocalLicensesActions.Size = new System.Drawing.Size(154, 26);
+            // 
+            // TSMI_ShowLicense
+            // 
+            this.TSMI_ShowLicense.Name = "TSMI_ShowLicense";
+            this.TSMI_ShowLicense.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_ShowLicense.Text = "Show License";
+            this.TSMI_ShowLicense.Click += new System.EventHandler(this.TSMI_ShowLicense_Click);
             // 
             // UC_LicenseHistory
             // 
@@ -139,6 +160,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_LocalLicenseHistory)).EndInit();
             this.TP_International.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_InternationalLicenseHistory)).EndInit();
+            this.CMS_LocalLicensesActions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,5 +174,7 @@
         public System.Windows.Forms.DataGridView DGV_LocalLicenseHistory;
         public System.Windows.Forms.Label LB_RecordsCount;
         public System.Windows.Forms.DataGridView DGV_InternationalLicenseHistory;
+        private System.Windows.Forms.ContextMenuStrip CMS_LocalLicensesActions;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_ShowLicense;
     }
 }
