@@ -211,16 +211,16 @@ namespace DVLD_DAL.Applications.Local_License_Application
 
             string query = @"UPDATE Licenses
                              SET                                   
-                                   (ApplicationID = @ApplicationID
-                                   ,DriverID = @DriverID
-                                   ,LicenseClass = @LicenseClass
-                                   ,IssueDate = @IssueDate
-                                   ,ExpirationDate = @ExpirationDate
-                                   ,Notes = @Notes
-                                   ,PaidFees = @PaidFees
-                                   ,IsActive = @IsActive
-                                   ,IssueReason = @IssueReason
-                                   ,CreatedByUserID = @CreatedByUserID)
+                                    ApplicationID = @ApplicationID,
+                                    DriverID = @DriverID,
+                                    LicenseClass = @LicenseClass,
+                                    IssueDate = @IssueDate,
+                                    ExpirationDate = @ExpirationDate,
+                                    Notes = @Notes,
+                                    PaidFees = @PaidFees,
+                                    IsActive = @IsActive,
+                                    IssueReason = @IssueReason,
+                                    CreatedByUserID = @CreatedByUserID
                              WHERE LicenseID = @LicenseID;";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -231,7 +231,12 @@ namespace DVLD_DAL.Applications.Local_License_Application
             command.Parameters.AddWithValue("@LicenseClass", LicenseClass);
             command.Parameters.AddWithValue("@IssueDate", IssueDate);
             command.Parameters.AddWithValue("@ExpirationDate", ExpirationDate);
-            command.Parameters.AddWithValue("@Notes", Notes);
+
+            if (string.IsNullOrWhiteSpace(Notes))
+                command.Parameters.AddWithValue("@Notes", DBNull.Value);
+            else
+                command.Parameters.AddWithValue("@Notes", Notes);
+
             command.Parameters.AddWithValue("@PaidFees", PaidFees);
             command.Parameters.AddWithValue("@IsActive", IsActive);
             command.Parameters.AddWithValue("@IssueReason", IssueReason);
