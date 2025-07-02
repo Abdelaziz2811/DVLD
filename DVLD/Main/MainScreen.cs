@@ -94,6 +94,12 @@ namespace DVLD
             localLicenseApplications.ShowDialog();
         }
 
+        private void TSMI_RetakeTest_Click(object sender, EventArgs e)
+        {
+            ManageLocalLicenseApplications manageLocalLicenseApplications = new ManageLocalLicenseApplications();
+            manageLocalLicenseApplications.ShowDialog();
+        }
+
         private void TSM_Drivers_Click(object sender, EventArgs e)
         {
             Drivers drivers = new Drivers();
@@ -116,6 +122,12 @@ namespace DVLD
         {
             RenewDrivingLicense renewDrivingLicense = new RenewDrivingLicense();
             renewDrivingLicense.ShowDialog();
+        }
+
+        private void TSMI_ReplaceLostOrDamagedLicense_Click(object sender, EventArgs e)
+        {
+            ReplaceDrivingLicense replaceDrivingLicense = new ReplaceDrivingLicense();
+            replaceDrivingLicense.ShowDialog();
         }
     }
 }

@@ -144,6 +144,7 @@
             this.TSMI_ReplaceLostOrDamagedLicense.Name = "TSMI_ReplaceLostOrDamagedLicense";
             this.TSMI_ReplaceLostOrDamagedLicense.Size = new System.Drawing.Size(322, 26);
             this.TSMI_ReplaceLostOrDamagedLicense.Text = "Replace - Lost or Damaged License";
+            this.TSMI_ReplaceLostOrDamagedLicense.Click += new System.EventHandler(this.TSMI_ReplaceLostOrDamagedLicense_Click);
             // 
             // TSMI_ReleaseDetainedDrivingLicense
             // 
@@ -158,6 +159,7 @@
             this.TSMI_RetakeTest.Name = "TSMI_RetakeTest";
             this.TSMI_RetakeTest.Size = new System.Drawing.Size(322, 26);
             this.TSMI_RetakeTest.Text = "Retake Test";
+            this.TSMI_RetakeTest.Click += new System.EventHandler(this.TSMI_RetakeTest_Click);
             // 
             // TSMI_ManageApplications
             // 
