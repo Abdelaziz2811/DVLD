@@ -78,14 +78,6 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.Licenses
             UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IssueDate"].HeaderText = "Issue Date";
             UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["ExpirationDate"].HeaderText = "Expiration Date";
             UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IsActive"].HeaderText = "Is Active";
-
-            ////Customize Widths
-            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["InternationalLicenseID"].Width = 30;
-            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["ApplicationID"].Width = 30;
-            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IssuedUsingLocalLicenseID"].Width = 30;
-            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IssueDate"].Width = 100;
-            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["ExpirationDate"].Width = 100;
-            //UC_LicenseHistory.DGV_InternationalLicenseHistory.Columns["IsActive"].Width = 80;
         }
     }
 }
