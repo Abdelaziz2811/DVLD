@@ -129,5 +129,11 @@ namespace DVLD
             ReplaceDrivingLicense replaceDrivingLicense = new ReplaceDrivingLicense();
             replaceDrivingLicense.ShowDialog();
         }
+
+        private void TSMSI_DetainLicense_Click(object sender, EventArgs e)
+        {
+            DetainLicense detainLicense = new DetainLicense();
+            detainLicense.ShowDialog();
+        }
     }
 }
