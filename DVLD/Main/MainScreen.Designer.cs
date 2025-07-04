@@ -158,7 +158,7 @@
             this.TSMI_RetakeTest.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.TSMI_RetakeTest.Name = "TSMI_RetakeTest";
             this.TSMI_RetakeTest.Size = new System.Drawing.Size(322, 26);
-            this.TSMI_RetakeTest.Text = "Retake Test";
+            this.TSMI_RetakeTest.Text = "Schedule Or Retake Test";
             this.TSMI_RetakeTest.Click += new System.EventHandler(this.TSMI_RetakeTest_Click);
             // 
             // TSMI_ManageApplications
@@ -211,6 +211,7 @@
             this.TSMSI_DetainLicense.Name = "TSMSI_DetainLicense";
             this.TSMSI_DetainLicense.Size = new System.Drawing.Size(264, 26);
             this.TSMSI_DetainLicense.Text = "Detain License";
+            this.TSMSI_DetainLicense.Click += new System.EventHandler(this.TSMSI_DetainLicense_Click);
             // 
             // TSMI_ReleaseDetainedLicense
             // 
