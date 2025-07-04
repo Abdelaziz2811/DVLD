@@ -29,7 +29,13 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
         }
         private void BTN_Next_Click(object sender, EventArgs e)
         {
-            if (UC_LicenseSelector.UC_LicenseInfo.LB_LicenseID.Text != "----")
+            if (UC_LicenseSelector.UC_LicenseInfo.LB_LicenseID.Text == "----")
+                MessageBox.Show("Please select a Local License first", "No License Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (Convert.ToDateTime(UC_LicenseSelector.UC_LicenseInfo.LB_ExpirationDate.Text) < DateTime.Now)
+                MessageBox.Show($"The current License cannot be used to issue international license, It is expired", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (UC_LicenseSelector.UC_LicenseInfo.LB_Active.Text == "False")
+                MessageBox.Show($"The current License cannot be used to issue international license, It is not active", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
                 TC_InternationalLicenseApplication.SelectedIndex = 1;
         }
 
@@ -42,12 +48,22 @@ namespace DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_Licen
                     TC_InternationalLicenseApplication.SelectedTab = TP_LocalLicenseInfo;
                     MessageBox.Show("Please select a Local License first", "No License Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if (Convert.ToDateTime(UC_LicenseSelector.UC_LicenseInfo.LB_ExpirationDate.Text) < DateTime.Now)
+                {
+                    TC_InternationalLicenseApplication.SelectedTab = TP_LocalLicenseInfo;
+                    MessageBox.Show($"The current License cannot be used to issue international license, It is expired", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (UC_LicenseSelector.UC_LicenseInfo.LB_Active.Text == "False")
+                {
+                    TC_InternationalLicenseApplication.SelectedTab = TP_LocalLicenseInfo;
+                    MessageBox.Show($"The current License cannot be used to issue international license, It is not active", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 else
                 {
                     // Create International Application
                     InternationalApplication = new clsApplications_BLL();
                     SetInternationalApplicationInfo();
-                    
+
                     // Create International License
                     InternationalLicense = new clsInternationalLicense_BLL();
                     SetInternationalLicenseInfo_ToView();
