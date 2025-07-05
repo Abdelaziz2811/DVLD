@@ -58,7 +58,7 @@ namespace DVLD.User_Controls.Applications_Section.Local_License
             LB_IssueDate.Text = License.IssueDate.ToString("d");
             LB_ExpirationDate.Text = License.ExpirationDate.ToString("d");
             LB_LicenseID.Text = License.LicenseID.ToString();
-            LB_Detained.Text = clsDetainedLicenses_BLL.IsExists(License.LicenseID).ToString();
+            LB_Detained.Text = clsDetainedLicenses_BLL.IsDetained(License.LicenseID).ToString();
             LB_IssueReason.Text = License.IssueReason.ToString();
 
             if (License.Notes != null)
@@ -89,7 +89,7 @@ namespace DVLD.User_Controls.Applications_Section.Local_License
                 LB_IssueDate.Text = License.IssueDate.ToString("d");
                 LB_ExpirationDate.Text = License.ExpirationDate.ToString("d");
                 LB_LicenseID.Text = License.LicenseID.ToString();
-                LB_Detained.Text = clsDetainedLicenses_BLL.IsExists(License.LicenseID).ToString();
+                LB_Detained.Text = clsDetainedLicenses_BLL.IsDetained(License.LicenseID).ToString();
                 LB_IssueReason.Text = License.IssueReason.ToString();
 
                 if (License.Notes != null)
