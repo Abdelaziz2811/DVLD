@@ -11,6 +11,52 @@ namespace DVLD_DAL.Applications.Licenses
 {
     public static class clsDetainedLicenses_DAL
     {
+        public static bool Find(int LicenseID, ref int DetainID, ref DateTime DetainDate, ref decimal FineFees, ref int CreatedByUserID, ref bool IsReleased,
+                                             ref DateTime ReleaseDate, ref int ReleasedByUserID, ref int ReleaseApplicationID)
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT * FROM DetainedLicenses
+                             WHERE LicenseID = @LicenseID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@LicenseID", LicenseID);
+
+            bool IsFound = false;
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = command.ExecuteReader();
+
+                if (Reader.Read())
+                {
+                    IsFound = true;
+                    DetainID = (int)Reader["DetainID"];
+                    DetainDate = (DateTime)Reader["DetainDate"];
+                    FineFees = (decimal)Reader["FineFees"];
+                    CreatedByUserID = (int)Reader["CreatedByUserID"];
+                    IsReleased = (bool)Reader["IsReleased"];
+
+                    ReleaseDate = (Reader["ReleaseDate"] != DBNull.Value)? (DateTime)Reader["ReleaseDate"] : DateTime.MinValue;
+                    ReleasedByUserID = (Reader["ReleasedByUserID"] != DBNull.Value) ? (int)Reader["ReleasedByUserID"] : 0;
+                    ReleaseApplicationID = (Reader["ReleaseApplicationID"] != DBNull.Value) ? (int)Reader["ReleaseApplicationID"] : 0;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return IsFound;
+        }
+
         public static int Add(int LicenseID, DateTime DetainDate, decimal FineFees, int CreatedByUserID,
             bool IsReleased, DateTime ReleaseDate, int ReleasedByUserID, int ReleaseApplicationID)
         {
@@ -79,7 +125,7 @@ namespace DVLD_DAL.Applications.Licenses
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
-            string query = @"UPDATE Licenses
+            string query = @"UPDATE DetainedLicenses
                              SET                                   
                                     LicenseID = @LicenseID,
                                     DetainDate = @DetainDate,
@@ -135,12 +181,12 @@ namespace DVLD_DAL.Applications.Licenses
             return RowsAffected > 0;
         }
 
-        public static bool IsExists(int LicenseID)
+        public static bool IsDetained(int LicenseID)
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
             string query = @"SELECT DetainID FROM DetainedLicenses
-                             WHERE LicenseID = @LicenseID";
+                             WHERE LicenseID = @LicenseID AND IsReleased = 0";
 
             SqlCommand command = new SqlCommand(query, connection);
 
