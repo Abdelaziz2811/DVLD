@@ -219,6 +219,7 @@
             this.TSMI_ReleaseDetainedLicense.Name = "TSMI_ReleaseDetainedLicense";
             this.TSMI_ReleaseDetainedLicense.Size = new System.Drawing.Size(264, 26);
             this.TSMI_ReleaseDetainedLicense.Text = "Release Detained License";
+            this.TSMI_ReleaseDetainedLicense.Click += new System.EventHandler(this.TSMI_ReleaseDetainedLicense_Click);
             // 
             // TSMI_ManageApplicationType
             // 

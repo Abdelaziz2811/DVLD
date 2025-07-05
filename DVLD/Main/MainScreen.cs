@@ -135,5 +135,11 @@ namespace DVLD
             DetainLicense detainLicense = new DetainLicense();
             detainLicense.ShowDialog();
         }
+
+        private void TSMI_ReleaseDetainedLicense_Click(object sender, EventArgs e)
+        {
+            ReleaseLicense releaseLicense = new ReleaseLicense();
+            releaseLicense.ShowDialog();
+        }
     }
 }
