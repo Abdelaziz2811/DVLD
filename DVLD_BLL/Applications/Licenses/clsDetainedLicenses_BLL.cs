@@ -47,7 +47,7 @@ namespace DVLD_BLL.Applications.Licenses
             this.ReleaseDate = ReleaseDate;
             this.ReleasedByUserID = ReleasedByUserID;
             this.ReleaseApplicationID = ReleaseApplicationID;
-            Mode = enMode.Add;
+            Mode = enMode.Update;
         }
 
         private bool _Add()
@@ -70,9 +70,29 @@ namespace DVLD_BLL.Applications.Licenses
             return _Update();
         }
 
-        public static bool IsExists(int LicenseID)
+        public static clsDetainedLicenses_BLL Find(int LicenseID)
         {
-            return clsDetainedLicenses_DAL.IsExists(LicenseID);
+            int DetainID = 0;
+            DateTime DetainDate = DateTime.Now;
+            Decimal FineFees = 0;
+            int CreatedByUserID = 0;
+            bool IsReleased = false;
+            DateTime ReleaseDate = DateTime.MinValue;
+            int ReleasedByUserID = 0;
+            int ReleaseApplicationID = 0;
+
+            if (clsDetainedLicenses_DAL.Find(LicenseID, ref DetainID, ref DetainDate, ref FineFees, ref CreatedByUserID, ref IsReleased,
+                                             ref ReleaseDate, ref ReleasedByUserID, ref ReleaseApplicationID))
+            {
+                return new clsDetainedLicenses_BLL(DetainID, LicenseID, DetainDate, FineFees, CreatedByUserID, IsReleased,
+                                                   ReleaseDate, ReleasedByUserID, ReleaseApplicationID);
+            }
+            return null;
+        }
+
+        public static bool IsDetained(int LicenseID)
+        {
+            return clsDetainedLicenses_DAL.IsDetained(LicenseID);
         }
     }
 }
