@@ -204,6 +204,7 @@
             this.TSMI_ManageDetainedLicenses.Name = "TSMI_ManageDetainedLicenses";
             this.TSMI_ManageDetainedLicenses.Size = new System.Drawing.Size(264, 26);
             this.TSMI_ManageDetainedLicenses.Text = "Manage Detained Licenses";
+            this.TSMI_ManageDetainedLicenses.Click += new System.EventHandler(this.TSMI_ManageDetainedLicenses_Click);
             // 
             // TSMSI_DetainLicense
             // 
