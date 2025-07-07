@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,37 @@ namespace DVLD_DAL.Applications.Licenses
 {
     public static class clsDetainedLicenses_DAL
     {
+        public static DataTable LoadDetainedLicenses()
+        {
+            SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
+
+            string query = @"SELECT * FROM DetainedLicenses";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            DataTable DTDetainedLicenses = new DataTable();
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader Reader = command.ExecuteReader();
+
+                if (Reader.HasRows)
+                    DTDetainedLicenses.Load(Reader);
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return DTDetainedLicenses;
+        }
+
         public static bool Find(int LicenseID, ref int DetainID, ref DateTime DetainDate, ref decimal FineFees, ref int CreatedByUserID, ref bool IsReleased,
                                              ref DateTime ReleaseDate, ref int ReleasedByUserID, ref int ReleaseApplicationID)
         {
