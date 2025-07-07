@@ -32,12 +32,9 @@
             this.TB_FilterationValue = new System.Windows.Forms.TextBox();
             this.LB_RecordsCount = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BTN_AddLocalLicenseApplication = new System.Windows.Forms.Button();
             this.CB_FilterBy = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.DGV_LocalLicenseApplications = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
+            this.DGV_DetainedLicenses = new System.Windows.Forms.DataGridView();
             this.CMS_DetainedLicensesActions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TSMI_ApplicationDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_UpdateApplication = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,9 +48,13 @@
             this.TSMI_IssueLicense_FirstTime = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_ShowLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_PersonLicenseHistory = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_LocalLicenseApplications)).BeginInit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BTN_AddLocalLicenseApplication = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_DetainedLicenses)).BeginInit();
             this.CMS_DetainedLicensesActions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // TB_FilterationValue
@@ -63,6 +64,7 @@
             this.TB_FilterationValue.Name = "TB_FilterationValue";
             this.TB_FilterationValue.Size = new System.Drawing.Size(100, 20);
             this.TB_FilterationValue.TabIndex = 57;
+            this.TB_FilterationValue.TextChanged += new System.EventHandler(this.TB_FilterationValue_TextChanged);
             // 
             // LB_RecordsCount
             // 
@@ -86,45 +88,22 @@
             this.label2.TabIndex = 55;
             this.label2.Text = "# Records :";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::DVLD.Properties.Resources.licence;
-            this.pictureBox1.Location = new System.Drawing.Point(415, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(171, 124);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 53;
-            this.pictureBox1.TabStop = false;
-            // 
-            // BTN_AddLocalLicenseApplication
-            // 
-            this.BTN_AddLocalLicenseApplication.BackColor = System.Drawing.SystemColors.Window;
-            this.BTN_AddLocalLicenseApplication.BackgroundImage = global::DVLD.Properties.Resources.New_license;
-            this.BTN_AddLocalLicenseApplication.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BTN_AddLocalLicenseApplication.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BTN_AddLocalLicenseApplication.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BTN_AddLocalLicenseApplication.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.BTN_AddLocalLicenseApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_AddLocalLicenseApplication.Location = new System.Drawing.Point(931, 140);
-            this.BTN_AddLocalLicenseApplication.Name = "BTN_AddLocalLicenseApplication";
-            this.BTN_AddLocalLicenseApplication.Size = new System.Drawing.Size(49, 38);
-            this.BTN_AddLocalLicenseApplication.TabIndex = 52;
-            this.BTN_AddLocalLicenseApplication.UseVisualStyleBackColor = false;
-            // 
             // CB_FilterBy
             // 
             this.CB_FilterBy.FormattingEnabled = true;
             this.CB_FilterBy.Items.AddRange(new object[] {
             "None",
-            "L.D.L AppID",
-            "National No",
-            "Full Name",
-            "Status"});
+            "License ID",
+            "Detain Date",
+            "Release Date",
+            "Is Released",
+            "Created By User ID",
+            "Released By User ID"});
             this.CB_FilterBy.Location = new System.Drawing.Point(89, 155);
             this.CB_FilterBy.Name = "CB_FilterBy";
             this.CB_FilterBy.Size = new System.Drawing.Size(124, 21);
             this.CB_FilterBy.TabIndex = 51;
+            this.CB_FilterBy.SelectedIndexChanged += new System.EventHandler(this.CB_FilterBy_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -136,32 +115,21 @@
             this.label4.TabIndex = 50;
             this.label4.Text = "Filter By :";
             // 
-            // DGV_LocalLicenseApplications
+            // DGV_DetainedLicenses
             // 
-            this.DGV_LocalLicenseApplications.AllowUserToAddRows = false;
-            this.DGV_LocalLicenseApplications.AllowUserToDeleteRows = false;
-            this.DGV_LocalLicenseApplications.AllowUserToOrderColumns = true;
-            this.DGV_LocalLicenseApplications.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DGV_LocalLicenseApplications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DGV_LocalLicenseApplications.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.DGV_LocalLicenseApplications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_LocalLicenseApplications.ContextMenuStrip = this.CMS_DetainedLicensesActions;
-            this.DGV_LocalLicenseApplications.Location = new System.Drawing.Point(17, 188);
-            this.DGV_LocalLicenseApplications.Name = "DGV_LocalLicenseApplications";
-            this.DGV_LocalLicenseApplications.ReadOnly = true;
-            this.DGV_LocalLicenseApplications.Size = new System.Drawing.Size(963, 349);
-            this.DGV_LocalLicenseApplications.TabIndex = 58;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(407, -4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(182, 23);
-            this.label3.TabIndex = 59;
-            this.label3.Text = "Detained Licenses";
+            this.DGV_DetainedLicenses.AllowUserToAddRows = false;
+            this.DGV_DetainedLicenses.AllowUserToDeleteRows = false;
+            this.DGV_DetainedLicenses.AllowUserToOrderColumns = true;
+            this.DGV_DetainedLicenses.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DGV_DetainedLicenses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGV_DetainedLicenses.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.DGV_DetainedLicenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_DetainedLicenses.ContextMenuStrip = this.CMS_DetainedLicensesActions;
+            this.DGV_DetainedLicenses.Location = new System.Drawing.Point(17, 188);
+            this.DGV_DetainedLicenses.Name = "DGV_DetainedLicenses";
+            this.DGV_DetainedLicenses.ReadOnly = true;
+            this.DGV_DetainedLicenses.Size = new System.Drawing.Size(963, 349);
+            this.DGV_DetainedLicenses.TabIndex = 58;
             // 
             // CMS_DetainedLicensesActions
             // 
@@ -255,12 +223,65 @@
             this.TSMI_PersonLicenseHistory.Size = new System.Drawing.Size(219, 22);
             this.TSMI_PersonLicenseHistory.Text = "Person License History";
             // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(410, -5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(182, 23);
+            this.label3.TabIndex = 59;
+            this.label3.Text = "Detained Licenses";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Window;
+            this.button1.BackgroundImage = global::DVLD.Properties.Resources.ReleaseLicense;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(857, 140);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(54, 42);
+            this.button1.TabIndex = 60;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::DVLD.Properties.Resources.licence;
+            this.pictureBox1.Location = new System.Drawing.Point(415, 18);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(171, 133);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 53;
+            this.pictureBox1.TabStop = false;
+            // 
+            // BTN_AddLocalLicenseApplication
+            // 
+            this.BTN_AddLocalLicenseApplication.BackColor = System.Drawing.SystemColors.Window;
+            this.BTN_AddLocalLicenseApplication.BackgroundImage = global::DVLD.Properties.Resources.DetainLicense;
+            this.BTN_AddLocalLicenseApplication.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BTN_AddLocalLicenseApplication.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BTN_AddLocalLicenseApplication.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BTN_AddLocalLicenseApplication.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.BTN_AddLocalLicenseApplication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_AddLocalLicenseApplication.Location = new System.Drawing.Point(926, 140);
+            this.BTN_AddLocalLicenseApplication.Name = "BTN_AddLocalLicenseApplication";
+            this.BTN_AddLocalLicenseApplication.Size = new System.Drawing.Size(54, 42);
+            this.BTN_AddLocalLicenseApplication.TabIndex = 52;
+            this.BTN_AddLocalLicenseApplication.UseVisualStyleBackColor = false;
+            // 
             // ManageDetainedLicenses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(997, 542);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TB_FilterationValue);
             this.Controls.Add(this.LB_RecordsCount);
@@ -269,15 +290,16 @@
             this.Controls.Add(this.BTN_AddLocalLicenseApplication);
             this.Controls.Add(this.CB_FilterBy);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.DGV_LocalLicenseApplications);
+            this.Controls.Add(this.DGV_DetainedLicenses);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ManageDetainedLicenses";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Detained Licenses";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_LocalLicenseApplications)).EndInit();
+            this.Load += new System.EventHandler(this.ManageDetainedLicenses_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_DetainedLicenses)).EndInit();
             this.CMS_DetainedLicensesActions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,7 +314,7 @@
         private System.Windows.Forms.Button BTN_AddLocalLicenseApplication;
         private System.Windows.Forms.ComboBox CB_FilterBy;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView DGV_LocalLicenseApplications;
+        private System.Windows.Forms.DataGridView DGV_DetainedLicenses;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ContextMenuStrip CMS_DetainedLicensesActions;
         private System.Windows.Forms.ToolStripMenuItem TSMI_ApplicationDetails;
@@ -307,5 +329,6 @@
         private System.Windows.Forms.ToolStripMenuItem TSMI_IssueLicense_FirstTime;
         private System.Windows.Forms.ToolStripMenuItem TSMI_ShowLicense;
         private System.Windows.Forms.ToolStripMenuItem TSMI_PersonLicenseHistory;
+        private System.Windows.Forms.Button button1;
     }
 }
