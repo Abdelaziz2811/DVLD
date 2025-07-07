@@ -1,4 +1,5 @@
 ﻿using DVLD.Sections.Applications;
+using DVLD.Sections.Applications.Driving_Licenses_Services.Detained_Licenses;
 using DVLD.Sections.Applications.Driving_Licenses_Services.Licenses;
 using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.International_License_Applications;
 using DVLD.Sections.Applications.Driving_Licenses_Services.New_Driving_License.Local_License;
@@ -140,6 +141,12 @@ namespace DVLD
         {
             ReleaseLicense releaseLicense = new ReleaseLicense();
             releaseLicense.ShowDialog();
+        }
+
+        private void TSMI_ManageDetainedLicenses_Click(object sender, EventArgs e)
+        {
+            ManageDetainedLicenses manageDetainedLicenses = new ManageDetainedLicenses();
+            manageDetainedLicenses.ShowDialog();
         }
     }
 }
