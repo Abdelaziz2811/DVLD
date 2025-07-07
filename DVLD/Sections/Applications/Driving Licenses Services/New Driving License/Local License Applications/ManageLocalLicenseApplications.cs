@@ -78,7 +78,7 @@ namespace DVLD.Sections.Applications.Manage_Applications.Local_License_Applicati
             {
                 TB_FilterationValue.Text = string.Empty;
                 TB_FilterationValue.Enabled = false;
-                LoadLocalLicensApplications();
+                RefreshLocalLicenseApplications();
             }
             else
                 TB_FilterationValue.Enabled = true;

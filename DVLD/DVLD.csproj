@@ -544,7 +544,9 @@
   <ItemGroup>
     <None Include="Resources\checklist.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\DetainLicense.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\licence.png" />
   </ItemGroup>
@@ -577,6 +579,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Drivers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ReleaseLicense.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
