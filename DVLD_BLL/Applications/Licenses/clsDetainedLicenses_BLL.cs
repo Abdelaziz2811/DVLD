@@ -1,6 +1,7 @@
 ﻿using DVLD_DAL.Applications.Licenses;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,11 @@ namespace DVLD_BLL.Applications.Licenses
             if (Mode == enMode.Add)
                 return _Add();
             return _Update();
+        }
+
+        public static DataTable LoadDetainedLicenses()
+        {
+            return clsDetainedLicenses_DAL.LoadDetainedLicenses();
         }
 
         public static clsDetainedLicenses_BLL Find(int LicenseID)
