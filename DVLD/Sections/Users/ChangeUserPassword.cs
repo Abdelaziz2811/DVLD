@@ -26,36 +26,7 @@ namespace DVLD.Sections.Users
 
         private void ChangeUserPassword_Load(object sender, EventArgs e)
         {
-            GetUserInfoToUpdate();
-        }
-
-        void GetUserInfoToUpdate()
-        {
-            clsPerson_BLL Person = clsPerson_BLL.Find(User.PersonID);
-
-            if (Person != null)
-            {
-                Change_UserPassword.UserInfo.Person_Info.LB_PersonID.Text = Person.PersonID.ToString();
-                Change_UserPassword.UserInfo.Person_Info.LB_NationalNo.Text = Person.NationalNo;
-                Change_UserPassword.UserInfo.Person_Info.LB_Name.Text = Person.FirstName + " " + Person.SecondName + " " + Person.ThirdName + " " + Person.LastName;
-                Change_UserPassword.UserInfo.Person_Info.LB_BirthDate.Text = Person.BirthDate.ToString("yyyy-MM-dd");
-                Change_UserPassword.UserInfo.Person_Info.LB_Gender.Text = Person.Gender.ToString();
-                Change_UserPassword.UserInfo.Person_Info.LB_Address.Text = Person.Address;
-                Change_UserPassword.UserInfo.Person_Info.LB_Email.Text = Person.Email;
-                Change_UserPassword.UserInfo.Person_Info.LB_Phone.Text = Person.Phone;
-                Change_UserPassword.UserInfo.Person_Info.LB_Country.Text = Person.Country.CountryName;
-
-                if (Person.ImagePath != string.Empty)
-                    if (File.Exists(Person.ImagePath))
-                        Change_UserPassword.UserInfo.Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
-            }
-
-            Change_UserPassword.UserInfo.LB_UserID.Text = User.UserID.ToString();
-            Change_UserPassword.UserInfo.LB_UserName.Text = User.UserName.ToString();
-
-            if (User.IsActive)
-                Change_UserPassword.UserInfo.LB_IsActive.Text = "Yes";
-            else Change_UserPassword.UserInfo.LB_IsActive.Text = "No";
+            Change_UserPassword.UserInfo.GetUserInfo(User);
         }
     }
 }
