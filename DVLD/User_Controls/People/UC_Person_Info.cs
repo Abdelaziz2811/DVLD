@@ -51,7 +51,7 @@ namespace DVLD.User_Controls
             LB_PersonID.Text = Person.PersonID.ToString();
             LB_NationalNo.Text = Person.NationalNo;
             LB_Gender.Text = Person.Gender.ToString();
-            LB_BirthDate.Text = Person.BirthDate.ToString("yyyy/MM/dd");
+            LB_BirthDate.Text = Person.BirthDate.ToString("yyyy-MM-dd");
             LB_Email.Text = Person.Email;
             LB_Phone.Text = Person.Phone;
             LB_Address.Text = Person.Address;
