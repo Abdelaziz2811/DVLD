@@ -66,7 +66,17 @@ namespace DVLD.User_Controls.Users_Section_Controls
             if (Person_Selector.Person_Info.LB_PersonID.Text == "----")
             {
                 MessageBox.Show("Please select a person first", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
+                return;
+            }
+            else
+            {
+                int.TryParse(Person_Selector.Person_Info.LB_PersonID.Text, out int ID);
+                clsUser_BLL User = clsUser_BLL.Find(ID);
+                if (User != null)
+                {
+                    MessageBox.Show("Person already have a user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
             TC_UserInfo.SelectedIndex = 1;
         }
