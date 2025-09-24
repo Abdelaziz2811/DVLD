@@ -16,8 +16,8 @@ namespace DVLD
 {
     public partial class Add_UpdateUser: Form
     {
-        clsUsers_BLL User;
-        public Add_UpdateUser(ref clsUsers_BLL User)
+        clsUser_BLL User;
+        public Add_UpdateUser(ref clsUser_BLL User)
         {
             InitializeComponent();
 

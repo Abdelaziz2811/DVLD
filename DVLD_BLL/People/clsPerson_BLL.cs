@@ -1,4 +1,5 @@
-﻿using DVLD_DAL;
+﻿using DVLD_BLL.Countries;
+using DVLD_DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +26,7 @@ namespace DVLD_BLL
         public string Email { get; set; }
         public int NationalityCountryID { get; set; }
         public string ImagePath { get; set; }
+        public clsCountry_BLL Country { get; set; }
         public enMode Mode { get; set; }
 
         public clsPerson_BLL()
@@ -41,6 +43,7 @@ namespace DVLD_BLL
             this.Phone = string.Empty;
             this.Email = string.Empty;
             this.NationalityCountryID = -1;
+            this.Country = null;
             this.ImagePath = string.Empty;
             this.Mode = enMode.Add;
         }
@@ -60,6 +63,7 @@ namespace DVLD_BLL
             this.Phone = Phone;
             this.Email = Email;
             this.NationalityCountryID = NationalityCountryID;
+            this.Country = clsCountry_BLL.Find(this.NationalityCountryID);
             this.ImagePath = ImagePath;
             this.Mode = enMode.Update;
         }

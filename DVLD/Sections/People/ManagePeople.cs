@@ -143,7 +143,7 @@ namespace DVLD
         {
             if (FilterBy == "NationalityCountryID")
             {
-                int ID = clsCountries_BLL.GetCountryID(TB_FilterationValue.Text);
+                int ID = clsCountry_BLL.GetCountryID(TB_FilterationValue.Text);
                 DTPeople.DefaultView.RowFilter = $"{FilterBy} = '{ID.ToString()}'";
             }
             else if (FilterBy == "PersonID")
@@ -237,6 +237,7 @@ namespace DVLD
                 default:
                     break;
             }
+            GetPeopleRecordsCount();
         }
     }
 }

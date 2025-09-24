@@ -30,7 +30,7 @@ namespace DVLD.Sections.Drivers
 
         void LoadDrivers()
         {
-            DTPDrivers = clsDrivers_BLL.LoadDrivers();
+            DTPDrivers = clsDriver_BLL.LoadDrivers();
             DGV_Drivers.DataSource = DTPDrivers;
         }
 
@@ -83,6 +83,7 @@ namespace DVLD.Sections.Drivers
                 default:
                     break;
             }
+            DriversCount();
         }
 
         void FilterBy(string FilterBy)

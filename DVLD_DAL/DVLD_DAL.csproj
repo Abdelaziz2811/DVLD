@@ -41,22 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Applications\Application_Types\clsApplicationTypes_DAL.cs" />
-    <Compile Include="Applications\Applications\clsApplications_DAL.cs" />
-    <Compile Include="Applications\Licenses\clsDetainedLicenses_DAL.cs" />
-    <Compile Include="Applications\Licenses\clsInternationalLicense_DAL.cs" />
-    <Compile Include="Applications\Licenses\clsLicense_DAL.cs" />
-    <Compile Include="Applications\License_Applications\clsLocalLicenseApplication_DAL.cs" />
-    <Compile Include="Applications\Test_Appointments\clsTestAppointments_DAL.cs" />
-    <Compile Include="Applications\Test_Appointments\clsTests_DAL.cs" />
-    <Compile Include="Countries\clsCountries_DAL.cs" />
-    <Compile Include="Drivers\clsDrivers_DAL.cs" />
-    <Compile Include="License_Classes\clsLicenseClasses_DAL.cs" />
+    <Compile Include="Applications\Application_Types\clsApplicationType_DAL.cs" />
+    <Compile Include="Applications\Applications\clsApplication_DAL.cs" />
+    <Compile Include="Licenses\Detained_Licenses\clsDetainedLicense_DAL.cs" />
+    <Compile Include="Licenses\International_Driving_License\clsInternationalLicense_DAL.cs" />
+    <Compile Include="Licenses\Local_Driving_License\clsLicense_DAL.cs" />
+    <Compile Include="Applications\Local_Driving_License_Application\clsLocalLicenseApplication_DAL.cs" />
+    <Compile Include="Tests\Test_Appointments\clsTestAppointment_DAL.cs" />
+    <Compile Include="Tests\Tests\clsTest_DAL.cs" />
+    <Compile Include="Countries\clsCountry_DAL.cs" />
+    <Compile Include="Drivers\clsDriver_DAL.cs" />
+    <Compile Include="License_Classes\clsLicenseClass_DAL.cs" />
     <Compile Include="People\clsPersons_DAL.cs" />
     <Compile Include="DAL_Settings\DAL_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Applications\Tests\clsTestTypes_DAL.cs" />
-    <Compile Include="Users\clsUsers_DAL.cs" />
+    <Compile Include="Tests\Tests_Types\clsTestType_DAL.cs" />
+    <Compile Include="Users\clsUser_DAL.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

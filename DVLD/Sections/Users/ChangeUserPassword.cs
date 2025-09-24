@@ -10,13 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DVLD.Sections.Users
 {
     public partial class ChangeUserPassword: Form
     {
-        clsUsers_BLL User;
-        public ChangeUserPassword(ref clsUsers_BLL User)
+        clsUser_BLL User;
+        public ChangeUserPassword(ref clsUser_BLL User)
         {
             InitializeComponent();
 
@@ -42,10 +43,11 @@ namespace DVLD.Sections.Users
                 Change_UserPassword.UserInfo.Person_Info.LB_Address.Text = Person.Address;
                 Change_UserPassword.UserInfo.Person_Info.LB_Email.Text = Person.Email;
                 Change_UserPassword.UserInfo.Person_Info.LB_Phone.Text = Person.Phone;
-                Change_UserPassword.UserInfo.Person_Info.LB_Country.Text = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
+                Change_UserPassword.UserInfo.Person_Info.LB_Country.Text = Person.Country.CountryName;
 
                 if (Person.ImagePath != string.Empty)
-                    Change_UserPassword.UserInfo.Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
+                    if (File.Exists(Person.ImagePath))
+                        Change_UserPassword.UserInfo.Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
             }
 
             Change_UserPassword.UserInfo.LB_UserID.Text = User.UserID.ToString();

@@ -17,7 +17,13 @@ namespace DVLD_DAL
         {
             SqlConnection connection = new SqlConnection(DAL_Settings.ConnectionString);
 
-            string query = "SELECT * FROM People";
+            string query = @"SELECT PersonID, NationalNo, FirstName, SecondName, ThirdName, LastName, BirthDate, Gender =
+                             CASE
+                             WHEN Gender = 'M' THEN 'Male'
+                             WHEN Gender = 'F' then 'Female'
+                             END,
+                             Address, Phone, Email, CountryName, ImagePath FROM People
+                             INNER JOIN Countries ON NationalityCountryID  = CountryID";
 
             SqlCommand command = new SqlCommand(query, connection);
 

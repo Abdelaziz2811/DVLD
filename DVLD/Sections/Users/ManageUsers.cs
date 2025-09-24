@@ -46,7 +46,7 @@ namespace DVLD
 
         void LoadUsersRecords()
         {
-            DTUsers = clsUsers_BLL.GetUsersRecords();
+            DTUsers = clsUser_BLL.GetUsersRecords();
             DGV_Users.DataSource = DTUsers;
         }
 
@@ -57,7 +57,7 @@ namespace DVLD
 
         private void BTN_AddUser_Click(object sender, EventArgs e)
         {
-            clsUsers_BLL User = new clsUsers_BLL();
+            clsUser_BLL User = new clsUser_BLL();
             Add_UpdateUser addUser = new Add_UpdateUser(ref User);
             addUser.ShowDialog();
             RefreshUsersRecords();
@@ -65,7 +65,7 @@ namespace DVLD
 
         private void TSMI_ShowDetails_Click(object sender, EventArgs e)
         {
-            clsUsers_BLL User = clsUsers_BLL.Find(Convert.ToInt32(DGV_Users.CurrentRow.Cells[0].Value));
+            clsUser_BLL User = clsUser_BLL.Find(Convert.ToInt32(DGV_Users.CurrentRow.Cells[0].Value));
             UserDetails currentUser = new UserDetails(ref User);
             currentUser.ShowDialog();
             RefreshUsersRecords();
@@ -78,7 +78,7 @@ namespace DVLD
 
         private void TSMI_UpdateUser_Click(object sender, EventArgs e)
         {
-            clsUsers_BLL User = clsUsers_BLL.Find(Convert.ToInt32(DGV_Users.CurrentRow.Cells[0].Value));
+            clsUser_BLL User = clsUser_BLL.Find(Convert.ToInt32(DGV_Users.CurrentRow.Cells[0].Value));
             Add_UpdateUser addUser = new Add_UpdateUser(ref User);
             addUser.ShowDialog();
             RefreshUsersRecords();
@@ -89,7 +89,7 @@ namespace DVLD
             if (MessageBox.Show("Are you sure you want to delete this user?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                 return;
 
-            if (clsUsers_BLL.Delete(Convert.ToInt32(DGV_Users.CurrentRow.Cells[0].Value)))
+            if (clsUser_BLL.Delete(Convert.ToInt32(DGV_Users.CurrentRow.Cells[0].Value)))
             {
                 MessageBox.Show("User deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefreshUsersRecords();
@@ -99,7 +99,7 @@ namespace DVLD
         }
         private void TSMI_ChangePassword_Click(object sender, EventArgs e)
         {
-            clsUsers_BLL User = clsUsers_BLL.Find(Convert.ToInt32(DGV_Users.CurrentRow.Cells[0].Value));
+            clsUser_BLL User = clsUser_BLL.Find(Convert.ToInt32(DGV_Users.CurrentRow.Cells[0].Value));
             ChangeUserPassword changePassword = new ChangeUserPassword(ref User);
             changePassword.ShowDialog();
         }
@@ -195,6 +195,7 @@ namespace DVLD
                 default:
                     break;
             }
+            SetUsersRecordCount();
         }
     }
 }

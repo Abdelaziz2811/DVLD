@@ -62,131 +62,131 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application_Settings\clsGlobalSettings.cs" />
-    <Compile Include="Sections\Applications\Application Types\ManageApplicationTypes.cs">
+    <Compile Include="Global\clsGlobalSettings.cs" />
+    <Compile Include="Sections\Applications\Application_Types\ManageApplicationTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Application Types\ManageApplicationTypes.Designer.cs">
+    <Compile Include="Sections\Applications\Application_Types\ManageApplicationTypes.Designer.cs">
       <DependentUpon>ManageApplicationTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Application Types\UpdateApplication.cs">
+    <Compile Include="Sections\Applications\Application_Types\UpdateApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Application Types\UpdateApplication.Designer.cs">
+    <Compile Include="Sections\Applications\Application_Types\UpdateApplication.Designer.cs">
       <DependentUpon>UpdateApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Detained Licenses\DetainLicense.cs">
+    <Compile Include="Sections\Applications\Detained_Licenses\DetainLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Detained Licenses\DetainLicense.Designer.cs">
+    <Compile Include="Sections\Applications\Detained_Licenses\DetainLicense.Designer.cs">
       <DependentUpon>DetainLicense.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Detained Licenses\ManageDetainedLicenses.cs">
+    <Compile Include="Sections\Applications\Detained_Licenses\ManageDetainedLicenses.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Detained Licenses\ManageDetainedLicenses.Designer.cs">
+    <Compile Include="Sections\Applications\Detained_Licenses\ManageDetainedLicenses.Designer.cs">
       <DependentUpon>ManageDetainedLicenses.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\InternationalLicenseInfo.cs">
+    <Compile Include="Sections\Licenses\InternationalLicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\InternationalLicenseInfo.Designer.cs">
+    <Compile Include="Sections\Licenses\InternationalLicenseInfo.Designer.cs">
       <DependentUpon>InternationalLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\LicenseHistory.cs">
+    <Compile Include="Sections\Licenses\LicenseHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\LicenseHistory.Designer.cs">
+    <Compile Include="Sections\Licenses\LicenseHistory.Designer.cs">
       <DependentUpon>LicenseHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\ReleaseLicense.cs">
+    <Compile Include="Sections\Applications\Release_Driving_License\ReleaseLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\ReleaseLicense.Designer.cs">
+    <Compile Include="Sections\Applications\Release_Driving_License\ReleaseLicense.Designer.cs">
       <DependentUpon>ReleaseLicense.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\RenewDrivingLicense.cs">
+    <Compile Include="Sections\Applications\Renew_Driving_License\RenewDrivingLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\RenewDrivingLicense.Designer.cs">
+    <Compile Include="Sections\Applications\Renew_Driving_License\RenewDrivingLicense.Designer.cs">
       <DependentUpon>RenewDrivingLicense.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\ReplaceDrivingLicense.cs">
+    <Compile Include="Sections\Applications\Replace_Driving_License\ReplaceDrivingLicense.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\ReplaceDrivingLicense.Designer.cs">
+    <Compile Include="Sections\Applications\Replace_Driving_License\ReplaceDrivingLicense.Designer.cs">
       <DependentUpon>ReplaceDrivingLicense.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\International License Applications\InternationalLicenseApplication.cs">
+    <Compile Include="Sections\Applications\New_Driving_License_Applications\International License Applications\InternationalLicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\International License Applications\InternationalLicenseApplication.Designer.cs">
+    <Compile Include="Sections\Applications\New_Driving_License_Applications\International License Applications\InternationalLicenseApplication.Designer.cs">
       <DependentUpon>InternationalLicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\International License Applications\ManageInternationalLicenseApplications.cs">
+    <Compile Include="Sections\Applications\New_Driving_License_Applications\International License Applications\ManageInternationalLicenseApplications.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\International License Applications\ManageInternationalLicenseApplications.Designer.cs">
+    <Compile Include="Sections\Applications\New_Driving_License_Applications\International License Applications\ManageInternationalLicenseApplications.Designer.cs">
       <DependentUpon>ManageInternationalLicenseApplications.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\IssueLicense_FirstTime.cs">
+    <Compile Include="Sections\Licenses\IssueLicense_FirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\IssueLicense_FirstTime.Designer.cs">
+    <Compile Include="Sections\Licenses\IssueLicense_FirstTime.Designer.cs">
       <DependentUpon>IssueLicense_FirstTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\LicenseInfo.cs">
+    <Compile Include="Sections\Licenses\LicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\Licenses\LicenseInfo.Designer.cs">
+    <Compile Include="Sections\Licenses\LicenseInfo.Designer.cs">
       <DependentUpon>LicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\AddLocal LicenseApplication.cs">
+    <Compile Include="Sections\Applications\New_Driving_License_Applications\Local License Applications\AddLocal LicenseApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\AddLocal LicenseApplication.Designer.cs">
+    <Compile Include="Sections\Applications\New_Driving_License_Applications\Local License Applications\AddLocal LicenseApplication.Designer.cs">
       <DependentUpon>AddLocal LicenseApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\LicenseApplicationInfo.cs">
+    <Compile Include="Sections\Applications\New_Driving_License_Applications\Local License Applications\LicenseApplicationInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\LicenseApplicationInfo.Designer.cs">
+    <Compile Include="Sections\Applications\New_Driving_License_Applications\Local License Applications\LicenseApplicationInfo.Designer.cs">
       <DependentUpon>LicenseApplicationInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TakeTest.cs">
+    <Compile Include="Sections\Tests\Test_Appointments\TakeTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TakeTest.Designer.cs">
+    <Compile Include="Sections\Tests\Test_Appointments\TakeTest.Designer.cs">
       <DependentUpon>TakeTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TestAppointments.cs">
+    <Compile Include="Sections\Tests\Test_Appointments\TestAppointments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TestAppointments.Designer.cs">
+    <Compile Include="Sections\Tests\Test_Appointments\TestAppointments.Designer.cs">
       <DependentUpon>TestAppointments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\ScheduleTest.cs">
+    <Compile Include="Sections\Tests\Test_Appointments\ScheduleTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\ScheduleTest.Designer.cs">
+    <Compile Include="Sections\Tests\Test_Appointments\ScheduleTest.Designer.cs">
       <DependentUpon>ScheduleTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\ManageLocalLicenseApplications.cs">
+    <Compile Include="Sections\Applications\New_Driving_License_Applications\Local License Applications\ManageLocalLicenseApplications.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\ManageLocalLicenseApplications.Designer.cs">
+    <Compile Include="Sections\Applications\New_Driving_License_Applications\Local License Applications\ManageLocalLicenseApplications.Designer.cs">
       <DependentUpon>ManageLocalLicenseApplications.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\TestTypes\ManageTestTypes.cs">
+    <Compile Include="Sections\Tests\Test_Types\ManageTestTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\TestTypes\ManageTestTypes.Designer.cs">
+    <Compile Include="Sections\Tests\Test_Types\ManageTestTypes.Designer.cs">
       <DependentUpon>ManageTestTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sections\Applications\TestTypes\UpdateTest.cs">
+    <Compile Include="Sections\Tests\Test_Types\UpdateTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Applications\TestTypes\UpdateTest.Designer.cs">
+    <Compile Include="Sections\Tests\Test_Types\UpdateTest.Designer.cs">
       <DependentUpon>UpdateTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Sections\Drivers\Drivers.cs">
@@ -254,147 +254,147 @@
     <Compile Include="Sections\People\PersonDetails.Designer.cs">
       <DependentUpon>PersonDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Main\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User_Controls\Applications Section\International Licenses\UC_InternationalLicenseInfo.cs">
+    <Compile Include="User_Controls\Licenses\UC_InternationalLicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\International Licenses\UC_InternationalLicenseInfo.Designer.cs">
+    <Compile Include="User_Controls\Licenses\UC_InternationalLicenseInfo.Designer.cs">
       <DependentUpon>UC_InternationalLicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseApplicationInfo.cs">
+    <Compile Include="User_Controls\Licenses\UC_LicenseApplicationInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseApplicationInfo.Designer.cs">
+    <Compile Include="User_Controls\Licenses\UC_LicenseApplicationInfo.Designer.cs">
       <DependentUpon>UC_LicenseApplicationInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseHistory.cs">
+    <Compile Include="User_Controls\Licenses\UC_LicenseHistory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseHistory.Designer.cs">
+    <Compile Include="User_Controls\Licenses\UC_LicenseHistory.Designer.cs">
       <DependentUpon>UC_LicenseHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseInfo.cs">
+    <Compile Include="User_Controls\Licenses\UC_LicenseInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseInfo.Designer.cs">
+    <Compile Include="User_Controls\Licenses\UC_LicenseInfo.Designer.cs">
       <DependentUpon>UC_LicenseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseSelector.cs">
+    <Compile Include="User_Controls\Licenses\UC_LicenseSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Local License\UC_LicenseSelector.Designer.cs">
+    <Compile Include="User_Controls\Licenses\UC_LicenseSelector.Designer.cs">
       <DependentUpon>UC_LicenseSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Tests\UC_ScheduleTest.cs">
+    <Compile Include="User_Controls\Tests\UC_ScheduleTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Tests\UC_ScheduleTest.Designer.cs">
+    <Compile Include="User_Controls\Tests\UC_ScheduleTest.Designer.cs">
       <DependentUpon>UC_ScheduleTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Tests\UC_TestDetails.cs">
+    <Compile Include="User_Controls\Tests\UC_TestDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Applications Section\Tests\UC_TestDetails.Designer.cs">
+    <Compile Include="User_Controls\Tests\UC_TestDetails.Designer.cs">
       <DependentUpon>UC_TestDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\People Section\UC_Add_UpdatePerson.cs">
+    <Compile Include="User_Controls\People\UC_Add_UpdatePerson.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\People Section\UC_Add_UpdatePerson.Designer.cs">
+    <Compile Include="User_Controls\People\UC_Add_UpdatePerson.Designer.cs">
       <DependentUpon>UC_Add_UpdatePerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\People Section\UC_Person_Info.cs">
+    <Compile Include="User_Controls\People\UC_Person_Info.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\People Section\UC_Person_Info.Designer.cs">
+    <Compile Include="User_Controls\People\UC_Person_Info.Designer.cs">
       <DependentUpon>UC_Person_Info.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\People Section\UC_Person_Selector.cs">
+    <Compile Include="User_Controls\People\UC_Person_Selector.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\People Section\UC_Person_Selector.Designer.cs">
+    <Compile Include="User_Controls\People\UC_Person_Selector.Designer.cs">
       <DependentUpon>UC_Person_Selector.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Users Section\UC_Change_UserPassword.cs">
+    <Compile Include="User_Controls\Users\UC_Change_UserPassword.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Users Section\UC_Change_UserPassword.Designer.cs">
+    <Compile Include="User_Controls\Users\UC_Change_UserPassword.Designer.cs">
       <DependentUpon>UC_Change_UserPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Users Section\UC_Add_UpdateUser.cs">
+    <Compile Include="User_Controls\Users\UC_Add_UpdateUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Users Section\UC_Add_UpdateUser.Designer.cs">
+    <Compile Include="User_Controls\Users\UC_Add_UpdateUser.Designer.cs">
       <DependentUpon>UC_Add_UpdateUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_Controls\Users Section\UC_UserInfo.cs">
+    <Compile Include="User_Controls\Users\UC_UserInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="User_Controls\Users Section\UC_UserInfo.Designer.cs">
+    <Compile Include="User_Controls\Users\UC_UserInfo.Designer.cs">
       <DependentUpon>UC_UserInfo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Sections\Applications\Application Types\ManageApplicationTypes.resx">
+    <EmbeddedResource Include="Sections\Applications\Application_Types\ManageApplicationTypes.resx">
       <DependentUpon>ManageApplicationTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Application Types\UpdateApplication.resx">
+    <EmbeddedResource Include="Sections\Applications\Application_Types\UpdateApplication.resx">
       <DependentUpon>UpdateApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\Detained Licenses\DetainLicense.resx">
+    <EmbeddedResource Include="Sections\Applications\Detained_Licenses\DetainLicense.resx">
       <DependentUpon>DetainLicense.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\Detained Licenses\ManageDetainedLicenses.resx">
+    <EmbeddedResource Include="Sections\Applications\Detained_Licenses\ManageDetainedLicenses.resx">
       <DependentUpon>ManageDetainedLicenses.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\Licenses\InternationalLicenseInfo.resx">
+    <EmbeddedResource Include="Sections\Licenses\InternationalLicenseInfo.resx">
       <DependentUpon>InternationalLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\Licenses\LicenseHistory.resx">
+    <EmbeddedResource Include="Sections\Licenses\LicenseHistory.resx">
       <DependentUpon>LicenseHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\Licenses\ReleaseLicense.resx">
+    <EmbeddedResource Include="Sections\Applications\Release_Driving_License\ReleaseLicense.resx">
       <DependentUpon>ReleaseLicense.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\Licenses\RenewDrivingLicense.resx">
+    <EmbeddedResource Include="Sections\Applications\Renew_Driving_License\RenewDrivingLicense.resx">
       <DependentUpon>RenewDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\Licenses\ReplaceDrivingLicense.resx">
+    <EmbeddedResource Include="Sections\Applications\Replace_Driving_License\ReplaceDrivingLicense.resx">
       <DependentUpon>ReplaceDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\International License Applications\InternationalLicenseApplication.resx">
+    <EmbeddedResource Include="Sections\Applications\New_Driving_License_Applications\International License Applications\InternationalLicenseApplication.resx">
       <DependentUpon>InternationalLicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\International License Applications\ManageInternationalLicenseApplications.resx">
+    <EmbeddedResource Include="Sections\Applications\New_Driving_License_Applications\International License Applications\ManageInternationalLicenseApplications.resx">
       <DependentUpon>ManageInternationalLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\IssueLicense_FirstTime.resx">
+    <EmbeddedResource Include="Sections\Licenses\IssueLicense_FirstTime.resx">
       <DependentUpon>IssueLicense_FirstTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\Licenses\LicenseInfo.resx">
+    <EmbeddedResource Include="Sections\Licenses\LicenseInfo.resx">
       <DependentUpon>LicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\AddLocal LicenseApplication.resx">
+    <EmbeddedResource Include="Sections\Applications\New_Driving_License_Applications\Local License Applications\AddLocal LicenseApplication.resx">
       <DependentUpon>AddLocal LicenseApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\LicenseApplicationInfo.resx">
+    <EmbeddedResource Include="Sections\Applications\New_Driving_License_Applications\Local License Applications\LicenseApplicationInfo.resx">
       <DependentUpon>LicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TakeTest.resx">
+    <EmbeddedResource Include="Sections\Tests\Test_Appointments\TakeTest.resx">
       <DependentUpon>TakeTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\TestAppointments.resx">
+    <EmbeddedResource Include="Sections\Tests\Test_Appointments\TestAppointments.resx">
       <DependentUpon>TestAppointments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Test Appointments\ScheduleTest.resx">
+    <EmbeddedResource Include="Sections\Tests\Test_Appointments\ScheduleTest.resx">
       <DependentUpon>ScheduleTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\Driving Licenses Services\New Driving License\Local License Applications\ManageLocalLicenseApplications.resx">
+    <EmbeddedResource Include="Sections\Applications\New_Driving_License_Applications\Local License Applications\ManageLocalLicenseApplications.resx">
       <DependentUpon>ManageLocalLicenseApplications.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\TestTypes\ManageTestTypes.resx">
+    <EmbeddedResource Include="Sections\Tests\Test_Types\ManageTestTypes.resx">
       <DependentUpon>ManageTestTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sections\Applications\TestTypes\UpdateTest.resx">
+    <EmbeddedResource Include="Sections\Tests\Test_Types\UpdateTest.resx">
       <DependentUpon>UpdateTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Drivers\Drivers.resx">
@@ -435,46 +435,46 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Applications Section\International Licenses\UC_InternationalLicenseInfo.resx">
+    <EmbeddedResource Include="User_Controls\Licenses\UC_InternationalLicenseInfo.resx">
       <DependentUpon>UC_InternationalLicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Applications Section\Local License\UC_LicenseApplicationInfo.resx">
+    <EmbeddedResource Include="User_Controls\Licenses\UC_LicenseApplicationInfo.resx">
       <DependentUpon>UC_LicenseApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Applications Section\Local License\UC_LicenseHistory.resx">
+    <EmbeddedResource Include="User_Controls\Licenses\UC_LicenseHistory.resx">
       <DependentUpon>UC_LicenseHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Applications Section\Local License\UC_LicenseInfo.resx">
+    <EmbeddedResource Include="User_Controls\Licenses\UC_LicenseInfo.resx">
       <DependentUpon>UC_LicenseInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Applications Section\Local License\UC_LicenseSelector.resx">
+    <EmbeddedResource Include="User_Controls\Licenses\UC_LicenseSelector.resx">
       <DependentUpon>UC_LicenseSelector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Applications Section\Tests\UC_ScheduleTest.resx">
+    <EmbeddedResource Include="User_Controls\Tests\UC_ScheduleTest.resx">
       <DependentUpon>UC_ScheduleTest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Applications Section\Tests\UC_TestDetails.resx">
+    <EmbeddedResource Include="User_Controls\Tests\UC_TestDetails.resx">
       <DependentUpon>UC_TestDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\People Section\UC_Add_UpdatePerson.resx">
+    <EmbeddedResource Include="User_Controls\People\UC_Add_UpdatePerson.resx">
       <DependentUpon>UC_Add_UpdatePerson.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\People Section\UC_Person_Info.resx">
+    <EmbeddedResource Include="User_Controls\People\UC_Person_Info.resx">
       <DependentUpon>UC_Person_Info.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\People Section\UC_Person_Selector.resx">
+    <EmbeddedResource Include="User_Controls\People\UC_Person_Selector.resx">
       <DependentUpon>UC_Person_Selector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Users Section\UC_Change_UserPassword.resx">
+    <EmbeddedResource Include="User_Controls\Users\UC_Change_UserPassword.resx">
       <DependentUpon>UC_Change_UserPassword.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Users Section\UC_Add_UpdateUser.resx">
+    <EmbeddedResource Include="User_Controls\Users\UC_Add_UpdateUser.resx">
       <DependentUpon>UC_Add_UpdateUser.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="User_Controls\Users Section\UC_UserInfo.resx">
+    <EmbeddedResource Include="User_Controls\Users\UC_UserInfo.resx">
       <DependentUpon>UC_UserInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -583,5 +583,6 @@
   <ItemGroup>
     <None Include="Resources\ReleaseLicense.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

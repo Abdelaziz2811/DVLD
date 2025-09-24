@@ -152,6 +152,7 @@
             this.TSMI_ReleaseDetainedDrivingLicense.Name = "TSMI_ReleaseDetainedDrivingLicense";
             this.TSMI_ReleaseDetainedDrivingLicense.Size = new System.Drawing.Size(322, 26);
             this.TSMI_ReleaseDetainedDrivingLicense.Text = "Release Detained Driving License";
+            this.TSMI_ReleaseDetainedDrivingLicense.Click += new System.EventHandler(this.TSMI_ReleaseDetainedDrivingLicense_Click);
             // 
             // TSMI_RetakeTest
             // 

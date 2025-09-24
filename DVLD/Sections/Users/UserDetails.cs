@@ -10,13 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DVLD.Sections.Users
 {
     public partial class UserDetails: Form
     {
-        clsUsers_BLL User;
-        public UserDetails(ref clsUsers_BLL User)
+        clsUser_BLL User;
+        public UserDetails(ref clsUser_BLL User)
         {
             InitializeComponent();
 
@@ -42,10 +43,11 @@ namespace DVLD.Sections.Users
                 UserInfo.Person_Info.LB_Address.Text = Person.Address;
                 UserInfo.Person_Info.LB_Email.Text = Person.Email;
                 UserInfo.Person_Info.LB_Phone.Text = Person.Phone;
-                UserInfo.Person_Info.LB_Country.Text = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
+                UserInfo.Person_Info.LB_Country.Text = Person.Country.CountryName;
 
                 if (Person.ImagePath != string.Empty)
-                    UserInfo.Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
+                    if (File.Exists(Person.ImagePath))
+                        UserInfo.Person_Info.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
             }
 
             UserInfo.LB_UserID.Text = User.UserID.ToString();

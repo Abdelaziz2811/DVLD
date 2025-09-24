@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -65,10 +67,11 @@ namespace DVLD
             Add_UpdatePerson.TXTB_Phone.Text = Person.Phone;
             Add_UpdatePerson.TXTB_Email.Text = Person.Email;
 
-            Add_UpdatePerson.CB_Countries.SelectedItem = clsCountries_BLL.GetCountryName(Person.NationalityCountryID);
+            Add_UpdatePerson.CB_Countries.SelectedItem = Person.Country.CountryName;
 
             if (Person.ImagePath != null)
-                Add_UpdatePerson.PB_PersonImage.Image = Image.FromFile(Person.ImagePath);
+                if (File.Exists(Person.ImagePath))
+                    Add_UpdatePerson.PB_PersonImage.ImageLocation = Person.ImagePath;
 
             Add_UpdatePerson.TXTB_NationalNo.Text = Person.NationalNo;
         }
@@ -96,7 +99,7 @@ namespace DVLD
                 }
             }
             else
-                if ((MessageBox.Show("The operation you're making will be canceled, Are you sure you to leave this form ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.No)
+                if (MessageBox.Show("The operation you're making will be canceled, Are you sure you to leave this form ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     e.Cancel = true;
         }
 
@@ -115,15 +118,14 @@ namespace DVLD
             Person.Phone = Add_UpdatePerson.TXTB_Phone.Text;
             Person.Email = Add_UpdatePerson.TXTB_Email.Text;
 
-            Person.NationalityCountryID = clsCountries_BLL.GetCountryID(Add_UpdatePerson.CB_Countries.SelectedItem.ToString());
+            Person.NationalityCountryID = clsCountry_BLL.GetCountryID(Add_UpdatePerson.CB_Countries.SelectedItem.ToString());
 
-            if (Add_UpdatePerson.PB_PersonImage.Image != null)
+            if (Person.ImagePath != Add_UpdatePerson.PB_PersonImage.ImageLocation)
             {
-                if (Add_UpdatePerson.ImagePath != string.Empty)
-                    Person.ImagePath = Add_UpdatePerson.ImagePath;
+                if (!string.IsNullOrEmpty(Person.ImagePath))
+                    File.Delete(Person.ImagePath);
+                Person.ImagePath = Add_UpdatePerson.ImagePath;
             }
-            else
-                Person.ImagePath = string.Empty;
 
             Person.NationalNo = Add_UpdatePerson.TXTB_NationalNo.Text;
         }

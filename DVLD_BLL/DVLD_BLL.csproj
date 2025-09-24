@@ -41,21 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Applications\Application_Types\clsApplicationTypes_BLL.cs" />
-    <Compile Include="Applications\Applications\clsApplications_BLL.cs" />
-    <Compile Include="Applications\Licenses\clsDetainedLicenses_BLL.cs" />
-    <Compile Include="Applications\Licenses\clsInternationalLicense_BLL.cs" />
-    <Compile Include="Applications\Licenses\clsLicense_BLL.cs" />
-    <Compile Include="Applications\License_Application\clsLocalLicenseApplication_BLL.cs" />
-    <Compile Include="Applications\Test_Appointments\clsTestAppointments_BLL.cs" />
-    <Compile Include="Applications\Test_Appointments\clsTests_BLL.cs" />
-    <Compile Include="Countries\clsCountries_BLL.cs" />
-    <Compile Include="Drivers\clsDrivers_BLL.cs" />
-    <Compile Include="License_Classes\clsLicenseClasses_BLL.cs" />
+    <Compile Include="Applications\Applications\clsApplication_BLL.cs" />
+    <Compile Include="Applications\Application_Types\clsApplicationType_BLL.cs" />
+    <Compile Include="Licenses\Detained_Licenses\clsDetainedLicense_BLL.cs" />
+    <Compile Include="Licenses\International_Driving_Liceses\clsInternationalLicense_BLL.cs" />
+    <Compile Include="Licenses\Local_Driving_Licenses\clsLicense_BLL.cs" />
+    <Compile Include="Applications\Local_License_Applications\clsLocalLicenseApplication_BLL.cs" />
+    <Compile Include="Tests\Test_Appointments\clsTestAppointment_BLL.cs" />
+    <Compile Include="Tests\Tests\clsTest_BLL.cs" />
+    <Compile Include="Countries\clsCountry_BLL.cs" />
+    <Compile Include="Drivers\clsDriver_BLL.cs" />
+    <Compile Include="License_Classes\clsLicenseClass_BLL.cs" />
     <Compile Include="People\clsPerson_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Applications\Tests\clsTestTypes_BLL.cs" />
-    <Compile Include="Users\clsUsers_BLL.cs" />
+    <Compile Include="Tests\Test_Types\clsTestType_BLL.cs" />
+    <Compile Include="Users\clsUser_BLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DVLD_DAL\DVLD_DAL.csproj">

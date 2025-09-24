@@ -26,7 +26,7 @@ namespace DVLD
         {
             InitializeComponent();
 
-            clsGlobalSettings.CurrentUser = clsUsers_BLL.Find(Username);
+            clsGlobalSettings.CurrentUser = clsUser_BLL.Find(Username);
         }
 
         private void MainScreen_Load(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace DVLD
         private void TSM_Drivers_Click(object sender, EventArgs e)
         {
             Drivers drivers = new Drivers();
-            drivers.ShowDialog();
+            drivers.Show();
         }
 
         private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -147,6 +147,12 @@ namespace DVLD
         {
             ManageDetainedLicenses manageDetainedLicenses = new ManageDetainedLicenses();
             manageDetainedLicenses.ShowDialog();
+        }
+
+        private void TSMI_ReleaseDetainedDrivingLicense_Click(object sender, EventArgs e)
+        {
+            ReleaseLicense releaseLicense = new ReleaseLicense();
+            releaseLicense.ShowDialog();
         }
     }
 }

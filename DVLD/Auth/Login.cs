@@ -21,7 +21,7 @@ namespace DVLD
 
         private void BTN_Login_Click(object sender, EventArgs e)
         {
-            clsUsers_BLL User = clsUsers_BLL.Find(TXTB_Username.Text);
+            clsUser_BLL User = clsUser_BLL.Find(TXTB_Username.Text);
             if (User != null)
             {
                 if (User.IsActive)
