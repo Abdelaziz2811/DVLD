@@ -78,7 +78,13 @@ This project follows a **3-Tier Architecture**:
 
 ## 📸 Screenshots (Optional)
 
-> You can add images of your login screen, applicant management form, and license issuance form here to make the repo visually appealing.
+![Screenshot 1](Screenshots/Screenshot 2025-09-27 154249.png)
+![Screenshot 2](Screenshots/Screenshot 2025-09-27 154327.png)
+![Screenshot 3](Screenshots/Screenshot 2025-09-27 154454.png)
+![Screenshot 4](Screenshots/Screenshot 2025-09-27 154519.png)
+![Screenshot 5](Screenshots/Screenshot 2025-09-27 154554.png)
+![Screenshot 6](Screenshots/Screenshot 2025-09-27 154621.png)
+![Screenshot 7](Screenshots/Screenshot 2025-09-27 154703.png)
 
 ---
 
