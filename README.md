@@ -76,7 +76,7 @@ This project follows a **3-Tier Architecture**:
 
 ---
 
-## 📸 Screenshots (Optional)
+## 📸 Screenshots
 
 ![Screenshot 1](Screenshots/Screenshot%202025-09-27%20154249.png)
 ![Screenshot 2](Screenshots/Screenshot%202025-09-27%20154327.png)
